@@ -1,0 +1,529 @@
+/**
+ * Global Translations for Soukna Marketplace
+ */
+
+export const translations = {
+  fr: {
+    nav: {
+      home: 'Accueil',
+      catalog: 'Boutique',
+      artisans: 'Nos Artisans',
+      eco: 'Éco-conception',
+      impact: 'Notre Impact',
+      training: 'Formations',
+      contact: 'Contact',
+      login: 'Connexion',
+      register: 'Inscription',
+      cart: 'Panier',
+    },
+    footer: {
+      tagline: 'La première marketplace tunisienne dédiée à l\'artisanat durable et à la consommation responsable.',
+      navigation: 'Navigation',
+      partners: 'Partenaires',
+      contact: 'Contactez-nous',
+      rights: 'Tous droits réservés.',
+      madeIn: 'Fait avec ❤️ en Tunisie',
+      buyNow: 'Acheter Maintenant',
+      becomePartner: 'Devenir Partenaire',
+      ecoCycle: 'Cycle Éco-Responsable',
+      joinMovement: 'Rejoignez notre mouvement pour un avenir durable',
+      supportArtisans: 'Soutien à plus de 120 artisans',
+      protectEnv: 'Protection de l\'environnement',
+      preserveHeritage: 'Préservation de notre patrimoine',
+      cycleSteps: [
+        'Achat Client',
+        'Financement Enda',
+        'Production Locale',
+        'Emballage Éco',
+        'Recyclage',
+        'Nouveau Produit',
+      ],
+      address: '12 Rue Habib Bourguiba, Tunis 1000',
+    },
+    home: {
+      hero: {
+        tagline: 'Premium & Éco-responsable',
+        title1: 'Donnez Vie à',
+        title2: 'L\'Artisanat Tunisien',
+        description: 'Découvrez des produits artisanaux uniques et participez à une expérience qui valorise nos traditions tout en protégeant notre environnement.',
+        ctaPrimary: 'Explorer la Collection',
+        ctaSecondary: 'Voir nos Récits',
+        statsArtisans: 'Artisans',
+        statsProducts: 'Produits',
+        statsRegions: 'Régions',
+        features: [
+          'Produits 100% Tunisiens',
+          'Soutien aux Artisans Locaux',
+          'Fabrication Durable',
+          'Impact Environnemental Positif',
+        ]
+      },
+      stats: {
+        tagline: 'Notre Impact Local',
+        title: 'Des chiffres qui parlent',
+        description: 'Ensemble, nous construisons un avenir plus vert tout en préservant l\'héritage précieux de nos artisans locaux.',
+        labels: {
+          products: 'Produits Durables',
+          artisans: 'Artisans Soutenus',
+          co2: 'Tonnes CO₂ évitées',
+          materials: 'Matières Recyclées'
+        }
+      },
+      features: {
+        tagline: 'L\'Expérience Soukna',
+        title: 'Plus qu\'une simple marketplace',
+        description: 'Découvrez un écosystème conçu pour valoriser notre patrimoine tout en offrant une expérience d\'achat moderne, sécurisée et éthique.',
+        sectionTitle: 'Nos Atouts',
+        list: [
+          {
+            title: 'Achat Responsable',
+            items: [
+              'Produits 100% Tunisiens',
+              'Paiement sécurisé',
+              'Livraison à domicile',
+              'Retour sous 14 jours',
+            ],
+          },
+          {
+            title: 'Accompagnement',
+            items: [
+              'Plus de 120 artisans partenaires',
+              'Formations gratuites',
+              'Micro-crédit Enda',
+              'Visibilité nationale',
+            ],
+          },
+          {
+            title: 'Impact Éco',
+            items: [
+              'Emballages 100% recyclables',
+              'Matières durables',
+              'Réduction empreinte CO₂',
+              'Savoir-faire éco-responsable',
+            ],
+          },
+          {
+            title: 'Qualité Garantie',
+            items: [
+              'Produits artisanaux authentiques',
+              'Contrôle qualité',
+              'Avis vérifiés',
+              'Service client 7j/7',
+            ],
+          },
+        ]
+      },
+      map: {
+        tagline: 'Carte Interactive',
+        title: 'Nos Artisans par Région',
+        description: 'Découvrez la richesse culturelle de la Tunisie en explorant les spécialités artisanales de chaque région. Cliquez sur la carte pour commencer.',
+        legendTitle: 'Artisans par région',
+        legendHigh: '30 et plus',
+        legendMid: '20 à 29',
+        legendLow: 'Moins de 20',
+        regions: {
+          tunis: 'Tunis',
+          nabeul: 'Nabeul',
+          sfax: 'Sfax',
+          kairouan: 'Kairouan',
+          sousse: 'Sousse',
+          mahdia: 'Mahdia',
+          gabes: 'Gabès',
+          tozeur: 'Tozeur',
+          gafsa: 'Gafsa',
+          kasserine: 'Kasserine',
+          beja: 'Béja',
+          jendouba: 'Jendouba',
+          zaghouan: 'Zaghouan',
+          monastir: 'Monastir',
+          medenine: 'Médenine',
+        }
+      },
+      video: {
+        tagline: 'Documentaires & Récits',
+        title: "L'Artisanat Responsable en Action",
+        description: "Plongez au cœur de nos processus. Découvrez comment chaque achat contribue à valoriser le travail de nos artisans et à protéger la nature.",
+        cta: 'Voir tous les documentaires',
+        list: [
+          {
+            id: 'eco-zaitoun',
+            title: "Des branches d'olivier au charbon de bois 🌿",
+            items: [
+              "Saison de récolte des olives",
+              "L'agriculteur ramasse les branches au lieu de les brûler",
+              "Vente via la plateforme Soukna",
+              "Grillades au charbon 100% naturel",
+            ],
+            music: 'Sons de la nature et Oud',
+          },
+          {
+            id: 'eco-sanhaja',
+            title: 'Tapis Sanhaja : de la laine brute au salon 🧶',
+            items: [
+              "La laine brute est souvent délaissée",
+              "Les artisanes la lavent et la filent",
+              "Fabrication d'un tapis traditionnel à la main",
+              "Décor authentique dans une maison tunisienne",
+            ],
+            music: 'Chants ruraux féminins',
+          },
+          {
+            id: 'eco-fokhar',
+            title: 'Argile de Sejnane : la terre reprend vie 🏺',
+            items: [
+              "Les femmes ramassent l'argile des vallées",
+              "Façonnage de poteries et de décorations",
+              "Coloration naturelle avec des jus de plantes",
+              "Chef-d'œuvre artistique exposé à l'international",
+            ],
+            music: 'Tabl et Mezoued léger',
+          },
+          {
+            id: 'eco-khoubza',
+            title: 'Blé Local : de la graine à la Tabouna 🌾',
+            items: [
+              "Culture du blé tunisien authentique",
+              "Moisson à la manière ancienne",
+              "Mouture du grain au moulin",
+              "Pain Tabouna chaud à l'huile et au thym",
+            ],
+            music: 'Mélodie de Gasba montagnarde',
+          },
+          {
+            id: 'eco-halfa',
+            title: 'Tressage de Halfa : un couffin pour des années 🧺',
+            items: [
+              "Collecte de la plante Halfa dans les montagnes",
+              "Séchage et tri pour le tressage",
+              "Fabrication de couffins et d'articles de maison",
+              "Alternative naturelle et saine au plastique",
+            ],
+            music: 'Musique bédouine calme',
+          },
+        ]
+      }
+    },
+    catalog: {
+      title: 'Catalogue des Produits',
+      subtitle: 'produits artisanaux uniques',
+      search: 'Rechercher un produit...',
+      filters: 'Filtres',
+      category: 'Catégorie',
+      region: 'Région',
+      price: 'Prix',
+      currency: 'TND',
+      reset: 'Réinitialiser',
+      resultsCount: 'résultats sur',
+      noProducts: 'Aucun produit ne correspond à vos critères.',
+      excellence: 'Excellence Tunisienne',
+      addedToCart: 'ajouté au panier',
+      prev: 'Précédent',
+      next: 'Suivant',
+      categories: {
+        alimentaire: 'Agro-alimentaire',
+        artisanat: 'Artisanat',
+        textile: 'Textile',
+        ecologique: 'Écologique',
+      }
+    },
+    artisans: {
+      title: 'Nos Passionnés Artisans',
+      subtitle: 'Rencontrez les mains qui façonnent l’identité de notre terroir.',
+      tagline: 'Savoir-faire Ancestral',
+      creations: 'Créations',
+      discover: 'Découvrir',
+    },
+    contact: {
+      title: 'Contactez-nous',
+      subtitle: 'Nous sommes à votre écoute pour toute question, suggestion ou demande de partenariat.',
+      infoTitle: 'Informations de Contact',
+      address: 'Adresse',
+      addressValue: '12 Rue Habib Bourguiba, Tunis 1000',
+      phone: 'Téléphone',
+      phoneValue: '+216 71 000 000',
+      email: 'Email',
+      emailValue: 'contact@soukna.tn',
+      hours: 'Heures de travail',
+      hoursValue: 'Lun - Ven : 9h00 - 18h00',
+      formTitle: 'Envoyez-nous un message',
+      nameLabel: 'Nom complet',
+      namePlaceholder: 'Votre nom complet',
+      emailLabel: 'Adresse email',
+      emailPlaceholder: 'votre.email@exemple.com',
+      subjectLabel: 'Sujet',
+      subjectPlaceholder: 'Sujet de votre message',
+      messageLabel: 'Message',
+      messagePlaceholder: 'Comment pouvons-nous vous aider ?',
+      sendButton: 'Envoyer le message'
+    },
+    common: {
+      loading: 'Chargement...',
+      error: 'Une erreur est survenue',
+      retry: 'Réessayer',
+      back: 'Retour',
+    }
+  },
+  ar: {
+    nav: {
+      home: 'الرئيسية',
+      catalog: 'المتجر',
+      artisans: 'حرفيونا',
+      eco: 'البيئة',
+      impact: 'تأثيرنا المحلي',
+      training: 'التدريبات',
+      contact: 'اتصل بنا',
+      login: 'تسجيل الدخول',
+      register: 'إنشاء حساب',
+      cart: 'السلة',
+    },
+    footer: {
+      tagline: 'أول سوق تونسية مختصة في الصناعات التقليدية وصنعة بلادنا المستدامة.',
+      navigation: 'التنقل',
+      partners: 'شركاؤنا',
+      contact: 'اتصل بنا',
+      rights: 'جميع الحقوق محفوظة.',
+      madeIn: 'صنع بـ ❤️ في تونس',
+      buyNow: 'تسوق الآن',
+      becomePartner: 'كن شريكاً',
+      ecoCycle: 'الدورة الصديقة للبيئة',
+      joinMovement: 'انضم إلى حركتنا من أجل مستقبل مستدام',
+      supportArtisans: 'دعم أكثر من 120 حرفيًا',
+      protectEnv: 'حماية البيئة',
+      preserveHeritage: 'الحفاظ على تراثنا',
+      cycleSteps: [
+        'شراء العميل',
+        'تمويل أندا',
+        'إنتاج محلي',
+        'تغليف صديق للبيئة',
+        'إعادة التدوير',
+        'منتج جديد',
+      ],
+      address: '12 شارع الحبيب بورقيبة، تونس 1000',
+    },
+    home: {
+      hero: {
+        tagline: 'ممتاز وصديق للبيئة',
+        title1: 'أحيوا',
+        title2: 'الإبداعات التونسية',
+        description: 'اكتشف منتجات حرفية فريدة وشارك في تجربة تضمن استمرار صنعتنا التقليدية وتحمي بيئتنا.',
+        ctaPrimary: 'استكشف المجموعة',
+        ctaSecondary: 'شاهد قصصنا',
+        statsArtisans: 'حرفي',
+        statsProducts: 'منتج',
+        statsRegions: 'ولايات',
+        features: [
+          'منتجات تونسية 100%',
+          'دعم الحرفيين المحليين',
+          'صناعة مستدامة',
+          'حماية البيئة',
+        ]
+      },
+      stats: {
+        tagline: 'تأثيرنا المحلي',
+        title: 'أرقام تتحدث عن نفسها',
+        description: 'معاً، نبني مستقبلاً أكثر اخضراراً مع الحفاظ على التراث الثمين لحرفيينا المحليين.',
+        labels: {
+          products: 'منتجات مستدامة',
+          artisans: 'حرفيون مدعومون',
+          co2: 'أطنان CO₂ تم تجنبها',
+          materials: 'مواد معاد تدويرها'
+        }
+      },
+      features: {
+        tagline: 'تجربة سوقنا',
+        title: 'أكثر من مجرد سوق',
+        description: 'اكتشف نظاماً بيئياً مصمماً لتثمين تراثنا مع تقديم تجربة شراء حديثة وآمنة وأخلاقية.',
+        sectionTitle: 'مميزاتنا',
+        list: [
+          {
+            title: 'شراء مسؤول',
+            items: [
+              'منتجات تونسية 100%',
+              'دفع آمن',
+              'توصيل إلى المنزل',
+              'إرجاع خلال 14 يوماً',
+            ],
+          },
+          {
+            title: 'دعم الحرفيين',
+            items: [
+              'أكثر من 120 حرفيًا شريكًا',
+              'تدريب مجاني',
+              'تمويل أندا الصغير',
+              'رؤية وطنية',
+            ],
+          },
+          {
+            title: 'تأثير بيئي',
+            items: [
+              'تغليف قابل لإعادة التدوير 100%',
+              'مواد مستدامة',
+              'تقليل انبعاثات CO₂',
+              'صنعة بلادنا',
+            ],
+          },
+          {
+            title: 'جودة مضمونة',
+            items: [
+              'منتجات حرفية أصيلة',
+              'مراقبة الجودة',
+              'آراء مؤكدة',
+              'خدمة عملاء 7/7',
+            ],
+          },
+        ]
+      },
+      map: {
+        tagline: 'خريطة تفاعلية',
+        title: 'حرفيونا حسب الولايات',
+        description: 'اكتشف الثراء الثقافي لتونس من خلال استكشاف الاختصاصات الحرفية لكل ولاية. انقر على الخريطة للبدء.',
+        legendTitle: 'حرفيون حسب الولاية',
+        legendHigh: '30 وأكثر',
+        legendMid: '20 إلى 29',
+        legendLow: 'أقل من 20',
+        regions: {
+          tunis: 'تونس',
+          nabeul: 'نابل',
+          sfax: 'صفاقس',
+          kairouan: 'القيروان',
+          sousse: 'سوسة',
+          mahdia: 'المهدية',
+          gabes: 'قابس',
+          tozeur: 'توزر',
+          gafsa: 'قفصة',
+          kasserine: 'القصرين',
+          beja: 'باجة',
+          jendouba: 'جندوبة',
+          zaghouan: 'زغوان',
+          monastir: 'المنستير',
+          medenine: 'مدنين',
+        }
+      },
+      video: {
+        tagline: 'وثائقيات وقصص',
+        title: 'صنعتنا في القمة',
+        description: 'اكتشف كيف يساهم كل شراء في دعم حرفيينا والحفاظ على موروثنا وجونا النظيف.',
+        cta: 'شاهد كل الوثائقيات',
+        list: [
+          {
+            id: 'eco-zaitoun',
+            title: 'من أغصان الزيتون للنار متاع الشواء 🌿',
+            items: [
+              'موسم جني الزيتون',
+              'فلاح يلمّ الأغصان بدلاً من حرقها',
+              'البيع عبر منصة سوقنا',
+              'شواء بفحم طبيعي 100%',
+            ],
+            music: 'صوت الطبيعة و العود',
+          },
+          {
+            id: 'eco-sanhaja',
+            title: 'زربية صنجة : من الصوف الملوّح للصالون 🧶',
+            items: [
+              'صوف الغنم الناقص يتلوّح',
+              'النساء الحرفيات يغسلوه ويغزلوه',
+              'صناعة زربية تقليدية باليد',
+              'ديكور أصيل في دار تونسية',
+            ],
+            music: 'غناء ريفي نسائي',
+          },
+          {
+            id: 'eco-fokhar',
+            title: 'طين سجنان : الأرض ترجع للحياة 🏺',
+            items: [
+              'نساء يلمّو الطين من الوديان',
+              'تشكيل الأواني و الديكورات الفخارية',
+              'تلوين طبيعي بعصارة النباتات',
+              'تحفة فنية تشارك في معارض دولية',
+            ],
+            music: 'طبل و مزمار خفيف',
+          },
+          {
+            id: 'eco-khoubza',
+            title: 'القمح المحلي : من البذرة للطابونة 🌾',
+            items: [
+              'زراعة القمح التونسي الأصيل',
+              'الحصاد بالطريقة القديمة',
+              'رحي الزرع في الطاحونة',
+              'خبزة طابونة سخونة بالزيت والزعتر',
+            ],
+            music: 'أنغام القصبة الجبلية',
+          },
+          {
+            id: 'eco-halfa',
+            title: 'ضفيرة الحلفاء : قفة تدوم سنين 🧺',
+            items: [
+              'تجمع نبتة الحلفاء من الجبال',
+              'تجفيفها وتقسيمها للضفيرة',
+              'صناعة قفف ومضلات ومفروشات',
+              'بديل طبيعي وصحي للبلاستيك',
+            ],
+            music: 'موسيقى بدوية هادية',
+          },
+        ]
+      }
+    },
+    catalog: {
+      title: 'كتالوج المنتجات',
+      subtitle: 'منتجات حرفية فريدة',
+      search: 'ابحث عن منتج...',
+      filters: 'تصفية',
+      category: 'الصنف',
+      region: 'الولاية',
+      price: 'السعر',
+      currency: 'د.ت',
+      reset: 'إعادة ضبط',
+      resultsCount: 'نتائج من',
+      noProducts: 'لا توجد منتجات تطابق معاييرك.',
+      excellence: 'التميز التونسي',
+      addedToCart: 'أضيف إلى السلة',
+      prev: 'السابق',
+      next: 'التالي',
+      categories: {
+        alimentaire: 'صناعات غذائية',
+        artisanat: 'صناعات تقليدية',
+        textile: 'منسوجات',
+        ecologique: 'إيكولوجي',
+      }
+    },
+    artisans: {
+      title: 'حرفيونا المبدعون',
+      subtitle: 'تعرف على الأيدي التي تصنع هوية موروثنا.',
+      tagline: 'مهارات الأجداد',
+      creations: 'إبداعات',
+      discover: 'اكتشف',
+    },
+    contact: {
+      title: 'اتصل بنا',
+      subtitle: 'نحن في خدمتكم للإجابة على أي أسئلة أو اقتراحات أو طلبات شراكة.',
+      infoTitle: 'معلومات الاتصال',
+      address: 'العنوان',
+      addressValue: '12 شارع الحبيب بورقيبة، تونس 1000',
+      phone: 'الهاتف',
+      phoneValue: '+216 71 000 000',
+      email: 'البريد الإلكتروني',
+      emailValue: 'contact@soukna.tn',
+      hours: 'ساعات العمل',
+      hoursValue: 'الإثنين - الجمعة : 9:00 صباحاً - 6:00 مساءً',
+      formTitle: 'أرسل لنا رسالة',
+      nameLabel: 'الاسم الكامل',
+      namePlaceholder: 'اسمك الكامل',
+      emailLabel: 'البريد الإلكتروني',
+      emailPlaceholder: 'بريدك.الالكتروني@مثال.com',
+      subjectLabel: 'الموضوع',
+      subjectPlaceholder: 'موضوع رسالتك',
+      messageLabel: 'الرسالة',
+      messagePlaceholder: 'كيف يمكننا مساعدتك ؟',
+      sendButton: 'إرسال الرسالة\n'
+    },
+    common: {
+      loading: 'جاري التحميل...',
+      error: 'حدث خطأ ما',
+      retry: 'إعادة المحاولة',
+      back: 'رجوع',
+    }
+  }
+};
+
+export type Language = 'fr' | 'ar';
+export type TranslationKey = keyof typeof translations.fr;

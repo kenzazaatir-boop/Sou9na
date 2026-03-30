@@ -1,0 +1,77 @@
+/* App-specific styles */
+
+/* Custom color utilities */
+.text-terracotta {
+  color: hsl(25 65% 42%);
+}
+
+.text-olive {
+  color: hsl(75 35% 35%);
+}
+
+.text-warm-gold {
+  color: hsl(43 70% 50%);
+}
+
+.text-deep-blue {
+  color: hsl(210 50% 25%);
+}
+
+.bg-terracotta {
+  background-color: hsl(25 65% 42%);
+}
+
+.bg-olive {
+  background-color: hsl(75 35% 35%);
+}
+
+.bg-warm-gold {
+  background-color: hsl(43 70% 50%);
+}
+
+.bg-deep-blue {
+  background-color: hsl(210 50% 25%);
+}
+
+.bg-sand {
+  background-color: hsl(40 45% 85%);
+}
+
+/* Gradient utilities */
+.gradient-terracotta {
+  background: linear-gradient(135deg, hsl(25 65% 42%) 0%, hsl(20 60% 48%) 100%);
+}
+
+.gradient-olive {
+  background: linear-gradient(135deg, hsl(75 35% 35%) 0%, hsl(80 30% 40%) 100%);
+}
+
+/* Line clamp */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Smooth transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Focus styles */
+.focus-ring:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: hsl(25 65% 42%);
+  ring-offset: 2px;
+}

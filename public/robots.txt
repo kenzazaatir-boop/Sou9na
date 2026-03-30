@@ -1,0 +1,57 @@
+# Robots.txt for Soukna - Tunisian Artisan Marketplace
+# Generated for SEO optimization
+
+# Default rules for all bots
+User-agent: *
+Allow: /
+Allow: /catalog
+Allow: /artisans
+Allow: /training
+Allow: /impact
+Allow: /videos
+Allow: /contact
+
+# Disallow cart and user pages from indexing
+Disallow: /cart
+Disallow: /checkout
+Disallow: /account
+Disallow: /profile
+Disallow: /orders
+Disallow: /favorites
+Disallow: /api
+
+# Disallow admin and private areas
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /settings
+
+# Disallow search results and filters (avoid duplicate content)
+Disallow: /*?*sort=
+Disallow: /*?*page=
+Disallow: /*?*filter=
+
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://soukna.com/sitemap.xml
+Sitemap: https://soukna.com/sitemap-products.xml
+
+# Crawl delay (in seconds) for general crawlers
+Crawl-delay: 1
+
+# Request rate (pages per second)
+Request-rate: 10/1s
