@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { MapPin, Users, Store, ArrowRight, TrendingUp, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/store/LanguageContext';
@@ -18,7 +18,8 @@ interface Region {
 export function MapSection() {
   const { t } = useLanguage();
   const [selectedRegion, setSelectedRegion] = useState<Region | null>(null);
-  const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
+  const [hoveredRegion, setHoveredRegion] = useState<Region | null>(null);
+  const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
 
   const rawRegions: Region[] = [
     { id: 'tunis', name: 'tunis', artisans: 25, products: 120, specialties: ['textile', 'ecologique'], rating: 4.8, x: 52, y: 18, color: '#c75b39' },
@@ -41,8 +42,21 @@ export function MapSection() {
   const regions: Region[] = rawRegions.map(r => ({
     ...r,
     name: t(`home.map.regions.${r.id}`),
-    specialties: r.specialties.map((s: string) => t(`home.map.specialties.${s}`))
+    specialties: r.specialties.map((s: string) => {
+      const key = `home.map.specialties.${s}`;
+      const translation = t(key);
+      return translation === key ? s : translation; // Fallback to raw ID if translation is missing
+    })
   }));
+
+  const handleMouseMove = (e: React.MouseEvent, region: Region) => {
+    const rect = (e.currentTarget.closest('.map-container') || document.body).getBoundingClientRect();
+    setTooltipPos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    });
+    setHoveredRegion(region);
+  };
 
   return (
     <section className="py-24 relative overflow-hidden bg-[#fdfbf7]">
@@ -67,56 +81,115 @@ export function MapSection() {
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 animate-fade-in-up">
           {/* Map */}
           <div className="lg:col-span-3">
-            <div className="relative glass-light rounded-[2.5rem] shadow-soft border border-white/50 p-6 sm:p-8 h-full">
-              <div className="relative aspect-[4/5] bg-gradient-to-br from-sand/30 to-gray-50 rounded-3xl overflow-hidden border border-gray-100 shadow-inner">
+            <div className="relative glass-light rounded-[2.5rem] shadow-lg border border-white/50 p-6 sm:p-8 h-full map-container shadow-terracotta/5">
+              <div className="relative aspect-[4/5] bg-gradient-to-br from-sand/20 to-gray-50/50 rounded-3xl overflow-hidden border border-white shadow-inner">
                 {/* Tunisia SVG Map */}
                 <svg
                   viewBox="0 0 100 100"
                   className="absolute inset-0 w-full h-full"
+                  style={{ filter: "drop-shadow(0 10px 15px rgba(0,0,0,0.05))" }}
                 >
-                  {/* Tunisia outline */}
+                  <defs>
+                    <filter id="glow">
+                      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                      <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                      </feMerge>
+                    </filter>
+                  </defs>
+
+                  {/* Refined Tunisia shape (still abstract but smoother) */}
                   <path
-                    d="M55 5 L60 8 L65 12 L70 15 L72 20 L70 25 L68 30 L65 35 L62 40 L60 45 L58 50 L56 55 L54 60 L52 65 L50 70 L48 75 L46 80 L44 85 L42 88 L40 90 L38 88 L36 85 L35 80 L34 75 L33 70 L32 65 L31 60 L30 55 L29 50 L28 45 L27 40 L26 35 L25 30 L24 25 L23 20 L22 15 L25 12 L30 10 L35 8 L40 6 L45 5 L50 4 L55 5Z"
-                    fill="#fcfaf8"
+                    d="M55 4 C 62 8, 68 12, 72 20 C 70 30, 60 45, 55 60 C 50 75, 45 85, 40 90 C 35 80, 25 60, 25 30 C 25 20, 30 15, 45 5 Z"
+                    fill="#ffffff"
                     stroke="#e6decb"
                     strokeWidth="0.8"
                     strokeLinejoin="round"
-                    className="drop-shadow-sm"
+                    className="drop-shadow-sm transition-all duration-700 hover:fill-[#fcfaf8]"
                   />
                   
                   {/* Region markers */}
-                  {regions.map((region) => (
-                    <g key={region.id}>
-                      <circle
-                        cx={region.x}
-                        cy={region.y}
-                        r={region.artisans >= 30 ? 4.5 : region.artisans >= 20 ? 3.5 : 2.5}
-                        fill={region.color}
-                        className="cursor-pointer transition-all duration-300"
-                        style={{
-                          opacity: hoveredRegion === region.id || selectedRegion?.id === region.id ? 1 : 0.7,
-                          transform: hoveredRegion === region.id || selectedRegion?.id === region.id ? 'scale(1.4)' : 'scale(1)',
-                          transformOrigin: `${region.x}px ${region.y}px`,
-                          filter: hoveredRegion === region.id || selectedRegion?.id === region.id ? 'drop-shadow(0 4px 6px rgba(0,0,0,0.2))' : 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))',
-                        }}
-                        onMouseEnter={() => setHoveredRegion(region.id)}
-                        onMouseLeave={() => setHoveredRegion(null)}
-                        onClick={() => setSelectedRegion(region)}
-                      />
-                      <text
-                        x={region.x}
-                        y={region.y + 7}
-                        textAnchor="middle"
-                        className={`text-[2.2px] font-bold pointer-events-none transition-all duration-300 ${hoveredRegion === region.id || selectedRegion?.id === region.id ? 'fill-gray-900 text-[2.8px]' : 'fill-gray-500'}`}
-                      >
-                        {region.name}
-                      </text>
-                    </g>
-                  ))}
+                  {regions.map((region) => {
+                    const isHovered = hoveredRegion?.id === region.id;
+                    const isSelected = selectedRegion?.id === region.id;
+                    const isActive = isHovered || isSelected;
+                    const isOtherSelected = selectedRegion && !isSelected;
+                    const isMajor = region.artisans >= 30;
+
+                    return (
+                      <g key={region.id}>
+                        {/* Pulse effect for major hubs */}
+                        {isMajor && !isOtherSelected && (
+                          <circle
+                            cx={region.x}
+                            cy={region.y}
+                            r={4.5}
+                            fill={region.color}
+                            className="animate-ping"
+                            style={{ opacity: 0.3, transformOrigin: `${region.x}px ${region.y}px` }}
+                          />
+                        )}
+                        
+                        <circle
+                          cx={region.x}
+                          cy={region.y}
+                          r={isMajor ? 4.5 : region.artisans >= 20 ? 3.5 : 2.5}
+                          fill={region.color}
+                          className="cursor-pointer transition-all duration-500 ease-out"
+                          style={{
+                            opacity: isOtherSelected ? 0.3 : isActive ? 1 : 0.8,
+                            transform: isActive ? 'scale(1.3)' : 'scale(1)',
+                            transformOrigin: `${region.x}px ${region.y}px`,
+                            filter: isActive ? 'url(#glow)' : 'none',
+                          }}
+                          onMouseMove={(e) => handleMouseMove(e, region)}
+                          onMouseLeave={() => setHoveredRegion(null)}
+                          onClick={() => setSelectedRegion(region)}
+                        />
+                        <text
+                          x={region.x}
+                          y={region.y + (isMajor ? 8 : 7)}
+                          textAnchor="middle"
+                          className={`text-[2.2px] font-bold pointer-events-none transition-all duration-500 ${
+                            isActive ? 'fill-gray-900 text-[2.8px]' : 
+                            isOtherSelected ? 'fill-gray-300' : 'fill-gray-600'
+                          }`}
+                        >
+                          {region.name}
+                        </text>
+                      </g>
+                    );
+                  })}
                 </svg>
 
+                {/* Floating Tooltip */}
+                {hoveredRegion && (
+                  <div
+                    className="absolute z-50 pointer-events-none transform -translate-x-1/2 -translate-y-[calc(100%+15px)] animate-fade-in"
+                    style={{ left: tooltipPos.x, top: tooltipPos.y }}
+                  >
+                    <div className="bg-white/95 backdrop-blur-md px-4 py-3 rounded-2xl shadow-xl border border-white flex flex-col items-center min-w-[140px]">
+                      <span className="font-bold text-gray-900 mb-1">{hoveredRegion.name}</span>
+                      <div className="flex items-center justify-center gap-3">
+                        <div className="flex items-center gap-1.5 text-terracotta">
+                          <Users className="w-3.5 h-3.5" />
+                          <span className="text-xs font-semibold">{hoveredRegion.artisans}</span>
+                        </div>
+                        <div className="w-[1px] h-3 bg-gray-200"></div>
+                        <div className="flex items-center gap-1.5 text-olive">
+                          <Store className="w-3.5 h-3.5" />
+                          <span className="text-xs font-semibold">{hoveredRegion.products}</span>
+                        </div>
+                      </div>
+                      {/* Tooltip triangle */}
+                      <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-t-[8px] border-t-white/95 border-r-[8px] border-r-transparent filter drop-shadow-md"></div>
+                    </div>
+                  </div>
+                )}
+
                 {/* Legend */}
-                <div className="absolute bottom-5 left-5 bg-white/80 backdrop-blur-xl rounded-2xl p-4 shadow-sm border border-white/60">
+                <div className="absolute bottom-5 left-5 bg-white/90 backdrop-blur-xl rounded-2xl p-4 shadow-lg border border-white/60">
                   <div className="text-xs font-bold text-gray-900 mb-3 tracking-wide uppercase">{t('home.map.legendTitle')}</div>
                   <div className="space-y-2.5">
                     <div className="flex items-center gap-3">
@@ -139,7 +212,7 @@ export function MapSection() {
 
           {/* Region Details Panel */}
           <div className="lg:col-span-2">
-            <div className="glass-light rounded-[2.5rem] shadow-soft border border-white/50 p-6 sm:p-8 h-full relative overflow-hidden">
+            <div className="glass-light rounded-[2.5rem] shadow-lg border border-white/50 p-6 sm:p-8 h-full relative overflow-hidden transition-all duration-500">
               {/* Subtle background decoration for the panel */}
               <div className="absolute -top-20 -right-20 w-40 h-40 bg-terracotta/5 rounded-full blur-[40px] pointer-events-none" />
 
@@ -159,7 +232,7 @@ export function MapSection() {
 
                   {/* Stats */}
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 hover:border-terracotta/30 transition-colors group">
+                    <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 hover:border-terracotta/30 transition-colors group cursor-default">
                       <div className="flex items-center gap-2 mb-2">
                         <div className="w-8 h-8 rounded-full bg-terracotta/10 flex items-center justify-center group-hover:bg-terracotta/20 transition-colors">
                           <Users className="w-4 h-4 text-terracotta" />
@@ -168,7 +241,7 @@ export function MapSection() {
                       </div>
                       <div className="text-3xl font-black text-gray-900">{selectedRegion.artisans}</div>
                     </div>
-                    <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 hover:border-olive/30 transition-colors group">
+                    <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 hover:border-olive/30 transition-colors group cursor-default">
                       <div className="flex items-center gap-2 mb-2">
                         <div className="w-8 h-8 rounded-full bg-olive/10 flex items-center justify-center group-hover:bg-olive/20 transition-colors">
                           <Store className="w-4 h-4 text-olive" />
@@ -182,14 +255,14 @@ export function MapSection() {
                   {/* Specialties */}
                   <div>
                     <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2 tracking-tight">
-                      <TrendingUp className="w-5 h-5 text-gray-400" />
+                      <TrendingUp className="w-5 h-5 text-terracotta" />
                       {t('home.map.panelSpecialties')}
                     </h4>
                     <div className="flex flex-wrap gap-2.5">
                       {selectedRegion.specialties.map((specialty, i) => (
                         <span
                           key={i}
-                          className="px-4 py-2 rounded-xl bg-gray-100 text-gray-800 text-sm font-medium border border-transparent hover:border-gray-200 transition-colors"
+                          className="px-4 py-2.5 rounded-xl bg-gradient-to-br from-sand/30 to-sand/10 text-gray-800 text-sm font-bold shadow-sm border border-sand/40 hover:border-terracotta/40 hover:shadow-md transition-all cursor-default"
                         >
                           {specialty}
                         </span>
@@ -197,22 +270,22 @@ export function MapSection() {
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-gray-100">
-                    <Button className="w-full rounded-full h-12 text-base font-bold gradient-terracotta text-white shadow-soft transition-all duration-300 hover:shadow-glow hover:-translate-y-1 group">
+                  <div className="pt-6 border-t border-gray-100 mt-auto">
+                    <Button className="w-full rounded-2xl h-14 text-base font-bold gradient-terracotta text-white shadow-lg transition-all duration-300 hover:shadow-terracotta/40 hover:-translate-y-1 group">
                       {t('home.map.panelCTA')}
                       <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1.5 transition-transform" />
                     </Button>
                   </div>
                 </div>
               ) : (
-                <div className="h-full flex flex-col items-center justify-center text-center py-12 relative z-10 animate-fade-in">
-                  <div className="w-20 h-20 rounded-full bg-gray-50 flex items-center justify-center mb-6 shadow-sm border border-gray-100">
-                    <MapPin className="w-10 h-10 text-terracotta/40" />
+                <div className="h-full flex flex-col items-center justify-center text-center py-12 relative z-10 animate-fade-in my-auto">
+                  <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center mb-6 shadow-md border border-gray-50 drop-shadow-xl pulse-glow">
+                    <MapPin className="w-10 h-10 text-terracotta/60" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3 tracking-tight">
+                  <h3 className="text-2xl font-black text-gray-900 mb-4 tracking-tight">
                     {t('home.map.emptyTitle')}
                   </h3>
-                  <p className="text-gray-500 font-medium max-w-[250px] leading-relaxed">
+                  <p className="text-gray-500 font-medium max-w-[280px] leading-relaxed">
                     {t('home.map.emptyDesc')}
                   </p>
                 </div>
