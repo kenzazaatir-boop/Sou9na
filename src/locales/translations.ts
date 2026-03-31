@@ -414,10 +414,30 @@ export const translations = {
       ]
     },
     training: {
-      benefits: 'Avantages',
-      ctaTitle: 'Inscrivez-vous',
-      ctaSubtitle: 'Places limitées pour la prochaine session.',
-      registerFree: 'Inscription Gratuite'
+      title: 'Formations & Ateliers',
+      subtitle: 'Apprenez les techniques ancestrales et modernisez votre savoir-faire avec nos experts.',
+      benefits: ['Certificat inclus', 'Matériel fourni', 'Suivi personnalisé', 'Réseau d\'artisans'],
+      list: [
+        {
+          title: 'Design & Éco-conception',
+          items: ['Principes de l\'économie circulaire', 'Choix des matériaux durables', 'Optimisation des ressources', 'Packaging écologique']
+        },
+        {
+          title: 'Marketing Digital',
+          items: ['Gestion des réseaux sociaux', 'Photographie de produits', 'Vente en ligne sur Soukna', 'Service client d\'excellence']
+        },
+        {
+          title: 'Gestion & Finance',
+          items: ['Micro-crédit avec Enda', 'Calcul des prix de revient', 'Comptabilité simplifiée', 'Plan business artisanal']
+        },
+        {
+          title: 'Techniques Avancées',
+          items: ['Perfectionnement technique', 'Utilisation d\'outils modernes', 'Normes de qualité export', 'Innovation artisanale']
+        }
+      ],
+      ctaTitle: 'Inscrivez-vous à la prochaine session',
+      ctaSubtitle: 'Les places sont limitées pour garantir un accompagnement de qualité.',
+      registerFree: 'S\'inscrire Gratuitement'
     }
   },
 
@@ -832,10 +852,30 @@ export const translations = {
       ]
     },
     training: {
-      benefits: 'المميزات',
-      ctaTitle: 'سجل الآن',
-      ctaSubtitle: 'الأماكن محدودة للدورة القادمة.',
-      registerFree: 'التسجيل مجاني'
+      title: 'التدريبات والورشات',
+      subtitle: 'تعلم التقنيات الأصيلة وطور مهاراتك مع خبرائنا المحترفين.',
+      benefits: ['شهادة تدريب', 'توفير المعدات', 'متابعة شخصية', 'شبكة حرفيين'],
+      list: [
+        {
+          title: 'التصميم والابتكار البيئي',
+          items: ['مبادئ الاقتصاد الدائري', 'اختيار المواد المستدامة', 'تحسين الموارد', 'التغليف الإيكولوجي']
+        },
+        {
+          title: 'التسويق الرقمي',
+          items: ['إدارة مواقع التواصل', 'تصوير المنتجات', 'البيع عبر سوقنا', 'خدمة الحرفاء المتميزة']
+        },
+        {
+          title: 'التصرف والتمويل',
+          items: ['تمويل صغير مع أندا', 'حساب تكلفة الإنتاج', 'محاسبة مبسطة', 'مخطط أعمال حرفي']
+        },
+        {
+          title: 'تقنيات متقدمة',
+          items: ['تطوير المهارات التقنية', 'استعمال أدوات حديثة', 'معايير الجودة للتصدير', 'الابتكار الحرفي']
+        }
+      ],
+      ctaTitle: 'سجل في الدورة القادمة',
+      ctaSubtitle: 'الأماكن محدودة لضمان أفضل مرافقة لكل مشارك.',
+      registerFree: 'التسجيل مجانًا'
     }
   }
 };
