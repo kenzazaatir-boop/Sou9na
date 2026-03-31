@@ -1,21 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, X, MessageCircle, Info, Gift, Leaf, History, Users } from 'lucide-react';
+import { Send, X, Info, Gift, Leaf, History, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useLanguage } from '@/store/LanguageContext';
 import { BabaAvatar } from './BabaAvatar';
+import type { ChatMessage } from './chatEngine';
 import { 
   generateResponse, 
   createMessage, 
   WELCOME_MESSAGES, 
-  QUICK_SUGGESTIONS, 
-  ChatMessage,
-  ProductCard
+  QUICK_SUGGESTIONS,
 } from './chatEngine';
 
 export const BabaElHedi: React.FC = () => {
-  const { language, t } = useLanguage();
+  const { language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [inputValue, setInputValue] = useState('');
