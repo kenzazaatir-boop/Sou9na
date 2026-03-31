@@ -18,6 +18,7 @@ import { Cart } from '@/pages/Cart';
 import { Product } from '@/pages/Product';
 import { LanguageProvider } from '@/store/LanguageContext';
 import { ScrollToTop } from '@/components/ScrollToTop';
+import { BabaElHedi } from '@/components/BabaElHedi';
 import './App.css';
 
 // Page Transition Variants
@@ -116,6 +117,7 @@ function App() {
             <div className="min-h-screen bg-background">
               <AnimatedRoutes />
             </div>
+            <BabaElHedi />
           </Router>
         </LanguageProvider>
       </StoreProvider>

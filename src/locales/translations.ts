@@ -395,6 +395,12 @@ export const translations = {
       freeShippingLimit: 'Livraison gratuite',
       securePayment: 'Paiement crypté & sécurisé'
     },
+    chatbot: {
+      babaName: 'Baba El Hedi',
+      babaRole: 'Sage du Souk ✨',
+      inputPlaceholder: 'Parle à Baba El Hedi...',
+      triggerLabel: 'Baba El Hedi Chat',
+    },
     training: {
       benefits: 'Avantages',
       ctaTitle: 'Inscrivez-vous',
@@ -794,6 +800,12 @@ export const translations = {
       addToCart: 'أضف للسلة',
       freeShippingLimit: 'توصيل مجاني متاح',
       securePayment: 'دفع آمن ومشفر'
+    },
+    chatbot: {
+      babaName: 'بابا الهادي',
+      babaRole: 'شيخ السوق ✨',
+      inputPlaceholder: 'تكلم مع بابا الهادي...',
+      triggerLabel: 'Baba El Hedi Chat',
     },
     training: {
       benefits: 'المميزات',
