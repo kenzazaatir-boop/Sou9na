@@ -8,8 +8,8 @@ export const translations = {
       home: 'Accueil',
       catalog: 'Boutique',
       artisans: 'Nos Artisans',
-      eco: 'Éco-conception',
-      impact: 'Notre Impact',
+      eco: 'Éco',
+      impact: 'Impact',
       training: 'Formations',
       contact: 'Contact',
       login: 'Connexion',
@@ -400,6 +400,40 @@ export const translations = {
       babaRole: 'Sage du Souk ✨',
       inputPlaceholder: 'Parle à Baba El Hedi...',
       triggerLabel: 'Baba El Hedi Chat',
+    },
+    circularEconomy: {
+      title: 'Préserver l\'Environnement',
+      subtitle: 'Chaque produit que vous achetez suit un cycle de vie complet, zéro déchet, 100% responsable.',
+      ctaTitle: 'Rejoignez le mouvement',
+      ctaSubtitle: 'Votre achat soutient directement nos artisans.',
+      discoverProducts: 'Découvrir les produits',
+      steps: [
+        { title: 'Achat Responsable', items: ['Produits 100% tunisiens', 'Emballages recyclables', 'Circuit court'] },
+        { title: 'Soutien Artisanal', items: ['Revenu direct pour l\'artisan', 'Formation incluse', 'Micro-crédit Enda'] },
+        { title: 'Matériaux Naturels', items: ['Laine, argile, halfa', 'Zéro produit chimique', 'Cultivé localement'] },
+        { title: 'Emballage Éco', items: ['Carton recyclé', 'Encre naturelle', 'Biodégradable'] },
+        { title: 'Recyclage & Réemploi', items: ['Retour & reconditionnement', 'Ateliers de réparation', 'Don aux associations'] },
+        { title: 'Nouveau Produit', items: ['Le cycle recommence', 'Impact positif mesuré', 'Communauté engagée'] },
+      ]
+    },
+    impact: {
+      title: 'Notre Impact Local',
+      subtitle: 'Des chiffres concrets qui témoignent de l\'engagement de notre communauté pour un avenir plus juste et plus vert.',
+      testimonialsTitle: 'Témoignages',
+      ctaTitle: 'Soutenez Notre Initiative',
+      ctaSubtitle: 'Chaque dinar investi a un impact positif.',
+      startBuying: 'Faites vos premiers achats',
+      stats: [
+        { title: 'Artisans Soutenus', stat: '+120', label: 'Partenaires actifs', items: ['Revenu stable garanti', 'Formation digitale gratuite', 'Visibilité nationale'] },
+        { title: 'Impact Écologique', stat: '100%', label: 'Produits naturels', items: ['Matériaux durables', 'Emballages recyclables', 'Réduction empreinte carbone'] },
+        { title: 'Croissance Économique', stat: '-40%', label: 'Émissions CO2', items: ['Circuit court favorisé', 'Transport optimisé', 'Production locale'] },
+        { title: 'Communauté Active', stat: '25', label: 'Régions couvertes', items: ['Présence nationale', 'Diversité culturelle', 'Patrimoine préservé'] },
+      ],
+      testimonials: [
+        { name: 'Mouna Z.', role: 'Artisane Poterie', quote: "Grâce à Soukna, j'ai pu atteindre une clientèle nationale et exporter mon savoir-faire." },
+        { name: 'Ali T.', role: 'Menuisier', quote: "La vente sans intermédiaire m'a permis d'améliorer mon équipement." },
+        { name: 'Sarra B.', role: 'Cliente', quote: "Acheter sur Soukna c'est la garantie d'avoir de l'authentique et de qualité." }
+      ]
     },
     training: {
       benefits: 'Avantages',
@@ -806,6 +840,40 @@ export const translations = {
       babaRole: 'شيخ السوق ✨',
       inputPlaceholder: 'تكلم مع بابا الهادي...',
       triggerLabel: 'Baba El Hedi Chat',
+    },
+    circularEconomy: {
+      title: 'الحفاظ على البيئة',
+      subtitle: 'كل منتج تشتريه يتبع دورة حياة كاملة، صفر نفايات، 100% مسؤول.',
+      ctaTitle: 'انضم للمبادرة',
+      ctaSubtitle: 'شراؤك يدعم حرفيينا المبدعين مباشرة.',
+      discoverProducts: 'استكشف المنتجات',
+      steps: [
+        { title: 'شراء مسؤول', items: ['منتجات تونسية 100%', 'تغليف قابل للتدوير', 'دورة مباشرة'] },
+        { title: 'دعم الحرفيين', items: ['دخل مباشر للحرفي', 'تدريب مجاني', 'تمويل أندا'] },
+        { title: 'مواد طبيعية', items: ['صوف، طين، حلفاء', 'صفر كيمياء', 'زراعة محلية'] },
+        { title: 'تغليف صديق للبيئة', items: ['كرتون معاد التدوير', 'حبر طبيعي', 'قابل للتحلل الحيوي'] },
+        { title: 'إعادة التدوير', items: ['إرجاع وإعادة تكييف', 'ورش إصلاح', 'تبرع للجمعيات'] },
+        { title: 'منتج جديد', items: ['الدورة تبدأ من جديد', 'تأثير إيجابي مقيس', 'مجتمع متجند'] },
+      ]
+    },
+    impact: {
+      title: 'تأثيرنا المحلي',
+      subtitle: 'أرقام حقيقية تشهد على التزام مجتمعنا نحو مستقبل أعدل وأخضر.',
+      testimonialsTitle: 'آراء الحرفيين والعملاء',
+      ctaTitle: 'ادعم مبادرتنا',
+      ctaSubtitle: 'كل دينار تستثمره هنا له أثر إيجابي.',
+      startBuying: 'تسوق الآن بطريقة مسؤولة',
+      stats: [
+        { title: 'حرفيون مدعومون', stat: '+120', label: 'شركاء نشطون', items: ['دخل مضمون', 'تدريب رقمي مجاني', 'ظهور وطني'] },
+        { title: 'التأثير البيئي', stat: '100%', label: 'منتجات طبيعية', items: ['مواد مستدامة', 'تغليف قابل للتدوير', 'تقليل بصمة الكربون'] },
+        { title: 'نمو اقتصادي', stat: '-40%', label: 'انبعاثات CO2', items: ['دورة محلية قصيرة', 'نقل محسن', 'إنتاج محلي'] },
+        { title: 'مجتمع نشط', stat: '25', label: 'ولاية ومنطقة', items: ['حضور وطني', 'تنوع ثقافي', 'تراث محفوظ'] },
+      ],
+      testimonials: [
+        { name: 'منى ز.', role: 'حرفية فخار', quote: "بفضل سوقنا، وصلت منتجاتي لحرفاء من كامل تونس وصدرت خدمتي للخارج." },
+        { name: 'علي ت.', role: 'نجار', quote: "البيع المباشر عاونني باش نشري ماكينات جديدة ونحسن خدمتي." },
+        { name: 'سارة ب.', role: 'حريفة', quote: "كي نشري من سوقنا، نكون متأكدة من الجودة وأنها 100% تونسية." }
+      ]
     },
     training: {
       benefits: 'المميزات',
