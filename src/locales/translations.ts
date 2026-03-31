@@ -329,28 +329,6 @@ export const translations = {
       cleared: 'Votre panier a été vidé',
       clear: 'Vider le panier'
     },
-    circularEconomy: {
-      ctaTitle: 'Rejoignez le mouvement',
-      ctaSubtitle: 'Votre achat soutient directement nos artisans.',
-      discoverProducts: 'Découvrir les produits'
-    },
-    impact: {
-      testimonialsTitle: 'Témoignages',
-      ctaTitle: 'Soutenez Notre Initiative',
-      ctaSubtitle: 'Chaque dinar investi a un impact positif.',
-      startBuying: 'Faites vos premiers achats',
-      stats: [
-        { stat: '+120', label: 'Artisans Soutenus' },
-        { stat: '100%', label: 'Matériaux Naturels' },
-        { stat: '-40%', label: 'Émission de CO2' },
-        { stat: '25', label: 'Régions Atteintes' }
-      ],
-      testimonials: [
-        { name: 'Mouna Z.', role: 'Artisane Poterie', quote: "Grâce à Soukna, j'ai pu atteindre une clientèle nationale et exporter mon savoir-faire." },
-        { name: 'Ali T.', role: 'Menuisier', quote: "La vente sans intermédiaire m'a permis d'améliorer mon équipement." },
-        { name: 'Sarra B.', role: 'Cliente', quote: "Acheter sur Soukna c'est la garantie d'avoir de l'authentique et de qualité." }
-      ]
-    },
     auth: {
       loginSuccess: 'Connexion réussie',
       loginTitle: 'Connexion',
@@ -768,28 +746,6 @@ export const translations = {
       },
       cleared: 'تم إفراغ السلة',
       clear: 'إفراغ السلة'
-    },
-    circularEconomy: {
-      ctaTitle: 'انضم للمبادرة',
-      ctaSubtitle: 'شراؤك يدعم حرفيينا المبدعين مباشرة.',
-      discoverProducts: 'استكشف المنتجات'
-    },
-    impact: {
-      testimonialsTitle: 'آراء الحرفيين والعملاء',
-      ctaTitle: 'ادعم مبادرتنا',
-      ctaSubtitle: 'كل دينار تستثمره هنا له أثر إيجابي.',
-      startBuying: 'تسوق الآن بطريقة مسؤولة',
-      stats: [
-        { stat: '+120', label: 'حرفي مدعوم' },
-        { stat: '100%', label: 'مواد طبيعية' },
-        { stat: '-40%', label: 'انبعاثات CO2' },
-        { stat: '25', label: 'ولاية ومنطقة' }
-      ],
-      testimonials: [
-        { name: 'منى ز.', role: 'حرفية فخار', quote: "بفضل سوقنا، وصلت منتجاتي لحرفاء من كامل تونس وصدرت خدمتي للخارج." },
-        { name: 'علي ت.', role: 'نجار', quote: "البيع المباشر عاونني باش نشري ماكينات جديدة ونحسن خدمتي." },
-        { name: 'سارة ب.', role: 'حريفة', quote: "كي نشري من سوقنا، نكون متأكدة من الجودة وأنها 100% تونسية." }
-      ]
     },
     auth: {
       loginSuccess: 'تم تسجيل الدخول بنجاح',
