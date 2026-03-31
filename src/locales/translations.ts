@@ -51,6 +51,8 @@ export const translations = {
         statsArtisans: 'Artisans',
         statsProducts: 'Produits',
         statsRegions: 'Régions',
+        handmade: 'Fait Main',
+        authentic: 'Authentique',
         features: [
           'Produits 100% Tunisiens',
           'Soutien aux Artisans Locaux',
@@ -253,7 +255,19 @@ export const translations = {
         artisanat: 'Artisanat',
         textile: 'Textile',
         ecologique: 'Écologique',
-      }
+      },
+      products: [
+        { name: 'Tapis Berbère Margoum' },
+        { name: 'Huile d\'Olive Extra Vierge' },
+        { name: 'Poterie de Sejnane' },
+        { name: 'Couffin en Halfa' },
+        { name: 'Céramique de Nabeul' },
+        { name: 'Fouta Tunisienne' },
+        { name: 'Savon à l\'Huile d\'Olive' },
+        { name: 'Dattes Deglet Nour' },
+        { name: 'Merguoum de Kairouan' },
+        { name: 'Couscoussier en Terre Cuite' }
+      ]
     },
     artisans: {
       title: 'Nos Passionnés Artisans',
@@ -283,15 +297,110 @@ export const translations = {
       subjectPlaceholder: 'Sujet de votre message',
       messageLabel: 'Message',
       messagePlaceholder: 'Comment pouvons-nous vous aider ?',
-      sendButton: 'Envoyer le message'
+      sendButton: 'Envoyer le message',
+      successMessage: 'Votre message a été envoyé avec succès !'
     },
     common: {
       loading: 'Chargement...',
       error: 'Une erreur est survenue',
       retry: 'Réessayer',
       back: 'Retour',
+    },
+    cart: {
+      emptySubtitle: 'Votre panier est vide',
+      explorer: 'Explorer le catalogue',
+      articlesPlural: 'articles',
+      articles: 'article',
+      removed: 'supprimé du panier',
+      summary: 'Résumé de la commande',
+      subtotal: 'Sous-total',
+      shipping: 'Frais de livraison',
+      free: 'Gratuit',
+      total: 'Total',
+      freeShippingAlert: 'Profitez de la livraison gratuite pour tout achat de produits écologiques.',
+      checkout: 'Passer à la caisse',
+      continue: 'Continuer les achats',
+      benefits: {
+        artisanal: 'Soutien Artisanal',
+        artisanalDesc: 'Revenu direct pour les artisans.',
+        secure: 'Paiement Sécurisé',
+        secureDesc: 'Transactions 100% protégées.'
+      },
+      cleared: 'Votre panier a été vidé',
+      clear: 'Vider le panier'
+    },
+    circularEconomy: {
+      ctaTitle: 'Rejoignez le mouvement',
+      ctaSubtitle: 'Votre achat soutient directement nos artisans.',
+      discoverProducts: 'Découvrir les produits'
+    },
+    impact: {
+      testimonialsTitle: 'Témoignages',
+      ctaTitle: 'Soutenez Notre Initiative',
+      ctaSubtitle: 'Chaque dinar investi a un impact positif.',
+      startBuying: 'Faites vos premiers achats',
+      stats: [
+        { stat: '+120', label: 'Artisans Soutenus' },
+        { stat: '100%', label: 'Matériaux Naturels' },
+        { stat: '-40%', label: 'Émission de CO2' },
+        { stat: '25', label: 'Régions Atteintes' }
+      ],
+      testimonials: [
+        { name: 'Mouna Z.', role: 'Artisane Poterie', quote: "Grâce à Soukna, j'ai pu atteindre une clientèle nationale et exporter mon savoir-faire." },
+        { name: 'Ali T.', role: 'Menuisier', quote: "La vente sans intermédiaire m'a permis d'améliorer mon équipement." },
+        { name: 'Sarra B.', role: 'Cliente', quote: "Acheter sur Soukna c'est la garantie d'avoir de l'authentique et de qualité." }
+      ]
+    },
+    auth: {
+      loginSuccess: 'Connexion réussie',
+      loginTitle: 'Connexion',
+      loginWelcome: 'Ravi de vous revoir',
+      passwordLabel: 'Mot de passe',
+      passwordPlaceholder: 'Votre mot de passe',
+      rememberMe: 'Se souvenir de moi',
+      forgotPassword: 'Mot de passe oublié ?',
+      loginButton: 'Se connecter',
+      noAccount: 'Pas encore de compte ?',
+      signUp: 'S\'inscrire',
+      passwordMismatch: 'Les mots de passe ne correspondent pas',
+      registerSuccess: 'Inscription réussie',
+      registerTitle: 'Inscription',
+      registerWelcome: 'Rejoignez la famille Soukna',
+      iAmClient: 'Je suis un client',
+      iAmArtisan: 'Je suis un artisan',
+      firstNameLabel: 'Prénom',
+      firstNamePlaceholder: 'Votre prénom',
+      lastNameLabel: 'Nom',
+      lastNamePlaceholder: 'Votre nom',
+      phoneLabel: 'Téléphone',
+      phonePlaceholder: 'Votre numéro',
+      confirmPasswordLabel: 'Confirmer le mot de passe',
+      acceptTerms: 'J\'accepte les',
+      termsLink: 'Conditions Générales',
+      registerButton: 'Créer mon compte',
+      hasAccount: 'Vous avez déjà un compte ?',
+      signIn: 'Se connecter'
+    },
+    product: {
+      reviews: 'Avis',
+      by: 'Par',
+      inStock: 'En Stock',
+      outOfStock: 'Épuisé',
+      ecoScoreLabel: 'Score Éco',
+      ecoScoreDesc: 'Impact environnemental positif calculé sur l\'ensemble du cycle de vie.',
+      quantity: 'Quantité',
+      addToCart: 'Ajouter au panier',
+      freeShippingLimit: 'Livraison gratuite',
+      securePayment: 'Paiement crypté & sécurisé'
+    },
+    training: {
+      benefits: 'Avantages',
+      ctaTitle: 'Inscrivez-vous',
+      ctaSubtitle: 'Places limitées pour la prochaine session.',
+      registerFree: 'Inscription Gratuite'
     }
   },
+
   ar: {
     nav: {
       home: 'الرئيسية',
@@ -340,6 +449,8 @@ export const translations = {
         statsArtisans: 'حرفي',
         statsProducts: 'منتج',
         statsRegions: 'ولايات',
+        handmade: 'صناعة يدوية',
+        authentic: 'أصلي',
         features: [
           'منتجات تونسية 100%',
           'دعم الحرفيين المحليين',
@@ -542,7 +653,19 @@ export const translations = {
         artisanat: 'صناعات تقليدية',
         textile: 'منسوجات',
         ecologique: 'إيكولوجي',
-      }
+      },
+      products: [
+        { name: 'زربية مرقوم' },
+        { name: 'زيت زيتون بكر ممتاز' },
+        { name: 'فخار سجنان' },
+        { name: 'قفة من الحلفاء' },
+        { name: 'خزف نابل' },
+        { name: 'فوطة تونسية' },
+        { name: 'صابون زيت الزيتون' },
+        { name: 'تمور دقلة النور' },
+        { name: 'مرقوم القيروان' },
+        { name: 'كسكاس من الفخار' }
+      ]
     },
     artisans: {
       title: 'حرفيونا المبدعون',
@@ -572,16 +695,111 @@ export const translations = {
       subjectPlaceholder: 'موضوع رسالتك',
       messageLabel: 'الرسالة',
       messagePlaceholder: 'كيف يمكننا مساعدتك ؟',
-      sendButton: 'إرسال الرسالة\n'
+      sendButton: 'إرسال الرسالة',
+      successMessage: 'تم إرسال رسالتك بنجاح !'
     },
     common: {
       loading: 'جاري التحميل...',
       error: 'حدث خطأ ما',
       retry: 'إعادة المحاولة',
       back: 'رجوع',
+    },
+    cart: {
+      emptySubtitle: 'سلة التسوق فارغة',
+      explorer: 'تصفح المتجر',
+      articlesPlural: 'منتجات',
+      articles: 'منتج',
+      removed: 'تمت الإزالة من السلة',
+      summary: 'ملخص الطلب',
+      subtotal: 'المجموع الفرعي',
+      shipping: 'رسوم التوصيل',
+      free: 'مجاني',
+      total: 'المجموع الإجمالي',
+      freeShippingAlert: 'استمتع بتوصيل مجاني عند شراء المنتجات الإيكولوجية.',
+      checkout: 'إتمام الشراء',
+      continue: 'مواصلة التسوق',
+      benefits: {
+        artisanal: 'دعم حرفي',
+        artisanalDesc: 'مداخيل مباشرة للحرفيين.',
+        secure: 'دفع آمن',
+        secureDesc: 'معاملات محمية 100%.'
+      },
+      cleared: 'تم إفراغ السلة',
+      clear: 'إفراغ السلة'
+    },
+    circularEconomy: {
+      ctaTitle: 'انضم للمبادرة',
+      ctaSubtitle: 'شراؤك يدعم حرفيينا المبدعين مباشرة.',
+      discoverProducts: 'استكشف المنتجات'
+    },
+    impact: {
+      testimonialsTitle: 'آراء الحرفيين والعملاء',
+      ctaTitle: 'ادعم مبادرتنا',
+      ctaSubtitle: 'كل دينار تستثمره هنا له أثر إيجابي.',
+      startBuying: 'تسوق الآن بطريقة مسؤولة',
+      stats: [
+        { stat: '+120', label: 'حرفي مدعوم' },
+        { stat: '100%', label: 'مواد طبيعية' },
+        { stat: '-40%', label: 'انبعاثات CO2' },
+        { stat: '25', label: 'ولاية ومنطقة' }
+      ],
+      testimonials: [
+        { name: 'منى ز.', role: 'حرفية فخار', quote: "بفضل سوقنا، وصلت منتجاتي لحرفاء من كامل تونس وصدرت خدمتي للخارج." },
+        { name: 'علي ت.', role: 'نجار', quote: "البيع المباشر عاونني باش نشري ماكينات جديدة ونحسن خدمتي." },
+        { name: 'سارة ب.', role: 'حريفة', quote: "كي نشري من سوقنا، نكون متأكدة من الجودة وأنها 100% تونسية." }
+      ]
+    },
+    auth: {
+      loginSuccess: 'تم تسجيل الدخول بنجاح',
+      loginTitle: 'تسجيل الدخول',
+      loginWelcome: 'مرحباً بعودتك',
+      passwordLabel: 'كلمة المرور',
+      passwordPlaceholder: 'أدخل كلمة المرور',
+      rememberMe: 'تذكرني',
+      forgotPassword: 'نسيت كلمة المرور؟',
+      loginButton: 'تسجيل الدخول',
+      noAccount: 'ليس لديك حساب؟',
+      signUp: 'إنشاء حساب',
+      passwordMismatch: 'كلمات المرور غير متطابقة',
+      registerSuccess: 'تم التسجيل بنجاح',
+      registerTitle: 'إنشاء حساب جديد',
+      registerWelcome: 'انضم لعائلة سوقنا',
+      iAmClient: 'أنا حريف',
+      iAmArtisan: 'أنا حرفي',
+      firstNameLabel: 'الاسم',
+      firstNamePlaceholder: 'ادخل الاسم',
+      lastNameLabel: 'اللقب',
+      lastNamePlaceholder: 'ادخل اللقب',
+      phoneLabel: 'رقم الهاتف',
+      phonePlaceholder: 'ادخل رقم هاتفك',
+      confirmPasswordLabel: 'تأكيد كلمة المرور',
+      acceptTerms: 'أوافق على',
+      termsLink: 'الشروط والأحكام',
+      registerButton: 'سجل الآن',
+      hasAccount: 'هل لديك حساب بالفعل؟',
+      signIn: 'تسجيل الدخول'
+    },
+    product: {
+      reviews: 'التقييمات',
+      by: 'بواسطة',
+      inStock: 'متوفر',
+      outOfStock: 'نفذت الكمية',
+      ecoScoreLabel: 'التقييم الإيكولوجي',
+      ecoScoreDesc: 'تأثير بيئي إيجابي محتسب على دورة حياة المنتج كاملة.',
+      quantity: 'الكمية',
+      addToCart: 'أضف للسلة',
+      freeShippingLimit: 'توصيل مجاني متاح',
+      securePayment: 'دفع آمن ومشفر'
+    },
+    training: {
+      benefits: 'المميزات',
+      ctaTitle: 'سجل الآن',
+      ctaSubtitle: 'الأماكن محدودة للدورة القادمة.',
+      registerFree: 'التسجيل مجاني'
     }
   }
 };
 
 export type Language = 'fr' | 'ar';
 export type TranslationKey = keyof typeof translations.fr;
+
