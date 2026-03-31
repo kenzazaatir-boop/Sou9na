@@ -14,7 +14,7 @@ import {
 } from './chatEngine';
 
 export const BabaElHedi: React.FC = () => {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [inputValue, setInputValue] = useState('');
@@ -44,7 +44,7 @@ export const BabaElHedi: React.FC = () => {
 
     // User message
     const userMsg = createMessage('user', text);
-    setMessages(prev => [...prev, userMsg]);
+    setMessages((prev: ChatMessage[]) => [...prev, userMsg]);
     setInputValue('');
     setIsTyping(true);
 
@@ -55,7 +55,7 @@ export const BabaElHedi: React.FC = () => {
         suggestions: response.suggestions,
         products: response.products
       });
-      setMessages(prev => [...prev, babaMsg]);
+      setMessages((prev: ChatMessage[]) => [...prev, babaMsg]);
       setIsTyping(false);
     }, 1200);
   };
@@ -88,16 +88,16 @@ export const BabaElHedi: React.FC = () => {
                   <BabaAvatar size={45} className="pulse-slow" />
                 </div>
                 <div>
-                  <h3 className="font-black text-lg tracking-tight">Baba El Hedi</h3>
+                  <h3 className="font-black text-lg tracking-tight">{t('chatbot.babaName')}</h3>
                   <p className="text-white/80 text-xs font-bold uppercase tracking-widest leading-none">
-                    {language === 'fr' ? 'Sage du Souk ✨' : 'شيخ السوق ✨'}
+                    {t('chatbot.babaRole')}
                   </p>
                 </div>
               </div>
               <button 
                 onClick={toggleChat}
                 className="p-2 hover:bg-white/20 rounded-full transition-colors"
-                aria-label="Fermer"
+                aria-label={t('common.back')}
               >
                 <X className="w-6 h-6" />
               </button>
@@ -187,7 +187,7 @@ export const BabaElHedi: React.FC = () => {
                 className="flex gap-3"
               >
                 <Input
-                  placeholder={language === 'fr' ? "Parle à Baba El Hedi..." : "تكلم مع بابا الهادي..."}
+                  placeholder={t('chatbot.inputPlaceholder')}
                   className="rounded-2xl border-gray-200 h-12 focus-visible:ring-terracotta"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
@@ -212,7 +212,7 @@ export const BabaElHedi: React.FC = () => {
         whileTap={{ scale: 0.95 }}
         onClick={toggleChat}
         className="w-16 h-16 rounded-full bg-white shadow-[0_10px_30px_rgba(199,91,57,0.3)] border-2 border-terracotta/40 flex items-center justify-center cursor-pointer pointer-events-auto relative group active:ring-4 active:ring-terracotta/20 overflow-visible transition-all"
-        aria-label="Baba El Hedi Chat"
+        aria-label={t('chatbot.triggerLabel')}
       >
         <BabaAvatar size={60} className="group-hover:scale-110 transition-transform" />
         

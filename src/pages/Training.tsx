@@ -5,41 +5,51 @@ import { useSEO } from '@/hooks';
 import { useLanguage } from '@/store/LanguageContext';
 
 export function Training() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { SEOComponent } = useSEO();
+
+  // Helper to ensure we have an array for mapping
+  const ensureArray = (val: any) => Array.isArray(val) ? val : [];
 
   const trainings = [
     {
       icon: BookOpen,
       title: t('training.list.0.title'),
-      items: t('training.list.0.items') as unknown as string[],
+      items: ensureArray(t('training.list.0.items')),
       color: 'text-terracotta',
       bgColor: 'bg-terracotta/10',
     },
     {
       icon: Video,
       title: t('training.list.1.title'),
-      items: t('training.list.1.items') as unknown as string[],
+      items: ensureArray(t('training.list.1.items')),
       color: 'text-olive',
       bgColor: 'bg-olive/10',
     },
     {
       icon: Users,
       title: t('training.list.2.title'),
-      items: t('training.list.2.items') as unknown as string[],
+      items: ensureArray(t('training.list.2.items')),
       color: 'text-warm-gold',
       bgColor: 'bg-warm-gold/10',
     },
     {
       icon: Award,
       title: t('training.list.3.title'),
-      items: t('training.list.3.items') as unknown as string[],
+      items: ensureArray(t('training.list.3.items')),
       color: 'text-deep-blue',
       bgColor: 'bg-deep-blue/10',
     },
   ];
 
-  const benefits = t('training.benefits') as unknown as string[];
+  const benefits = ensureArray(t('training.benefits'));
+  
+  // Robust title logic: use first word or first half for non-gradient, rest for gradient
+  const fullTitle = t('training.title');
+  const words = fullTitle.split(' ');
+  const titlePart1 = words.length > 1 ? words.slice(0, Math.ceil(words.length / 2)).join(' ') : (language === 'fr' ? '' : fullTitle);
+  const titlePart2 = words.length > 1 ? words.slice(Math.ceil(words.length / 2)).join(' ') : (language === 'fr' ? fullTitle : '');
+
   return (
     <>
       {SEOComponent}
@@ -56,7 +66,10 @@ export function Training() {
             <BookOpen className="w-10 h-10 text-warm-gold" />
           </div>
           <h1 className="text-4xl lg:text-[5.5rem] font-black text-gray-900 mb-6 tracking-tighter leading-none">
-            {t('training.title').split('Formations')[0]} <br /><span className="text-gradient inline-block">{t('training.title').includes('Formations') ? 'Formations' : 'تدريباتنا'}</span>
+            {titlePart1} {titlePart1 && <br />}
+            <span className="text-gradient inline-block">
+              {titlePart2 || fullTitle}
+            </span>
           </h1>
           <p className="text-gray-600 max-w-2xl mx-auto text-xl font-medium leading-relaxed">
             {t('training.subtitle')}
@@ -98,7 +111,7 @@ export function Training() {
                 </div>
                 <h3 className="text-2xl font-black text-gray-900 mb-6 tracking-tight">{training.title}</h3>
                 <ul className="space-y-2">
-                  {training.items.map((item, i) => (
+                  {training.items.map((item: string, i: number) => (
                     <li key={i} className="flex items-start gap-2 text-gray-600">
                       <Check className={`w-4 h-4 ${training.color} flex-shrink-0 mt-0.5`} />
                       {item}
