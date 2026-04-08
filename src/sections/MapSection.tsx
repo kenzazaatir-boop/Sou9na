@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/store/LanguageContext';
 import { getProducts, getArtisans } from '@/lib/data';
 import { Link } from 'react-router-dom';
-import type { Product, Artisan } from '@/types';
 
 interface Region {
   id: string;
@@ -17,6 +16,27 @@ interface Region {
   y: number;
   color: string;
 }
+
+const rawRegions: Region[] = [
+  { id: 'tunis', name: 'tunis', artisans: 25, products: 120, specialties: ['textile', 'ecologique'], rating: 4.8, x: 52, y: 18, color: '#c75b39' },
+  { id: 'sidibousaid', name: 'sidibousaid', artisans: 1, products: 35, specialties: ['bijoux'], rating: 4.9, x: 54, y: 16, color: '#4a90e2' },
+  { id: 'nabeul', name: 'nabeul', artisans: 35, products: 180, specialties: ['poterie', 'conserves'], rating: 4.9, x: 58, y: 22, color: '#d4693f' },
+  { id: 'sfax', name: 'sfax', artisans: 20, products: 95, specialties: ['huileOlive', 'menuiserie'], rating: 4.7, x: 42, y: 55, color: '#8b9a46' },
+  { id: 'kairouan', name: 'kairouan', artisans: 18, products: 85, specialties: ['tapisMargoum'], rating: 4.8, x: 48, y: 42, color: '#a85d3c' },
+  { id: 'sousse', name: 'sousse', artisans: 22, products: 110, specialties: ['artisanatDivers'], rating: 4.6, x: 54, y: 32, color: '#9cb071' },
+  { id: 'mahdia', name: 'mahdia', artisans: 12, products: 60, specialties: ['peche', 'tissage'], rating: 4.5, x: 50, y: 48, color: '#7a9a5a' },
+  { id: 'gabes', name: 'gabes', artisans: 15, products: 70, specialties: ['dattes'], rating: 4.7, x: 48, y: 62, color: '#b8884a' },
+  { id: 'tozeur', name: 'tozeur', artisans: 10, products: 45, specialties: ['dattier'], rating: 4.8, x: 35, y: 58, color: '#c9a86c' },
+  { id: 'gafsa', name: 'gafsa', artisans: 8, products: 35, specialties: ['traditionsBerberes'], rating: 4.4, x: 38, y: 68, color: '#8b7355' },
+  { id: 'kasserine', name: 'kasserine', artisans: 6, products: 25, specialties: ['tissageRural'], rating: 4.3, x: 40, y: 52, color: '#9a8b7a' },
+  { id: 'beja', name: 'beja', artisans: 14, products: 65, specialties: ['bois', 'agriculture'], rating: 4.6, x: 45, y: 25, color: '#7d9b76' },
+  { id: 'jendouba', name: 'jendouba', artisans: 9, products: 40, specialties: ['liege'], rating: 4.5, x: 38, y: 22, color: '#6b8e6b' },
+  { id: 'zaghouan', name: 'zaghouan', artisans: 11, products: 50, specialties: ['miel'], rating: 4.7, x: 50, y: 28, color: '#daa520' },
+  { id: 'monastir', name: 'monastir', artisans: 16, products: 75, specialties: ['textileMaritime'], rating: 4.6, x: 56, y: 38, color: '#5f9ea0' },
+  { id: 'medenine', name: 'medenine', artisans: 7, products: 30, specialties: ['ksour'], rating: 4.4, x: 52, y: 72, color: '#cd853f' },
+  { id: 'djerba', name: 'djerba', artisans: 1, products: 20, specialties: ['cosmetiques'], rating: 4.8, x: 55, y: 68, color: '#d4693f' },
+  { id: 'tataouine', name: 'tataouine', artisans: 1, products: 25, specialties: ['poterie'], rating: 4.8, x: 42, y: 78, color: '#a85d3c' },
+];
 
 export function MapSection() {
   const { t } = useLanguage();
@@ -58,26 +78,7 @@ export function MapSection() {
     loadData();
   }, []);
 
-  const rawRegions: Region[] = [
-    { id: 'tunis', name: 'tunis', artisans: 25, products: 120, specialties: ['textile', 'ecologique'], rating: 4.8, x: 52, y: 18, color: '#c75b39' },
-    { id: 'sidibousaid', name: 'sidibousaid', artisans: 1, products: 35, specialties: ['bijoux'], rating: 4.9, x: 54, y: 16, color: '#4a90e2' },
-    { id: 'nabeul', name: 'nabeul', artisans: 35, products: 180, specialties: ['poterie', 'conserves'], rating: 4.9, x: 58, y: 22, color: '#d4693f' },
-    { id: 'sfax', name: 'sfax', artisans: 20, products: 95, specialties: ['huileOlive', 'menuiserie'], rating: 4.7, x: 42, y: 55, color: '#8b9a46' },
-    { id: 'kairouan', name: 'kairouan', artisans: 18, products: 85, specialties: ['tapisMargoum'], rating: 4.8, x: 48, y: 42, color: '#a85d3c' },
-    { id: 'sousse', name: 'sousse', artisans: 22, products: 110, specialties: ['artisanatDivers'], rating: 4.6, x: 54, y: 32, color: '#9cb071' },
-    { id: 'mahdia', name: 'mahdia', artisans: 12, products: 60, specialties: ['peche', 'tissage'], rating: 4.5, x: 50, y: 48, color: '#7a9a5a' },
-    { id: 'gabes', name: 'gabes', artisans: 15, products: 70, specialties: ['dattes'], rating: 4.7, x: 48, y: 62, color: '#b8884a' },
-    { id: 'tozeur', name: 'tozeur', artisans: 10, products: 45, specialties: ['dattier'], rating: 4.8, x: 35, y: 58, color: '#c9a86c' },
-    { id: 'gafsa', name: 'gafsa', artisans: 8, products: 35, specialties: ['traditionsBerberes'], rating: 4.4, x: 38, y: 68, color: '#8b7355' },
-    { id: 'kasserine', name: 'kasserine', artisans: 6, products: 25, specialties: ['tissageRural'], rating: 4.3, x: 40, y: 52, color: '#9a8b7a' },
-    { id: 'beja', name: 'beja', artisans: 14, products: 65, specialties: ['bois', 'agriculture'], rating: 4.6, x: 45, y: 25, color: '#7d9b76' },
-    { id: 'jendouba', name: 'jendouba', artisans: 9, products: 40, specialties: ['liege'], rating: 4.5, x: 38, y: 22, color: '#6b8e6b' },
-    { id: 'zaghouan', name: 'zaghouan', artisans: 11, products: 50, specialties: ['miel'], rating: 4.7, x: 50, y: 28, color: '#daa520' },
-    { id: 'monastir', name: 'monastir', artisans: 16, products: 75, specialties: ['textileMaritime'], rating: 4.6, x: 56, y: 38, color: '#5f9ea0' },
-    { id: 'medenine', name: 'medenine', artisans: 7, products: 30, specialties: ['ksour'], rating: 4.4, x: 52, y: 72, color: '#cd853f' },
-    { id: 'djerba', name: 'djerba', artisans: 1, products: 20, specialties: ['cosmetiques'], rating: 4.8, x: 55, y: 68, color: '#d4693f' },
-    { id: 'tataouine', name: 'tataouine', artisans: 1, products: 25, specialties: ['poterie'], rating: 4.8, x: 42, y: 78, color: '#a85d3c' },
-  ];
+
 
   const regions: Region[] = rawRegions.map(r => ({
     ...r,
