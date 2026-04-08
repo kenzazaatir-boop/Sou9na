@@ -139,6 +139,9 @@ export const translations = {
           zaghouan: 'Zaghouan',
           monastir: 'Monastir',
           medenine: 'Médenine',
+          djerba: 'Djerba',
+          sidibousaid: 'Sidi Bou Said',
+          tataouine: 'Tataouine',
         },
         specialties: {
           textile: 'Textile Artisanal',
@@ -255,6 +258,8 @@ export const translations = {
         artisanat: 'Artisanat',
         textile: 'Textile',
         ecologique: 'Écologique',
+        maison: 'Maison & Déco',
+        cosmetiques: 'Bien-être',
       },
       products: [
         { name: 'Tapis Berbère Margoum' },
@@ -577,6 +582,9 @@ export const translations = {
           zaghouan: 'زغوان',
           monastir: 'المنستير',
           medenine: 'مدنين',
+          djerba: 'جربة',
+          sidibousaid: 'سيدي بوسعيد',
+          tataouine: 'تطاوين',
         },
         specialties: {
           textile: 'منسوجات تقليدية',
@@ -693,6 +701,8 @@ export const translations = {
         artisanat: 'صناعات تقليدية',
         textile: 'منسوجات',
         ecologique: 'إيكولوجي',
+        maison: 'ديكور ومنزل',
+        cosmetiques: 'تجميل',
       },
       products: [
         { name: 'زربية مرقوم' },

@@ -48,11 +48,11 @@ export function Catalog() {
     fetchProducts();
   }, [t]);
 
-  const categories = ['alimentaire', 'artisanat', 'textile', 'ecologique'];
-  const regions = ['nabeul', 'sfax', 'kairouan', 'tunis', 'tozeur', 'zaghouan', 'mahdia'];
+  const categories = ['alimentaire', 'artisanat', 'maison', 'cosmetiques', 'textile', 'ecologique'];
+  const regions = ['nabeul', 'sfax', 'kairouan', 'tunis', 'gafsa', 'kasserine', 'tataouine', 'djerba', 'sidibousaid', 'tozeur', 'zaghouan', 'mahdia'];
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
-  const [priceRange, setPriceRange] = useState([0, 500]);
+  const [priceRange, setPriceRange] = useState([0, 2000]);
   const [minRating, setMinRating] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
   const [showFilters, setShowFilters] = useState(false);
@@ -64,8 +64,13 @@ export function Catalog() {
       const categoryMatch =
         selectedCategories.length === 0  || selectedCategories.includes(product.category);
       const regionMatch =
-        selectedRegions.length === 0 || selectedRegions.includes(product.location);
-      const priceMatch = product.price >= priceRange[0] && product.price <= priceRange[1];
+        selectedRegions.length === 0 || selectedRegions.some(regionKey => {
+            // Compare with common variations or keys
+            const regionName = regionKey.toLowerCase();
+            const productLocation = product.location.toLowerCase();
+            return productLocation === regionName || productLocation.includes(regionName);
+        });
+      const priceMatch = Number(product.price) >= priceRange[0] && Number(product.price) <= priceRange[1];
       const ratingMatch = product.rating >= minRating;
       return categoryMatch && regionMatch && priceMatch && ratingMatch;
     });
@@ -91,7 +96,7 @@ export function Catalog() {
   const resetFilters = () => {
     setSelectedCategories([]);
     setSelectedRegions([]);
-    setPriceRange([0, 500]);
+    setPriceRange([0, 2000]);
     setMinRating(0);
     setSearchTerm('');
   };
@@ -100,7 +105,7 @@ export function Catalog() {
     selectedCategories.length > 0 ||
     selectedRegions.length > 0 ||
     priceRange[0] > 0 ||
-    priceRange[1] < 500 ||
+    priceRange[1] < 2000 ||
     minRating > 0 ||
     searchTerm.length > 0;
 
@@ -172,7 +177,7 @@ export function Catalog() {
                 <div className="space-y-3">
                   {regions.map((region) => (
                     <label key={region} className="flex items-center gap-3 cursor-pointer">
-                      <Checkbox checked={selectedRegions.includes(t(`home.map.regions.${region}`))} onCheckedChange={() => setSelectedRegions(prev => prev.includes(t(`home.map.regions.${region}`)) ? prev.filter(r => r !== t(`home.map.regions.${region}`)) : [...prev, t(`home.map.regions.${region}`)])} />
+                      <Checkbox checked={selectedRegions.includes(region)} onCheckedChange={() => setSelectedRegions(prev => prev.includes(region) ? prev.filter(r => r !== region) : [...prev, region])} />
                       <span className="text-sm">{t(`home.map.regions.${region}`)}</span>
                     </label>
                   ))}
@@ -181,7 +186,7 @@ export function Catalog() {
 
               <div className="mb-8">
                 <h3 className="font-semibold mb-4 text-sm uppercase">{t('catalog.price')}</h3>
-                <Slider value={priceRange} onValueChange={setPriceRange} max={500} step={10} />
+                <Slider value={priceRange} onValueChange={setPriceRange} max={2000} step={10} />
                 <div className="flex justify-between mt-3 text-sm">
                   <span>{priceRange[0]} {t('catalog.currency')}</span>
                   <span>{priceRange[1]} {t('catalog.currency')}</span>
