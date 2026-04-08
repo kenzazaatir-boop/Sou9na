@@ -88,7 +88,7 @@ export function Artisans() {
                   >
                     <div className="relative h-72 overflow-hidden bg-gray-100">
                       <img
-                        src={artisan.image}
+                        src={artisan.image.startsWith('http') ? artisan.image : `${import.meta.env.BASE_URL}${artisan.image}`}
                         alt={artisan.name}
                         className="w-full h-full object-cover transition-transform duration-1000 cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-110"
                       />
