@@ -48,16 +48,19 @@ export const BabaElHedi: React.FC = () => {
     setInputValue('');
     setIsTyping(true);
 
-    // Simulate thinking delay
-    setTimeout(() => {
-      const response = generateResponse(text, language);
+    try {
+      // Pass the current messages as history
+      const response = await generateResponse(text, language, messages);
       const babaMsg = createMessage('baba', response.content, {
         suggestions: response.suggestions,
         products: response.products
       });
       setMessages((prev: ChatMessage[]) => [...prev, babaMsg]);
+    } catch (error) {
+      console.error(error);
+    } finally {
       setIsTyping(false);
-    }, 1200);
+    }
   };
 
   const toggleChat = () => setIsOpen(!isOpen);

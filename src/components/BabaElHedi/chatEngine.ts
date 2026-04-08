@@ -1,7 +1,8 @@
 /**
  * Baba El Hedi - Moteur de Conversation Intelligent
- * Sans API externe - Basé sur une détection d'intention locale
+ * Avec API Gemini intégrée et détection d'intention locale comme Fallback
  */
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
 export type Language = 'fr' | 'ar';
 
@@ -137,124 +138,160 @@ function makeId(): string {
 }
 
 // ─── Générateur de réponse principal ──────────────────────────────────────────
-export function generateResponse(userText: string, lang: Language): Omit<ChatMessage, 'id' | 'timestamp' | 'role'> {
+export async function generateResponse(userText: string, lang: Language, history: ChatMessage[] = []): Promise<Omit<ChatMessage, 'id' | 'timestamp' | 'role'>> {
   const intent = detectIntent(userText);
+  let productsToAttach: ProductCard[] | undefined = undefined;
+  let suggestionsToAttach: string[] | undefined = undefined;
 
-  switch (intent) {
-    case 'greeting':
-      return {
-        content: lang === 'fr'
-          ? "مرحبا يا صديقي ! 😄\nRavi de te voir ici ! Je suis Baba El Hedi, ton guide dans le souk de l'artisanat tunisien.\nQu'est-ce que tu cherches aujourd'hui ?"
-          : "مرحبا يا صاحبي ! 😄\nسعيد بيك هنا ! أنا بابا الهادي، مرشدك في سوق الصنع التونسي.\nاش تحب تلقى اليوم ؟",
-        suggestions: QUICK_SUGGESTIONS[lang],
-      };
+  // Détermination des produits et suggestions basés sur l'intention locale
+  if (intent === 'gift') { productsToAttach = getRandomProducts(['cadeau']); suggestionsToAttach = lang === 'fr' ? ["💸 Moins de 30 TND", "🌿 Bio & Éco", "🏺 Décoration", "Autre idée ?"] : ["💸 أقل من 30 دينار", "🌿 بيو وبيئي", "🏺 ديكور", "فكرة أخرى ؟"]; }
+  else if (intent === 'eco') { productsToAttach = PRODUCTS_CATALOG.filter(p => p.ecoScore >= 90).slice(0, 3).map(p => ({...p})); suggestionsToAttach = lang === 'fr' ? ["♻️ Économie circulaire", "🤝 Nos artisans", "🎁 Idée cadeau"] : ["♻️ الدورة البيئية", "🤝 حرفيينا", "🎁 فكرة هدية"]; }
+  else if (intent === 'story_pottery') { productsToAttach = getRandomProducts(['décoration', 'artisanat']).slice(0, 2); suggestionsToAttach = lang === 'fr' ? ["🧶 Histoire du tapis", "🫒 Histoire de l'olive", "🛍️ Voir la poterie"] : ["🧶 قصة الزربية", "🫒 قصة الزيتون", "🛍️ شوف الفخار"]; }
+  else if (intent === 'story_carpet') { productsToAttach = getRandomProducts(['textile']).slice(0, 2); suggestionsToAttach = lang === 'fr' ? ["🏺 Histoire de la poterie", "🫒 Histoire de l'olive", "🛍️ Voir les tapis"] : ["🏺 قصة الفخار", "🫒 قصة الزيتون", "🛍️ شوف الزرابي"]; }
+  else if (intent === 'story_halfa') { productsToAttach = getRandomProducts(['eco', 'naturel']).slice(0, 2); suggestionsToAttach = lang === 'fr' ? ["🏺 Histoire de la poterie", "🎁 Idée cadeau éco", "🛍️ Voir les couffins"] : ["🏺 قصة الفخار", "🎁 هدية بيئية", "🛍️ شوف القفف"]; }
+  else if (intent === 'story_olive') { productsToAttach = getRandomProducts(['alimentaire', 'bio']).slice(0, 2); suggestionsToAttach = lang === 'fr' ? ["🧶 Histoire du tapis", "🏺 Histoire de la poterie", "🛍️ Voir l'huile"] : ["🧶 قصة الزربية", "🏺 قصة الفخار", "🛍️ شوف الزيت"]; }
+  else if (intent === 'greeting' || intent === 'unknown') { suggestionsToAttach = QUICK_SUGGESTIONS[lang]; }
+  else if (intent === 'artisans') { suggestionsToAttach = lang === 'fr' ? ["🏺 Histoire de la poterie", "🧶 Histoire du tapis", "🌿 Voir leurs produits"] : ["🏺 قصة الفخار", "🧶 قصة الزربية", "🌿 شوف منتجاتهم"]; }
+  else if (intent === 'training') { suggestionsToAttach = lang === 'fr' ? ["📅 S'inscrire", "🤝 Nos artisans", "🛍️ Explorer le catalogue"] : ["📅 سجّل الآن", "🤝 حرفيينا", "🛍️ استكشف المتجر"]; }
+  else if (intent === 'contact') { suggestionsToAttach = lang === 'fr' ? ["📝 Page contact", "🛍️ Explorer", "🎁 Idée cadeau"] : ["📝 صفحة الاتصال", "🛍️ استكشف", "🎁 فكرة هدية"]; }
 
-    case 'gift':
-      return {
-        content: lang === 'fr'
-          ? "🎁 Quelle belle intention ! Voici mes coups de cœur pour offrir un cadeau authentiquement tunisien :"
-          : "🎁 نيّة حلوة ! هازلك مختاراتي للهدايا التونسية الأصيلة :",
-        products: getRandomProducts(['cadeau']),
-        suggestions: lang === 'fr'
-          ? ["💸 Moins de 30 TND", "🌿 Bio & Éco", "🏺 Décoration", "Autre idée ?"]
-          : ["💸 أقل من 30 دينار", "🌿 بيو وبيئي", "🏺 ديكور", "فكرة أخرى ؟"],
-      };
+  try {
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+    if (!apiKey) {
+      throw new Error('No API key attached. Falling back to local engine.');
+    }
 
-    case 'eco':
-      return {
-        content: lang === 'fr'
-          ? "🌿 Voilà mes produits les plus écolos — Score Éco au maximum !"
-          : "🌿 هازلك أكثر منتجاتنا صداقة للطبيعة — نقطة بيئية في أعلاها !",
-        products: PRODUCTS_CATALOG
-          .filter(p => p.ecoScore >= 90)
-          .slice(0, 3)
-          .map(p => ({ name: p.name, category: p.category, price: p.price, ecoScore: p.ecoScore, emoji: p.emoji, link: p.link })),
-        suggestions: lang === 'fr'
-          ? ["♻️ Économie circulaire", "🤝 Nos artisans", "🎁 Idée cadeau"]
-          : ["♻️ الدورة البيئية", "🤝 حرفيينا", "🎁 فكرة هدية"],
-      };
+    const genAI = new GoogleGenerativeAI(apiKey);
+    
+    const systemPrompt = `Tu es Baba El Hedi, 65 ans, ancien artisan de Kairouan et maintenant le sage représentant de la plateforme Soukna.
+Parle chaleureusement, avec sagesse, tutoiement, et intègre quelques expressions tunisiennes.
+Ton but principal est de promouvoir l'artisanat tunisien, les artisans de Soukna, et l'économie circulaire.
+RÈGLE TRÈS IMPORTANTE : Si l'utilisateur pose une question hors sujet (ex: mathématiques, politique, technologie sans rapport), NE DONNE PAS LA RÉPONSE DIRECTE. Redirige TOUJOURS poliment et habilement la conversation vers l'artisanat tunisien, les artisans ou les produits "Soukna", en adaptant le discours à un client tunisien ou ami de la Tunisie (ex: "Ya weldi, ces choses modernes me dépassent, moi ce que je connais bien c'est...").
+Langue de réponse demandée : ${lang === 'fr' ? 'Français' : 'Arabe dialectal tunisien (Derja) ou Arabe standard simple'}.
+Garde tes réponses organiques, relativement concises (maximum 3-4 courtes phrases) et engageantes. N'inclus pas d'emojis lourds à chaque mot.`;
 
-    case 'circular':
-      return {
-        content: getRandomItem(ECO_KNOWLEDGE[lang]),
-        suggestions: lang === 'fr'
-          ? ["En savoir plus 🌱", "🎁 Acheter local", "👨‍🎨 Voir les artisans"]
-          : ["إعرف أكثر 🌱", "🎁 اشتري محلي", "👨‍🎨 شوف الحرفيين"],
-      };
+    const modelParams = { 
+      model: 'gemini-1.5-flash',
+      systemInstruction: systemPrompt 
+    };
+    
+    const model = genAI.getGenerativeModel(modelParams);
 
-    case 'story_pottery':
-      return {
-        content: STORIES.poterie[lang],
-        products: getRandomProducts(['décoration', 'artisanat']).slice(0, 2),
-        suggestions: lang === 'fr'
-          ? ["🧶 Histoire du tapis", "🫒 Histoire de l'olive", "🛍️ Voir la poterie"]
-          : ["🧶 قصة الزربية", "🫒 قصة الزيتون", "🛍️ شوف الفخار"],
-      };
+    const formattedHistory = history.map(msg => ({
+      role: msg.role === 'baba' ? 'model' : 'user',
+      parts: [{ text: msg.content }]
+    }));
 
-    case 'story_carpet':
-      return {
-        content: STORIES.tapis[lang],
-        products: getRandomProducts(['textile']).slice(0, 2),
-        suggestions: lang === 'fr'
-          ? ["🏺 Histoire de la poterie", "🫒 Histoire de l'olive", "🛍️ Voir les tapis"]
-          : ["🏺 قصة الفخار", "🫒 قصة الزيتون", "🛍️ شوف الزرابي"],
-      };
+    const chat = model.startChat({
+      history: formattedHistory.slice(-6)
+    });
 
-    case 'story_halfa':
-      return {
-        content: STORIES.halfa[lang],
-        products: getRandomProducts(['eco', 'naturel']).slice(0, 2),
-        suggestions: lang === 'fr'
-          ? ["🏺 Histoire de la poterie", "🎁 Idée cadeau éco", "🛍️ Voir les couffins"]
-          : ["🏺 قصة الفخار", "🎁 هدية بيئية", "🛍️ شوف القفف"],
-      };
+    const result = await chat.sendMessage(userText);
+    const text = result.response.text();
 
-    case 'story_olive':
-      return {
-        content: STORIES.olive[lang],
-        products: getRandomProducts(['alimentaire', 'bio']).slice(0, 2),
-        suggestions: lang === 'fr'
-          ? ["🧶 Histoire du tapis", "🏺 Histoire de la poterie", "🛍️ Voir l'huile"]
-          : ["🧶 قصة الزربية", "🏺 قصة الفخار", "🛍️ شوف الزيت"],
-      };
+    return {
+      content: text,
+      products: productsToAttach,
+      suggestions: suggestionsToAttach || QUICK_SUGGESTIONS[lang],
+    };
 
-    case 'artisans':
-      return {
-        content: lang === 'fr'
-          ? "👨‍🎨 Nos artisans sont le cœur de Soukna ! On soutient plus de 120 artisans à travers 15 régions de Tunisie.\n\n✅ Fatma de Nabeul — Poterie & Conserves\n✅ Mohamed de Sfax — Huile d'Olive\n✅ Aïcha de Kasserine — Tapis Margoum\n\nChaque profil a une histoire. Veux-tu que j'en raconte une ? 🤲"
-          : "👨‍🎨 حرفيينا هم قلب سوقنا ! نحنا ندعموا أكثر من 120 حرفي في 15 ولاية تونسية.\n\n✅ فاطمة من نابل — فخار ومعلبات\n✅ محمد من صفاقس — زيت زيتون\n✅ عائشة من القصرين — زرابي مرقوم\n\nكل واحد عندو قصة. تحب نحكيلك ؟ 🤲",
-        suggestions: lang === 'fr'
-          ? ["🏺 Histoire de la poterie", "🧶 Histoire du tapis", "🌿 Voir leurs produits"]
-          : ["🏺 قصة الفخار", "🧶 قصة الزربية", "🌿 شوف منتجاتهم"],
-      };
-
-    case 'training':
-      return {
-        content: lang === 'fr'
-          ? "📚 Soukna propose des formations gratuites pour nos artisans partenaires !\n\n🎯 Gestion de boutique en ligne\n🎯 Photographie produit\n🎯 Packaging éco-responsable\n🎯 Micro-finance avec Enda\n\nLa prochaine session commence bientôt — places limitées !"
-          : "📚 سوقنا تقدم تكوينات مجانية لحرفيينا الشركاء !\n\n🎯 إدارة المتجر الإلكتروني\n🎯 تصوير المنتجات\n🎯 تغليف صديق للبيئة\n🎯 تمويل أندا\n\nالدورة القادمة قريباً — الأماكن محدودة !",
-        suggestions: lang === 'fr'
-          ? ["📅 S'inscrire", "🤝 Nos artisans", "🛍️ Explorer le catalogue"]
-          : ["📅 سجّل الآن", "🤝 حرفيينا", "🛍️ استكشف المتجر"],
-      };
-
-    case 'contact':
-      return {
-        content: lang === 'fr'
-          ? "📞 Tu peux nous joindre facilement !\n\n📍 12 Rue Habib Bourguiba, Tunis\n📱 +216 71 000 000\n✉️ contact@soukna.tn\n⏰ Lun–Ven, 9h–18h\n\nOu envoie-nous un message depuis la page Contact — on répond en moins de 24h ! 😊"
-          : "📞 تنجم تتواصل معانا بسهولة !\n\n📍 12 شارع الحبيب بورقيبة، تونس\n📱 71 000 000 216+\n✉️ contact@soukna.tn\n⏰ الإثنين–الجمعة، 9:00–18:00\n\nأو ابعثلنا رسالة من صفحة الاتصال — نردوا في أقل من 24 ساعة ! 😊",
-        suggestions: lang === 'fr'
-          ? ["📝 Page contact", "🛍️ Explorer", "🎁 Idée cadeau"]
-          : ["📝 صفحة الاتصال", "🛍️ استكشف", "🎁 فكرة هدية"],
-      };
-
-    default:
-      return {
-        content: lang === 'fr'
-          ? "🤔 Hmm, je n'ai pas bien compris, yamma ! Mais voici ce que je sais faire :"
-          : "🤔 مش فهمت مليح، يمّا ! ولكن هازلك اش نعرف نعمل :",
-        suggestions: QUICK_SUGGESTIONS[lang],
-      };
+  } catch (error) {
+    console.warn("Gemini API disabled or failed, using fallback:", error);
+    
+    // -- Fallback Local --
+    switch (intent) {
+      case 'greeting':
+        return {
+          content: lang === 'fr'
+            ? "مرحبا يا صديقي ! 😄\nRavi de te voir ici ! Je suis Baba El Hedi, ton guide dans le souk de l'artisanat tunisien.\nQu'est-ce que tu cherches aujourd'hui ?"
+            : "مرحبا يا صاحبي ! 😄\nسعيد بيك هنا ! أنا بابا الهادي، مرشدك في سوق الصنع التونسي.\nاش تحب تلقى اليوم ؟",
+          suggestions: suggestionsToAttach,
+        };
+  
+      case 'gift':
+        return {
+          content: lang === 'fr'
+            ? "🎁 Quelle belle intention ! Voici mes coups de cœur pour offrir un cadeau authentiquement tunisien :"
+            : "🎁 نيّة حلوة ! هازلك مختاراتي للهدايا التونسية الأصيلة :",
+          products: productsToAttach,
+          suggestions: suggestionsToAttach,
+        };
+  
+      case 'eco':
+        return {
+          content: lang === 'fr'
+            ? "🌿 Voilà mes produits les plus écolos — Score Éco au maximum !"
+            : "🌿 هازلك أكثر منتجاتنا صداقة للطبيعة — نقطة بيئية في أعلاها !",
+          products: productsToAttach,
+          suggestions: suggestionsToAttach,
+        };
+  
+      case 'circular':
+        return {
+          content: getRandomItem(ECO_KNOWLEDGE[lang]),
+          suggestions: suggestionsToAttach,
+        };
+  
+      case 'story_pottery':
+        return {
+          content: STORIES.poterie[lang],
+          products: productsToAttach,
+          suggestions: suggestionsToAttach,
+        };
+  
+      case 'story_carpet':
+        return {
+          content: STORIES.tapis[lang],
+          products: productsToAttach,
+          suggestions: suggestionsToAttach,
+        };
+  
+      case 'story_halfa':
+        return {
+          content: STORIES.halfa[lang],
+          products: productsToAttach,
+          suggestions: suggestionsToAttach,
+        };
+  
+      case 'story_olive':
+        return {
+          content: STORIES.olive[lang],
+          products: productsToAttach,
+          suggestions: suggestionsToAttach,
+        };
+  
+      case 'artisans':
+        return {
+          content: lang === 'fr'
+            ? "👨‍🎨 Nos artisans sont le cœur de Soukna ! On soutient plus de 120 artisans à travers 15 régions de Tunisie.\n\n✅ Fatma de Nabeul — Poterie & Conserves\n✅ Mohamed de Sfax — Huile d'Olive\n✅ Aïcha de Kasserine — Tapis Margoum\n\nChaque profil a une histoire. Veux-tu que j'en raconte une ? 🤲"
+            : "👨‍🎨 حرفيينا هم قلب سوقنا ! نحنا ندعموا أكثر من 120 حرفي في 15 ولاية تونسية.\n\n✅ فاطمة من نابل — فخار ومعلبات\n✅ محمد من صفاقس — زيت زيتون\n✅ عائشة من القصرين — زرابي مرقوم\n\nكل واحد عندو قصة. تحب نحكيلك ؟ 🤲",
+          suggestions: suggestionsToAttach,
+        };
+  
+      case 'training':
+        return {
+          content: lang === 'fr'
+            ? "📚 Soukna propose des formations gratuites pour nos artisans partenaires !\n\n🎯 Gestion de boutique en ligne\n🎯 Photographie produit\n🎯 Packaging éco-responsable\n🎯 Micro-finance avec Enda\n\nLa prochaine session commence bientôt — places limitées !"
+            : "📚 سوقنا تقدم تكوينات مجانية لحرفيينا الشركاء !\n\n🎯 إدارة المتجر الإلكتروني\n🎯 تصوير المنتجات\n🎯 تغليف صديق للبيئة\n🎯 تمويل أندا\n\nالدورة القادمة قريباً — الأماكن محدودة !",
+          suggestions: suggestionsToAttach,
+        };
+  
+      case 'contact':
+        return {
+          content: lang === 'fr'
+            ? "📞 Tu peux nous joindre facilement !\n\n📍 12 Rue Habib Bourguiba, Tunis\n📱 +216 71 000 000\n✉️ contact@soukna.tn\n⏰ Lun–Ven, 9h–18h\n\nOu envoie-nous un message depuis la page Contact — on répond en moins de 24h ! 😊"
+            : "📞 تنجم تتواصل معانا بسهولة !\n\n📍 12 شارع الحبيب بورقيبة، تونس\n📱 71 000 000 216+\n✉️ contact@soukna.tn\n⏰ الإثنين–الجمعة، 9:00–18:00\n\nأو ابعثلنا رسالة من صفحة الاتصال — نردوا في أقل من 24 ساعة ! 😊",
+          suggestions: suggestionsToAttach,
+        };
+  
+      default:
+        return {
+          content: lang === 'fr'
+            ? "🤔 Hmm, je n'ai pas bien compris, yamma ! Mais voici ce que je sais faire :"
+            : "🤔 مش فهمت مليح، يمّا ! ولكن هازلك اش نعرف نعمل :",
+          suggestions: QUICK_SUGGESTIONS[lang],
+        };
+    }
   }
 }
 
