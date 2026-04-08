@@ -9,7 +9,7 @@ import {
   MapPin,
   X
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -50,12 +50,25 @@ export function Catalog() {
 
   const categories = ['alimentaire', 'artisanat', 'maison', 'cosmetiques', 'textile', 'ecologique'];
   const regions = ['nabeul', 'sfax', 'kairouan', 'tunis', 'gafsa', 'kasserine', 'tataouine', 'djerba', 'sidibousaid', 'tozeur', 'zaghouan', 'mahdia'];
+  const [searchParams] = useSearchParams();
+  const initialRegion = searchParams.get('region');
+  
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
+  const [selectedRegions, setSelectedRegions] = useState<string[]>(
+    initialRegion ? [initialRegion] : []
+  );
   const [priceRange, setPriceRange] = useState([0, 2000]);
   const [minRating, setMinRating] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
   const [showFilters, setShowFilters] = useState(false);
+
+  // Sync selectedRegions with searchParams if they change
+  useEffect(() => {
+    const region = searchParams.get('region');
+    if (region && !selectedRegions.includes(region)) {
+      setSelectedRegions([region]);
+    }
+  }, [searchParams]);
 
   const { results: searchResults } = useSearch(products, searchTerm, { threshold: 0.3 });
 
@@ -234,8 +247,8 @@ export function Catalog() {
                             </div>
                           </Link>
                           <div className="p-5 flex-1 flex flex-col">
-                            <h3 className="font-bold line-clamp-2 mb-2 group-hover:text-terracotta transition-colors">
-                              {product.name}
+                            <h3 className="font-bold text-lg mb-1 line-clamp-1 group-hover:text-terracotta transition-colors">
+                              {t('language') === 'ar' && product.nameAr ? product.nameAr : product.name}
                             </h3>
                             <p className="text-sm text-muted-foreground mb-4 flex items-center gap-1">
                               <MapPin className="w-3.5 h-3.5" />

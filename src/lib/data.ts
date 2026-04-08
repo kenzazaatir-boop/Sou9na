@@ -164,7 +164,9 @@ const MOCK_PRODUCTS: Product[] = [
   {
     id: 100,
     name: 'La Ruine de l\'Ail Noir et Propolis 250g',
+    nameAr: 'عسل الثوم الأسود والبروبوليس 250غ',
     description: 'La Ruine de l\'Ail Noir et Propolis 250g',
+    descriptionAr: 'منتج طبيعي يجمع بين فوائد الثوم الأسود والبروبوليس لتعزيز المناعة.',
     price: 23,
     category: 'alimentaire',
     image: 'https://soukelkahina.tn/14835-home_default/la-ruine-de-l-ail-noir-et-propolis-250g.webp',
@@ -180,7 +182,9 @@ const MOCK_PRODUCTS: Product[] = [
   {
     id: 101,
     name: 'Pâte d\'Ail Noir Nature 100g',
+    nameAr: 'عجينة الثوم الأسود الطبيعية 100غ',
     description: 'Pâte d\'Ail Noir Nature 100g',
+    descriptionAr: 'عجينة الثوم الأسود الطبيعية، غنية بمضادات الأكسدة ومثالية للطهي الصحي.',
     price: 22,
     category: 'alimentaire',
     image: 'https://soukelkahina.tn/14833-home_default/pâte-d-ail-noir-nature-100g.webp',
@@ -196,7 +200,9 @@ const MOCK_PRODUCTS: Product[] = [
   {
     id: 102,
     name: 'Coffret Zrir 3 Gouts',
+    nameAr: 'صندوق زرير 3 نكهات',
     description: 'Coffret Zrir 3 Gouts',
+    descriptionAr: 'تشكيلة فاخرة من الزرير التونسي بثلاث نكهات مختلفة: بندق، جوز، وفستق.',
     price: 62,
     category: 'alimentaire',
     image: 'https://soukelkahina.tn/13844-home_default/coffret-zrir-3-gouts.webp',
@@ -212,7 +218,9 @@ const MOCK_PRODUCTS: Product[] = [
   {
     id: 103,
     name: 'Zrir Noisette 200g',
+    nameAr: 'زرير بالبندق 200غ',
     description: 'Zrir Noisette 200g',
+    descriptionAr: 'زرير تونسي تقليدي محضر بأجود أنواع البندق والعسل الطبيعي.',
     price: 15,
     category: 'alimentaire',
     image: 'https://soukelkahina.tn/13835-home_default/zrir-noisette-200g.webp',
@@ -228,7 +236,9 @@ const MOCK_PRODUCTS: Product[] = [
   {
     id: 104,
     name: 'Zrir Noix 200g',
+    nameAr: 'زرير بالجوز 200غ',
     description: 'Zrir Noix 200g',
+    descriptionAr: 'زرير تونسي أصيل محضر بالجوز والعسل الطبيعي.',
     price: 15,
     category: 'alimentaire',
     image: 'https://soukelkahina.tn/13833-home_default/zrir-noix-200g.webp',
@@ -244,7 +254,9 @@ const MOCK_PRODUCTS: Product[] = [
   {
     id: 105,
     name: 'Zrir Pistache 200g',
+    nameAr: 'زرير بالفستق 200غ',
     description: 'Zrir Pistache 200g',
+    descriptionAr: 'زرير فاخر بالفستق الحلبي والعسل الطبيعي.',
     price: 20,
     category: 'alimentaire',
     image: 'https://soukelkahina.tn/13829-home_default/zrir-pistache-200g.webp',
@@ -260,7 +272,9 @@ const MOCK_PRODUCTS: Product[] = [
   {
     id: 106,
     name: 'Zrir Pignon 200g',
+    nameAr: 'زرير بالصنوبر 200غ',
     description: 'Zrir Pignon 200g',
+    descriptionAr: 'زرير فاخر بالصنوبر، غني بالفوائد الصحية والمذاق الأصيل.',
     price: 25,
     category: 'alimentaire',
     image: 'https://soukelkahina.tn/13825-home_default/zrir-pignon-200g.webp',
@@ -276,7 +290,9 @@ const MOCK_PRODUCTS: Product[] = [
   {
     id: 107,
     name: 'Sorgho (درع)',
+    nameAr: 'درع',
     description: 'Sorgho (درع)',
+    descriptionAr: 'درع تونسي طبيعي، مثالي لتحضير سحلب أو حلويات تقليدية.',
     price: 6,
     category: 'alimentaire',
     image: 'https://soukelkahina.tn/13406-home_default/sorgho-درع.webp',
@@ -292,7 +308,9 @@ const MOCK_PRODUCTS: Product[] = [
   {
     id: 108,
     name: 'Figues séchées',
+    nameAr: 'تين مجفف (شريحة)',
     description: 'Figues séchées',
+    descriptionAr: 'تين مجفف طبيعي 100% بدون سكريات مضافة، من مزارع تونس.',
     price: 10,
     category: 'alimentaire',
     image: 'https://soukelkahina.tn/13182-home_default/figues-séchées1.webp',
@@ -308,7 +326,9 @@ const MOCK_PRODUCTS: Product[] = [
   {
     id: 109,
     name: 'Tomates séchées marinées',
+    nameAr: 'طماطم مجففة متبلة',
     description: 'Tomates séchées marinées',
+    descriptionAr: 'طماطم معلبة بالزيت والأعشاب، نكهة مركزة لإضافة لمسة فنية لأطباقكم.',
     price: 12,
     category: 'alimentaire',
     image: 'https://soukelkahina.tn/13180-home_default/tomates-séchées-marinées1.webp',
@@ -324,7 +344,9 @@ const MOCK_PRODUCTS: Product[] = [
   {
     id: 110,
     name: 'Mhamsa Maison epaise 500g',
+    nameAr: 'محمصة دياري غليظة 500غ',
     description: 'Mhamsa Maison epaise 500g',
+    descriptionAr: 'محمصة محضرة يدوياً، مثالية للأطباق الشتوية والتقليدية.',
     price: 3,
     category: 'alimentaire',
     image: 'https://soukelkahina.tn/12183-home_default/mhamsa-maison-epaise-500g1.webp',
@@ -340,7 +362,9 @@ const MOCK_PRODUCTS: Product[] = [
   {
     id: 111,
     name: 'Mhamsa Maison fine 500g',
+    nameAr: 'محمصة دياري جويدة 500غ',
     description: 'Mhamsa Maison fine 500g',
+    descriptionAr: 'محمصة جويدة محضرة بالطريقة التقليدية لضمان أقصى درجات النكهة.',
     price: 3,
     category: 'alimentaire',
     image: 'https://soukelkahina.tn/12174-home_default/mhamsa-maison-fine-500g1.webp',
@@ -436,7 +460,9 @@ const MOCK_PRODUCTS: Product[] = [
   {
     id: 117,
     name: 'Cannelle',
+    nameAr: 'قرفة',
     description: 'Cannelle',
+    descriptionAr: 'قرفة مطحونة طبيعية، تضفي نكهة دافئة وحلوة لأطباقكم وحلوياتكم.',
     price: 4,
     category: 'alimentaire',
     image: 'https://soukelkahina.tn/12341-home_default/cannelle1.webp',
@@ -452,7 +478,9 @@ const MOCK_PRODUCTS: Product[] = [
   {
     id: 118,
     name: 'Laurier',
+    nameAr: 'رند (ورق غار)',
     description: 'Laurier',
+    descriptionAr: 'أوراق الرند المجففة طبيعياً، ضرورية لتنكيه المرق والأطباق التونسية.',
     price: 5,
     category: 'alimentaire',
     image: 'https://soukelkahina.tn/12335-home_default/laurier1.webp',
@@ -468,7 +496,9 @@ const MOCK_PRODUCTS: Product[] = [
   {
     id: 119,
     name: 'Paprika',
+    nameAr: 'فلفل أحمر (زينة)',
     description: 'Paprika',
+    descriptionAr: 'فلفل أحمر بارد مطحون، يضيف لوناً رائعاً ونكهة خفيفة لأطباقكم.',
     price: 3.8,
     category: 'alimentaire',
     image: 'https://soukelkahina.tn/12329-home_default/paprika1.webp',
@@ -484,7 +514,9 @@ const MOCK_PRODUCTS: Product[] = [
   {
     id: 120,
     name: 'Curcuma',
+    nameAr: 'كركم',
     description: 'Curcuma',
+    descriptionAr: 'كركم طبيعي ذو جودة عالية، فوائد صحية جمة ولون ذهبي أصيل.',
     price: 3.5,
     category: 'alimentaire',
     image: 'https://soukelkahina.tn/12323-home_default/curcuma1.webp',
@@ -500,7 +532,9 @@ const MOCK_PRODUCTS: Product[] = [
   {
     id: 121,
     name: 'Poivre',
+    nameAr: 'فلفل أسود',
     description: 'Poivre',
+    descriptionAr: 'فلفل أسود مطحون طازج، نكهة حادة ورائحة نفاذة.',
     price: 4.2,
     category: 'alimentaire',
     image: 'https://soukelkahina.tn/12317-home_default/poivre1.webp',
@@ -644,7 +678,9 @@ const MOCK_PRODUCTS: Product[] = [
   {
     id: 130,
     name: 'Cœur de Cactus',
+    nameAr: 'قلب الصبار',
     description: 'Cœur de Cactus',
+    descriptionAr: 'قطعة ديكور فريدة مستوحاة من الطبيعة التونسية، تضفي لمسة عصرية وأصيلة.',
     price: 20,
     category: 'maison',
     image: 'https://soukelkahina.tn/14961-home_default/cœur-de-cactus1.webp',
@@ -1108,7 +1144,9 @@ const MOCK_PRODUCTS: Product[] = [
   {
     id: 159,
     name: 'Hydrolat de geranium 100ml spray',
+    nameAr: 'مقطر عطرشية 100مل',
     description: 'Hydrolat de geranium 100ml spray',
+    descriptionAr: 'عطرشية مقطرة طبيعية، تستخدم للتجميل أو لإضافة نكهة فريدة للحلويات والمشروبات.',
     price: 8,
     category: 'cosmetiques',
     image: 'https://soukelkahina.tn/14447-home_default/hydrolat-de-geranium-100ml-spray.webp',
@@ -1124,7 +1162,9 @@ const MOCK_PRODUCTS: Product[] = [
   {
     id: 160,
     name: 'Bague Filigrane Argent Femme',
+    nameAr: 'خاتم فضة "فليغران"',
     description: 'Bague Filigrane Argent Femme',
+    descriptionAr: 'خاتم من الفضة الخالصة مشبوك يدوياً بدقة متناهية، يعكس مهارة الصائغ التونسي.',
     price: 65,
     category: 'artisanat',
     image: 'https://soukelkahina.tn/14942-home_default/bague-filigrane-argent-femme.webp',

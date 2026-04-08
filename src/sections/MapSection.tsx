@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MapPin, Users, Store, ArrowRight, TrendingUp, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/store/LanguageContext';
+import { getProducts, getArtisans } from '@/lib/data';
+import { Link } from 'react-router-dom';
+import type { Product, Artisan } from '@/types';
 
 interface Region {
   id: string;
@@ -20,9 +23,44 @@ export function MapSection() {
   const [selectedRegion, setSelectedRegion] = useState<Region | null>(null);
   const [hoveredRegion, setHoveredRegion] = useState<Region | null>(null);
   const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
+  const [counts, setCounts] = useState<Record<string, { artisans: number, products: number }>>({});
+
+  useEffect(() => {
+    const loadData = async () => {
+      const [products, artisans] = await Promise.all([getProducts(), getArtisans()]);
+      
+      const newCounts: Record<string, { artisans: number, products: number }> = {};
+      
+      // Initialize with zeros for all rawRegions
+      rawRegions.forEach(r => {
+        newCounts[r.id] = { artisans: 0, products: 0 };
+      });
+
+      // Count artisans
+      artisans.forEach(a => {
+        const rId = a.location.toLowerCase().replace(/\s+/g, '');
+        if (newCounts[rId]) {
+            newCounts[rId].artisans++;
+        }
+      });
+
+      // Count products
+      products.forEach(p => {
+        const rId = p.location.toLowerCase().replace(/\s+/g, '');
+        if (newCounts[rId]) {
+            newCounts[rId].products++;
+        }
+      });
+
+      setCounts(newCounts);
+    };
+
+    loadData();
+  }, []);
 
   const rawRegions: Region[] = [
     { id: 'tunis', name: 'tunis', artisans: 25, products: 120, specialties: ['textile', 'ecologique'], rating: 4.8, x: 52, y: 18, color: '#c75b39' },
+    { id: 'sidibousaid', name: 'sidibousaid', artisans: 1, products: 35, specialties: ['bijoux'], rating: 4.9, x: 54, y: 16, color: '#4a90e2' },
     { id: 'nabeul', name: 'nabeul', artisans: 35, products: 180, specialties: ['poterie', 'conserves'], rating: 4.9, x: 58, y: 22, color: '#d4693f' },
     { id: 'sfax', name: 'sfax', artisans: 20, products: 95, specialties: ['huileOlive', 'menuiserie'], rating: 4.7, x: 42, y: 55, color: '#8b9a46' },
     { id: 'kairouan', name: 'kairouan', artisans: 18, products: 85, specialties: ['tapisMargoum'], rating: 4.8, x: 48, y: 42, color: '#a85d3c' },
@@ -37,11 +75,15 @@ export function MapSection() {
     { id: 'zaghouan', name: 'zaghouan', artisans: 11, products: 50, specialties: ['miel'], rating: 4.7, x: 50, y: 28, color: '#daa520' },
     { id: 'monastir', name: 'monastir', artisans: 16, products: 75, specialties: ['textileMaritime'], rating: 4.6, x: 56, y: 38, color: '#5f9ea0' },
     { id: 'medenine', name: 'medenine', artisans: 7, products: 30, specialties: ['ksour'], rating: 4.4, x: 52, y: 72, color: '#cd853f' },
+    { id: 'djerba', name: 'djerba', artisans: 1, products: 20, specialties: ['cosmetiques'], rating: 4.8, x: 55, y: 68, color: '#d4693f' },
+    { id: 'tataouine', name: 'tataouine', artisans: 1, products: 25, specialties: ['poterie'], rating: 4.8, x: 42, y: 78, color: '#a85d3c' },
   ];
 
   const regions: Region[] = rawRegions.map(r => ({
     ...r,
     name: t(`home.map.regions.${r.id}`),
+    artisans: counts[r.id]?.artisans || r.artisans,
+    products: counts[r.id]?.products || r.products,
     specialties: r.specialties.map((s: string) => {
       const key = `home.map.specialties.${s}`;
       const translation = t(key);
@@ -271,10 +313,12 @@ export function MapSection() {
                   </div>
 
                   <div className="pt-6 border-t border-gray-100 mt-auto">
-                    <Button className="w-full rounded-2xl h-14 text-base font-bold gradient-terracotta text-white shadow-lg transition-all duration-300 hover:shadow-terracotta/40 hover:-translate-y-1 group">
-                      {t('home.map.panelCTA')}
-                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1.5 transition-transform" />
-                    </Button>
+                    <Link to={`/catalog?region=${selectedRegion.id}`}>
+                      <Button className="w-full rounded-2xl h-14 text-base font-bold gradient-terracotta text-white shadow-lg transition-all duration-300 hover:shadow-terracotta/40 hover:-translate-y-1 group">
+                        {t('home.map.panelCTA')}
+                        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1.5 transition-transform" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               ) : (

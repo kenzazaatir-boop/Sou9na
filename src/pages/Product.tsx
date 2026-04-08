@@ -1,171 +1,54 @@
 import { useParams } from 'react-router-dom';
 import { Star, MapPin, ShoppingCart, Heart, Share2, Check, Truck, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useState, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { useSEO } from '@/hooks';
 import { useLanguage } from '@/store/LanguageContext';
 import { getProductSEO, getProductSchema } from '@/lib/seo';
+import { getProducts } from '@/lib/data';
 import type { Product as ProductType } from '@/types';
 
 export function Product() {
   const { id } = useParams<{ id: string }>();
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const [quantity, setQuantity] = useState(1);
+  const [product, setProduct] = useState<ProductType | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const products: ProductType[] = useMemo(() => [
-    {
-      id: 1,
-      name: t('catalog.products.0.name'),
-      artisan: 'Fatma Ben Ali',
-      location: t('home.map.regions.nabeul'),
-      category: t('catalog.categories.alimentaire'),
-      price: 12,
-      rating: 4.9,
-      reviews: 234,
-      image: 'https://images.unsplash.com/photo-1544967082-d9d25d867d66?auto=format&fit=crop&q=80',
-      description: t('catalog.products.0.description'),
-      ecoScore: 92,
-      tags: ['bio', 'traditionnel'],
-      stock: 15,
-    },
-    {
-      id: 2,
-      name: t('catalog.products.1.name'),
-      artisan: 'Mohamed Trabelsi',
-      location: t('home.map.regions.sfax'),
-      category: t('catalog.categories.alimentaire'),
-      price: 35,
-      rating: 4.8,
-      reviews: 189,
-      image: 'https://images.unsplash.com/photo-1544967082-d9d25d867d66?auto=format&fit=crop&q=80',
-      description: t('catalog.products.1.description'),
-      ecoScore: 95,
-      tags: ['bio', 'premium'],
-      stock: 24,
-    },
-    {
-      id: 3,
-      name: t('catalog.products.2.name'),
-      artisan: 'Ahmed Gharbi',
-      location: t('home.map.regions.zaghouan'),
-      category: t('catalog.categories.alimentaire'),
-      price: 45,
-      rating: 5.0,
-      reviews: 156,
-      image: 'https://images.unsplash.com/photo-1544967082-d9d25d867d66?auto=format&fit=crop&q=80',
-      description: t('catalog.products.1.description'),
-      ecoScore: 88,
-      tags: ['traditionnel'],
-      stock: 8,
-    },
-    {
-      id: 4,
-      name: t('catalog.products.3.name'),
-      artisan: 'Salma Hamdi',
-      location: t('home.map.regions.tozeur'),
-      category: t('catalog.categories.alimentaire'),
-      price: 28,
-      rating: 4.9,
-      reviews: 312,
-      image: 'https://images.unsplash.com/photo-1544967082-d9d25d867d66?auto=format&fit=crop&q=80',
-      description: t('catalog.products.0.description'),
-      ecoScore: 90,
-      tags: ['bio', 'naturel'],
-      stock: 45,
-    },
-    {
-      id: 5,
-      name: t('catalog.products.4.name'),
-      artisan: 'Amina Bouaziz',
-      location: t('home.map.regions.kairouan'),
-      category: t('catalog.categories.artisanat'),
-      price: 450,
-      rating: 4.7,
-      reviews: 89,
-      image: 'https://images.unsplash.com/photo-1544967082-d9d25d867d66?auto=format&fit=crop&q=80',
-      description: t('catalog.products.1.description'),
-      ecoScore: 85,
-      tags: ['fait main', 'luxe'],
-      stock: 3,
-    },
-    {
-      id: 6,
-      name: t('catalog.products.5.name'),
-      artisan: 'Karim Jaziri',
-      location: t('home.map.regions.nabeul'),
-      category: t('catalog.categories.artisanat'),
-      price: 85,
-      rating: 4.8,
-      reviews: 145,
-      image: 'https://images.unsplash.com/photo-1544967082-d9d25d867d66?auto=format&fit=crop&q=80',
-      description: t('catalog.products.0.description'),
-      ecoScore: 78,
-      tags: ['fait main', 'décoration'],
-      stock: 12,
-    },
-    {
-      id: 7,
-      name: t('catalog.products.6.name'),
-      artisan: 'Nadia Slimani',
-      location: t('home.map.regions.tunis'),
-      category: t('catalog.categories.textile'),
-      price: 55,
-      rating: 4.7,
-      reviews: 234,
-      image: 'https://images.unsplash.com/photo-1544967082-d9d25d867d66?auto=format&fit=crop&q=80',
-      description: t('catalog.products.1.description'),
-      ecoScore: 87,
-      tags: ['fait main', 'coton'],
-      stock: 20,
-    },
-    {
-      id: 8,
-      name: t('catalog.products.7.name'),
-      artisan: 'Hedi Romdhane',
-      location: t('home.map.regions.mahdia'),
-      category: t('catalog.categories.textile'),
-      price: 75,
-      rating: 4.6,
-      reviews: 92,
-      image: 'https://images.unsplash.com/photo-1544967082-d9d25d867d66?auto=format&fit=crop&q=80',
-      description: t('catalog.products.0.description'),
-      ecoScore: 95,
-      tags: ['soie', 'traditionnel'],
-      stock: 5,
-    },
-    {
-      id: 9,
-      name: t('catalog.products.8.name'),
-      artisan: 'Green Pack TN',
-      location: t('home.map.regions.tunis'),
-      category: t('catalog.categories.ecologique'),
-      price: 15,
-      rating: 4.9,
-      reviews: 234,
-      image: 'https://images.unsplash.com/photo-1544967082-d9d25d867d66?auto=format&fit=crop&q=80',
-      description: t('catalog.products.1.description'),
-      ecoScore: 98,
-      tags: ['zéro déchet', 'éco-responsable'],
-      stock: 100,
-    },
-    {
-      id: 10,
-      name: t('catalog.products.9.name'),
-      artisan: 'Samia Khalil',
-      location: t('home.map.regions.tunis'),
-      category: t('catalog.categories.ecologique'),
-      price: 35,
-      rating: 4.8,
-      reviews: 167,
-      image: 'https://images.unsplash.com/photo-1544967082-d9d25d867d66?auto=format&fit=crop&q=80',
-      description: t('catalog.products.0.description'),
-      ecoScore: 94,
-      tags: ['rechargeable', 'éco-responsable'],
-      stock: 30,
-    },
-  ], [t]);
+  useEffect(() => {
+    const fetchProduct = async () => {
+      setIsLoading(true);
+      try {
+        const allProducts = await getProducts();
+        const found = allProducts.find(p => p.id === Number(id));
+        setProduct(found || null);
+      } catch (error) {
+        console.error('Error fetching product:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchProduct();
+  }, [id]);
 
-  const product = products.find((p) => p.id === Number(id)) || products[0];
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 pt-24 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-terracotta"></div>
+      </div>
+    );
+  }
+
+  if (!product) {
+    return (
+      <div className="min-h-screen bg-gray-50 pt-24 flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold mb-4">Produit non trouvé</h2>
+          <Button onClick={() => window.history.back()}>Retour</Button>
+        </div>
+      </div>
+    );
+  }
   
   const productSeo = getProductSEO({
     id: product.id.toString(),
@@ -221,7 +104,7 @@ export function Product() {
                   </span>
                 </div>
                 <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
-                  {product.name}
+                  {language === 'ar' && product.nameAr ? product.nameAr : product.name}
                 </h1>
                 <p className="text-gray-600">
                   {t('product.by')} <span className="text-terracotta font-medium">{product.artisan}</span>
@@ -244,7 +127,7 @@ export function Product() {
               </div>
 
               <p className="text-gray-600 leading-relaxed">
-                {product.description}
+                {language === 'ar' && product.descriptionAr ? product.descriptionAr : product.description}
               </p>
 
               {/* Eco Score */}
