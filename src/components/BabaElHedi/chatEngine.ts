@@ -24,16 +24,30 @@ export interface ProductCard {
   link: string;
 }
 
-// ─── Catalogue de produits ────────────────────────────────────────────────────
+// ─── Catalogue de produits (enrichi depuis Souk El Kahina) ──────────────────
 const PRODUCTS_CATALOG = [
-  { name: 'Tapis Margoum', category: 'artisanat', price: '250 TND', ecoScore: 92, emoji: '🧶', tags: ['cadeau', 'textile', 'décoration', 'luxury'], link: '/catalog' },
-  { name: "Huile d'Olive Extra Vierge", category: 'alimentaire', price: '35 TND', ecoScore: 98, emoji: '🫒', tags: ['cadeau', 'alimentaire', 'eco', 'bio', 'naturel'], link: '/catalog' },
-  { name: 'Poterie de Sejnane', category: 'artisanat', price: '85 TND', ecoScore: 95, emoji: '🏺', tags: ['cadeau', 'décoration', 'artisanat', 'femme'], link: '/catalog' },
-  { name: 'Couffin en Halfa', category: 'ecologique', price: '45 TND', ecoScore: 99, emoji: '🧺', tags: ['eco', 'naturel', 'recyclable', 'cadeau'], link: '/catalog' },
-  { name: 'Céramique de Nabeul', category: 'artisanat', price: '65 TND', ecoScore: 88, emoji: '🎨', tags: ['cadeau', 'décoration', 'coloré'], link: '/catalog' },
-  { name: 'Fouta Tunisienne', category: 'textile', price: '28 TND', ecoScore: 85, emoji: '🛁', tags: ['cadeau', 'textile', 'bain', 'plage'], link: '/catalog' },
-  { name: "Savon à l'Huile d'Olive", category: 'ecologique', price: '15 TND', ecoScore: 96, emoji: '🧼', tags: ['eco', 'naturel', 'bien-être', 'cadeau', 'bio'], link: '/catalog' },
-  { name: 'Dattes Deglet Nour', category: 'alimentaire', price: '22 TND', ecoScore: 90, emoji: '🌴', tags: ['alimentaire', 'cadeau', 'sucré', 'naturel'], link: '/catalog' },
+  // Alimentaire
+  { name: 'Zrir Pistache 200g', category: 'alimentaire', price: '20 TND', ecoScore: 92, emoji: '🥜', tags: ['cadeau', 'alimentaire', 'sucré', 'naturel'], link: '/catalog' },
+  { name: 'Figues séchées', category: 'alimentaire', price: '10 TND', ecoScore: 83, emoji: '🌿', tags: ['alimentaire', 'naturel', 'bio'], link: '/catalog' },
+  { name: 'Couscous Maison 500g', category: 'alimentaire', price: '2 TND', ecoScore: 80, emoji: '🥣', tags: ['alimentaire', 'naturel', 'cadeau'], link: '/catalog' },
+  { name: 'Sucre de dattes', category: 'alimentaire', price: '5 TND', ecoScore: 99, emoji: '🌴', tags: ['alimentaire', 'cadeau', 'sucré', 'naturel', 'bio'], link: '/catalog' },
+  { name: "Mélange d'épices 100g", category: 'alimentaire', price: '2.5 TND', ecoScore: 93, emoji: '🌶️', tags: ['alimentaire', 'naturel', 'cadeau'], link: '/catalog' },
+  { name: 'Curcuma', category: 'alimentaire', price: '3.5 TND', ecoScore: 88, emoji: '🟡', tags: ['alimentaire', 'bio', 'eco', 'naturel'], link: '/catalog' },
+  { name: 'Tomates séchées marinées', category: 'alimentaire', price: '12 TND', ecoScore: 93, emoji: '🍅', tags: ['alimentaire', 'naturel', 'cadeau'], link: '/catalog' },
+  // Maison & Décoration
+  { name: 'Lanterne Bougie en Jute Fait Main', category: 'maison', price: '45 TND', ecoScore: 95, emoji: '🕯️', tags: ['cadeau', 'décoration', 'eco', 'naturel'], link: '/catalog' },
+  { name: 'Tableau Ghorbel Décoratif Fait Main', category: 'maison', price: '70 TND', ecoScore: 92, emoji: '🎨', tags: ['cadeau', 'décoration', 'artisanat'], link: '/catalog' },
+  { name: 'Lampe K\'bira en Fil de Coton Rose', category: 'maison', price: '120 TND', ecoScore: 88, emoji: '💡', tags: ['cadeau', 'décoration', 'luxury'], link: '/catalog' },
+  { name: 'Tableau Tissage Berbère Réversible', category: 'maison', price: '1600 TND', ecoScore: 82, emoji: '🧶', tags: ['cadeau', 'décoration', 'artisanat', 'luxury', 'textile'], link: '/catalog' },
+  // Cosmétiques
+  { name: 'Hydrolat de menthe poivree 250ml', category: 'cosmetiques', price: '9 TND', ecoScore: 94, emoji: '🌿', tags: ['eco', 'naturel', 'bien-être', 'bio', 'cadeau'], link: '/catalog' },
+  { name: 'Eau florale de bigaradier 250ml', category: 'cosmetiques', price: '35 TND', ecoScore: 92, emoji: '🌸', tags: ['eco', 'naturel', 'femme', 'bien-être'], link: '/catalog' },
+  { name: 'Pack Shine Bright Éclaircissant', category: 'cosmetiques', price: '160 TND', ecoScore: 97, emoji: '✨', tags: ['femme', 'cadeau', 'bien-être', 'eco'], link: '/catalog' },
+  // Artisanat & Bijoux
+  { name: "Bague Filigrane Argent Femme", category: 'artisanat', price: '65 TND', ecoScore: 97, emoji: '💍', tags: ['cadeau', 'femme', 'artisanat', 'luxury'], link: '/catalog' },
+  { name: 'Bracelet Amazigh en Argent 925', category: 'artisanat', price: '880 TND', ecoScore: 89, emoji: '📿', tags: ['cadeau', 'femme', 'artisanat', 'luxury'], link: '/catalog' },
+  { name: 'Collier Tanit Lunja en Argent 925', category: 'artisanat', price: '280 TND', ecoScore: 86, emoji: '🔮', tags: ['cadeau', 'femme', 'artisanat'], link: '/catalog' },
+  { name: 'Bracelet Berbère Feuilles en Argent 925', category: 'artisanat', price: '595 TND', ecoScore: 98, emoji: '🌿', tags: ['cadeau', 'femme', 'artisanat', 'eco', 'luxury'], link: '/catalog' },
 ];
 
 // ─── Storytelling par produit ─────────────────────────────────────────────────
@@ -263,8 +277,8 @@ Garde tes réponses organiques, relativement concises (maximum 3-4 courtes phras
       case 'artisans':
         return {
           content: lang === 'fr'
-            ? "👨‍🎨 Nos artisans sont le cœur de Soukna ! On soutient plus de 120 artisans à travers 15 régions de Tunisie.\n\n✅ Fatma de Nabeul — Poterie & Conserves\n✅ Mohamed de Sfax — Huile d'Olive\n✅ Aïcha de Kasserine — Tapis Margoum\n\nChaque profil a une histoire. Veux-tu que j'en raconte une ? 🤲"
-            : "👨‍🎨 حرفيينا هم قلب سوقنا ! نحنا ندعموا أكثر من 120 حرفي في 15 ولاية تونسية.\n\n✅ فاطمة من نابل — فخار ومعلبات\n✅ محمد من صفاقس — زيت زيتون\n✅ عائشة من القصرين — زرابي مرقوم\n\nكل واحد عندو قصة. تحب نحكيلك ؟ 🤲",
+            ? "👨‍🎨 Nos artisans sont le cœur de Soukna ! Voici quelques-uns de nos talents :\n\n✅ Fatma Ben Ali (Nabeul) — Conserves & Agro-alimentaire\n✅ Mohamed Trabelsi (Sfax) — Huiles & Épices\n✅ Aïcha Mansouri (Kasserine) — Tapis Berbères\n✅ Zahra Belhaj (Tataouine) — Poterie & Céramique\n✅ Samir Cherni (Tunis) — Décoration & Luminaires\n✅ Leila Chaabane (Sidi Bou Said) — Bijoux & Accessoires\n✅ Khaled Ben Youssef (Djerba) — Cosmétiques Naturels\n✅ Amira Guettat (Gafsa) — Vannerie & Halfa\n\nChaque profil a une histoire. Veux-tu que j'en raconte une ? 🤲"
+            : "👨‍🎨 حرفيينا هم قلب سوقنا ! هازلك بعضهم:\n\n✅ فاطمة بن علي (نابل) — مواد غذائية ومعلبات\n✅ محمد الطرابلسي (صفاقس) — زيوت وتوابل\n✅ عائشة المنصوري (القصرين) — سجاد أمازيغي\n✅ زهرة بلحاج (تطاوين) — فخار وخزف\n✅ سمير شرني (تونس) — ديكور وإضاءة\n✅ ليلى الشعبان (سيدي بوسعيد) — مجوهرات\n✅ خالد بن يوسف (جربة) — تجميل طبيعي\n✅ أميرة قيتات (قفصة) — حياكة وحلفاء\n\nكل واحد عندو قصة. تحب نحكيلك ؟ 🤲",
           suggestions: suggestionsToAttach,
         };
   

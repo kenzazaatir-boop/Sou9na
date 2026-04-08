@@ -1,0 +1,1336 @@
+{
+  "MOCK_PRODUCTS": [
+    {
+      "id": 100,
+      "name": "La Ruine de l'Ail Noir et Propolis 250g",
+      "description": "La Ruine de l'Ail Noir et Propolis 250g",
+      "price": 23000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/14835-home_default/la-ruine-de-l-ail-noir-et-propolis-250g.webp",
+      "artisan": "Zahra de Tataouine",
+      "location": "Tunisie",
+      "rating": 4.974479887668822,
+      "reviews": 4,
+      "ecoScore": 94,
+      "stock": 12,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 101,
+      "name": "Pâte d'Ail Noir Nature 100g",
+      "description": "Pâte d'Ail Noir Nature 100g",
+      "price": 22000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/14833-home_default/pâte-d-ail-noir-nature-100g.webp",
+      "artisan": "Zahra de Tataouine",
+      "location": "Tunisie",
+      "rating": 4.295884478745624,
+      "reviews": 31,
+      "ecoScore": 86,
+      "stock": 41,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 102,
+      "name": "Coffret Zrir 3 Gouts",
+      "description": "Coffret Zrir 3 Gouts",
+      "price": 62000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/13844-home_default/coffret-zrir-3-gouts.webp",
+      "artisan": "Fatma de Nabeul",
+      "location": "Tunisie",
+      "rating": 4.193598130997673,
+      "reviews": 22,
+      "ecoScore": 81,
+      "stock": 26,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 103,
+      "name": "Zrir Noisette 200g",
+      "description": "Zrir Noisette 200g",
+      "price": 15000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/13835-home_default/zrir-noisette-200g.webp",
+      "artisan": "Fatma de Nabeul",
+      "location": "Tunisie",
+      "rating": 4.095552475596814,
+      "reviews": 19,
+      "ecoScore": 86,
+      "stock": 37,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 104,
+      "name": "Zrir Noix 200g",
+      "description": "Zrir Noix 200g",
+      "price": 15000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/13833-home_default/zrir-noix-200g.webp",
+      "artisan": "Fatma de Nabeul",
+      "location": "Tunisie",
+      "rating": 4.940741348793195,
+      "reviews": 41,
+      "ecoScore": 85,
+      "stock": 33,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 105,
+      "name": "Zrir Pistache 200g",
+      "description": "Zrir Pistache 200g",
+      "price": 20000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/13829-home_default/zrir-pistache-200g.webp",
+      "artisan": "Fatma de Nabeul",
+      "location": "Tunisie",
+      "rating": 4.232295240909713,
+      "reviews": 27,
+      "ecoScore": 80,
+      "stock": 38,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 106,
+      "name": "Zrir Pignon 200g",
+      "description": "Zrir Pignon 200g",
+      "price": 25000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/13825-home_default/zrir-pignon-200g.webp",
+      "artisan": "Mohamed de Sfax",
+      "location": "Tunisie",
+      "rating": 4.109392634515464,
+      "reviews": 47,
+      "ecoScore": 94,
+      "stock": 27,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 107,
+      "name": "Sorgho (درع)",
+      "description": "Sorgho (درع)",
+      "price": 6000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/13406-home_default/sorgho-درع.webp",
+      "artisan": "Mohamed de Sfax",
+      "location": "Tunisie",
+      "rating": 4.089585809751531,
+      "reviews": 36,
+      "ecoScore": 84,
+      "stock": 17,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 108,
+      "name": "Figues séchées",
+      "description": "Figues séchées",
+      "price": 10000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/13182-home_default/figues-séchées1.webp",
+      "artisan": "Samir de Tunis",
+      "location": "Tunisie",
+      "rating": 4.198578593535935,
+      "reviews": 36,
+      "ecoScore": 83,
+      "stock": 12,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 109,
+      "name": "Tomates séchées marinées",
+      "description": "Tomates séchées marinées",
+      "price": 12000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/13180-home_default/tomates-séchées-marinées1.webp",
+      "artisan": "Mohamed de Sfax",
+      "location": "Tunisie",
+      "rating": 4.4349013800276325,
+      "reviews": 41,
+      "ecoScore": 93,
+      "stock": 40,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 110,
+      "name": "Mhamsa Maison epaise 500g",
+      "description": "Mhamsa Maison epaise 500g",
+      "price": 3000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/12183-home_default/mhamsa-maison-epaise-500g1.webp",
+      "artisan": "Zahra de Tataouine",
+      "location": "Tunisie",
+      "rating": 4.798673103983027,
+      "reviews": 12,
+      "ecoScore": 93,
+      "stock": 49,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 111,
+      "name": "Mhamsa Maison fine 500g",
+      "description": "Mhamsa Maison fine 500g",
+      "price": 3000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/12174-home_default/mhamsa-maison-fine-500g1.webp",
+      "artisan": "Zahra de Tataouine",
+      "location": "Tunisie",
+      "rating": 4.879527889870209,
+      "reviews": 44,
+      "ecoScore": 85,
+      "stock": 37,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 112,
+      "name": "Couscous Maison 500g",
+      "description": "Couscous Maison 500g",
+      "price": 2000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/12168-home_default/couscous-maison-500g.webp",
+      "artisan": "Mohamed de Sfax",
+      "location": "Tunisie",
+      "rating": 4.300156696880217,
+      "reviews": 37,
+      "ecoScore": 80,
+      "stock": 10,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 113,
+      "name": "Nwasser Maison 500g",
+      "description": "Nwasser Maison 500g",
+      "price": 3000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/12099-home_default/nwasser-maison-500g1.webp",
+      "artisan": "Mohamed de Sfax",
+      "location": "Tunisie",
+      "rating": 4.079448377728169,
+      "reviews": 42,
+      "ecoScore": 80,
+      "stock": 26,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 114,
+      "name": "Nwasser blé complet 500g",
+      "description": "Nwasser blé complet 500g",
+      "price": 4000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/12096-home_default/nwasser-blé-complet-500g1.webp",
+      "artisan": "Samir de Tunis",
+      "location": "Tunisie",
+      "rating": 4.169065188277024,
+      "reviews": 4,
+      "ecoScore": 82,
+      "stock": 12,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 115,
+      "name": "Sucre de dattes",
+      "description": "Sucre de dattes",
+      "price": 5000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/12359-home_default/sucre-de-dattes.webp",
+      "artisan": "Samir de Tunis",
+      "location": "Tunisie",
+      "rating": 4.481597628706149,
+      "reviews": 34,
+      "ecoScore": 99,
+      "stock": 24,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 116,
+      "name": "Cumin",
+      "description": "Cumin",
+      "price": 4000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/12347-home_default/cumin.webp",
+      "artisan": "Zahra de Tataouine",
+      "location": "Tunisie",
+      "rating": 4.280617671986707,
+      "reviews": 35,
+      "ecoScore": 91,
+      "stock": 14,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 117,
+      "name": "Cannelle",
+      "description": "Cannelle",
+      "price": 4000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/12341-home_default/cannelle1.webp",
+      "artisan": "Aïcha de Kasserine",
+      "location": "Tunisie",
+      "rating": 4.923619582177825,
+      "reviews": 9,
+      "ecoScore": 84,
+      "stock": 19,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 118,
+      "name": "Laurier",
+      "description": "Laurier",
+      "price": 5000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/12335-home_default/laurier1.webp",
+      "artisan": "Samir de Tunis",
+      "location": "Tunisie",
+      "rating": 4.150442474534402,
+      "reviews": 13,
+      "ecoScore": 83,
+      "stock": 44,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 119,
+      "name": "Paprika",
+      "description": "Paprika",
+      "price": 3800,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/12329-home_default/paprika1.webp",
+      "artisan": "Samir de Tunis",
+      "location": "Tunisie",
+      "rating": 4.769090531248119,
+      "reviews": 40,
+      "ecoScore": 83,
+      "stock": 32,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 120,
+      "name": "Curcuma",
+      "description": "Curcuma",
+      "price": 3500,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/12323-home_default/curcuma1.webp",
+      "artisan": "Aïcha de Kasserine",
+      "location": "Tunisie",
+      "rating": 4.256128268601263,
+      "reviews": 37,
+      "ecoScore": 88,
+      "stock": 10,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 121,
+      "name": "Poivre",
+      "description": "Poivre",
+      "price": 4200,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/12317-home_default/poivre1.webp",
+      "artisan": "Fatma de Nabeul",
+      "location": "Tunisie",
+      "rating": 4.241401569138505,
+      "reviews": 13,
+      "ecoScore": 81,
+      "stock": 12,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 122,
+      "name": "Paprika (piment mharwech)",
+      "description": "Paprika (piment mharwech)",
+      "price": 4000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/12156-home_default/paprika-piment-mharwech1.webp",
+      "artisan": "Mohamed de Sfax",
+      "location": "Tunisie",
+      "rating": 4.500369525261656,
+      "reviews": 18,
+      "ecoScore": 82,
+      "stock": 47,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 123,
+      "name": "Cumin en poudre 100g",
+      "description": "Cumin en poudre 100g",
+      "price": 4000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/12150-home_default/cumin-en-poudre-100g1.webp",
+      "artisan": "Mohamed de Sfax",
+      "location": "Tunisie",
+      "rating": 4.580945375950049,
+      "reviews": 4,
+      "ecoScore": 83,
+      "stock": 16,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 124,
+      "name": "Poivre noire en poudre 100g",
+      "description": "Poivre noire en poudre 100g",
+      "price": 4000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/12144-home_default/poivre-noire-en-poudre-100g1.webp",
+      "artisan": "Mohamed de Sfax",
+      "location": "Tunisie",
+      "rating": 4.124914104690512,
+      "reviews": 17,
+      "ecoScore": 84,
+      "stock": 26,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 125,
+      "name": "Mélange d'épices 100g",
+      "description": "Mélange d'épices 100g",
+      "price": 2500,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/12138-home_default/mélange-d-épices-100g1.webp",
+      "artisan": "Mohamed de Sfax",
+      "location": "Tunisie",
+      "rating": 4.107951792759233,
+      "reviews": 27,
+      "ecoScore": 93,
+      "stock": 18,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 126,
+      "name": "Mélange d'épices 250g",
+      "description": "Mélange d'épices 250g",
+      "price": 2500,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/12132-home_default/mélange-d-épices-250g1.webp",
+      "artisan": "Mohamed de Sfax",
+      "location": "Tunisie",
+      "rating": 4.13676683400459,
+      "reviews": 31,
+      "ecoScore": 91,
+      "stock": 10,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 127,
+      "name": "Piment rouge moulu piquant 250g",
+      "description": "Piment rouge moulu piquant 250g",
+      "price": 4000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/12126-home_default/piment-rouge-moulu-piquant-250g1.webp",
+      "artisan": "Fatma de Nabeul",
+      "location": "Tunisie",
+      "rating": 4.841752404408846,
+      "reviews": 20,
+      "ecoScore": 92,
+      "stock": 10,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 128,
+      "name": "Mloukhia, poudre de feuilles de corète 250g",
+      "description": "Mloukhia, poudre de feuilles de corète 250g",
+      "price": 4000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/12120-home_default/mloukhia-poudre-de-feuilles-de-corète-250g1.webp",
+      "artisan": "Aïcha de Kasserine",
+      "location": "Tunisie",
+      "rating": 4.246472555604444,
+      "reviews": 36,
+      "ecoScore": 95,
+      "stock": 16,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 129,
+      "name": "piment rouge moulu 250g",
+      "description": "piment rouge moulu 250g",
+      "price": 6000,
+      "category": "alimentaire",
+      "image": "https://soukelkahina.tn/12114-home_default/piment-rouge-moulu-250g1.webp",
+      "artisan": "Samir de Tunis",
+      "location": "Tunisie",
+      "rating": 4.7349274718616545,
+      "reviews": 11,
+      "ecoScore": 83,
+      "stock": 23,
+      "tags": [
+        "alimentaire"
+      ]
+    },
+    {
+      "id": 130,
+      "name": "Cœur de Cactus",
+      "description": "Cœur de Cactus",
+      "price": 20000,
+      "category": "maison",
+      "image": "https://soukelkahina.tn/14961-home_default/cœur-de-cactus1.webp",
+      "artisan": "Samir de Tunis",
+      "location": "Tunisie",
+      "rating": 4.378005015516043,
+      "reviews": 40,
+      "ecoScore": 84,
+      "stock": 24,
+      "tags": [
+        "maison"
+      ]
+    },
+    {
+      "id": 131,
+      "name": "Lampadaire Design Frangé en Jute Naturel",
+      "description": "Lampadaire Design Frangé en Jute Naturel",
+      "price": 380000,
+      "category": "maison",
+      "image": "https://soukelkahina.tn/14957-home_default/lampadaire-design-frangé-en-jute-naturel.webp",
+      "artisan": "Samir de Tunis",
+      "location": "Tunisie",
+      "rating": 4.373413657964309,
+      "reviews": 31,
+      "ecoScore": 87,
+      "stock": 20,
+      "tags": [
+        "maison"
+      ]
+    },
+    {
+      "id": 132,
+      "name": "Lanterne Bougie Design Geometric Jute Naturel",
+      "description": "Lanterne Bougie Design Geometric Jute Naturel",
+      "price": 60000,
+      "category": "maison",
+      "image": "https://soukelkahina.tn/14954-home_default/lanterne-bougie-design-geometric-jute-naturel.webp",
+      "artisan": "Zahra de Tataouine",
+      "location": "Tunisie",
+      "rating": 4.880205043378455,
+      "reviews": 48,
+      "ecoScore": 95,
+      "stock": 14,
+      "tags": [
+        "maison"
+      ]
+    },
+    {
+      "id": 133,
+      "name": "Lanterne Bougie Design En Jute Fait Main",
+      "description": "Lanterne Bougie Design En Jute Fait Main",
+      "price": 45000,
+      "category": "maison",
+      "image": "https://soukelkahina.tn/14951-home_default/lanterne-bougie-design-en-jute-fait-main.webp",
+      "artisan": "Aïcha de Kasserine",
+      "location": "Tunisie",
+      "rating": 4.577893025540721,
+      "reviews": 6,
+      "ecoScore": 87,
+      "stock": 20,
+      "tags": [
+        "maison"
+      ]
+    },
+    {
+      "id": 134,
+      "name": "Lampe de Table Artisanale en Jute et Métal",
+      "description": "Lampe de Table Artisanale en Jute et Métal",
+      "price": 170000,
+      "category": "maison",
+      "image": "https://soukelkahina.tn/14947-home_default/lampe-de-table-artisanale-en-jute-et-métal.webp",
+      "artisan": "Mohamed de Sfax",
+      "location": "Tunisie",
+      "rating": 4.340463540542903,
+      "reviews": 47,
+      "ecoScore": 99,
+      "stock": 25,
+      "tags": [
+        "maison"
+      ]
+    },
+    {
+      "id": 135,
+      "name": "Lampe à poser en jute et métal ajouré",
+      "description": "Lampe à poser en jute et métal ajouré",
+      "price": 150000,
+      "category": "maison",
+      "image": "https://soukelkahina.tn/14943-home_default/lampe-à-poser-en-jute-et-métal-ajouré.webp",
+      "artisan": "Mohamed de Sfax",
+      "location": "Tunisie",
+      "rating": 4.170012125613265,
+      "reviews": 27,
+      "ecoScore": 92,
+      "stock": 32,
+      "tags": [
+        "maison"
+      ]
+    },
+    {
+      "id": 136,
+      "name": "Tableau Ghorbel Décoratif Fait Main",
+      "description": "Tableau Ghorbel Décoratif Fait Main",
+      "price": 70000,
+      "category": "maison",
+      "image": "https://soukelkahina.tn/14939-home_default/tableau-ghorbel-décoratif-fait-main1.webp",
+      "artisan": "Aïcha de Kasserine",
+      "location": "Tunisie",
+      "rating": 4.5866287445769,
+      "reviews": 3,
+      "ecoScore": 92,
+      "stock": 31,
+      "tags": [
+        "maison"
+      ]
+    },
+    {
+      "id": 137,
+      "name": "Coffret Déco Romantique \"Cœurs Passion\" en Céramique Artisanale",
+      "description": "Coffret Déco Romantique \"Cœurs Passion\" en Céramique Artisanale",
+      "price": 25000,
+      "category": "maison",
+      "image": "https://soukelkahina.tn/14938-home_default/coffret-déco-romantique-cœurs-passion-en-céramique-artisanale1.webp",
+      "artisan": "Mohamed de Sfax",
+      "location": "Tunisie",
+      "rating": 4.60042492785162,
+      "reviews": 49,
+      "ecoScore": 89,
+      "stock": 24,
+      "tags": [
+        "maison"
+      ]
+    },
+    {
+      "id": 138,
+      "name": "Ensemble Romantique Cœur Rouge en Céramique Artisanale",
+      "description": "Ensemble Romantique Cœur Rouge en Céramique Artisanale",
+      "price": 30000,
+      "category": "maison",
+      "image": "https://soukelkahina.tn/14937-home_default/ensemble-romantique-cœur-rouge-en-céramique-artisanale1.webp",
+      "artisan": "Samir de Tunis",
+      "location": "Tunisie",
+      "rating": 4.449700097679846,
+      "reviews": 19,
+      "ecoScore": 91,
+      "stock": 41,
+      "tags": [
+        "maison"
+      ]
+    },
+    {
+      "id": 139,
+      "name": "Lampe K'bira en Fil de Coton Rose",
+      "description": "Lampe K'bira en Fil de Coton Rose",
+      "price": 120000,
+      "category": "maison",
+      "image": "https://soukelkahina.tn/14662-home_default/lampe-k-bira-en-fil-de-coton-rose.webp",
+      "artisan": "Fatma de Nabeul",
+      "location": "Tunisie",
+      "rating": 4.09749996064652,
+      "reviews": 44,
+      "ecoScore": 88,
+      "stock": 46,
+      "tags": [
+        "maison"
+      ]
+    },
+    {
+      "id": 140,
+      "name": "Abat-jour Artisanal en Fil de Coton Coloré",
+      "description": "Abat-jour Artisanal en Fil de Coton Coloré",
+      "price": 160000,
+      "category": "maison",
+      "image": "https://soukelkahina.tn/14655-home_default/abat-jour-artisanal-en-fil-de-coton-coloré.webp",
+      "artisan": "Aïcha de Kasserine",
+      "location": "Tunisie",
+      "rating": 4.198406655707568,
+      "reviews": 12,
+      "ecoScore": 80,
+      "stock": 42,
+      "tags": [
+        "maison"
+      ]
+    },
+    {
+      "id": 141,
+      "name": "Abat-jour Artisanale en Jute et Macramé",
+      "description": "Abat-jour Artisanale en Jute et Macramé",
+      "price": 320000,
+      "category": "maison",
+      "image": "https://soukelkahina.tn/14652-home_default/abat-jour-artisanale-en-jute-et-macramé.webp",
+      "artisan": "Samir de Tunis",
+      "location": "Tunisie",
+      "rating": 4.027210014857535,
+      "reviews": 21,
+      "ecoScore": 90,
+      "stock": 25,
+      "tags": [
+        "maison"
+      ]
+    },
+    {
+      "id": 142,
+      "name": "Lampadaire Trépied Rotin Moelle",
+      "description": "Lampadaire Trépied Rotin Moelle",
+      "price": 320000,
+      "category": "maison",
+      "image": "https://soukelkahina.tn/14649-home_default/lampadaire-trépied-rotin-moelle.webp",
+      "artisan": "Aïcha de Kasserine",
+      "location": "Tunisie",
+      "rating": 4.190999840017572,
+      "reviews": 29,
+      "ecoScore": 97,
+      "stock": 34,
+      "tags": [
+        "maison"
+      ]
+    },
+    {
+      "id": 143,
+      "name": "Lustre Artisanal Banane & Rotin",
+      "description": "Lustre Artisanal Banane & Rotin",
+      "price": 320000,
+      "category": "maison",
+      "image": "https://soukelkahina.tn/14646-home_default/lustre-artisanal-banane-rotin.webp",
+      "artisan": "Zahra de Tataouine",
+      "location": "Tunisie",
+      "rating": 4.04100752358626,
+      "reviews": 42,
+      "ecoScore": 88,
+      "stock": 34,
+      "tags": [
+        "maison"
+      ]
+    },
+    {
+      "id": 144,
+      "name": "Tableau Tissage Berbère Réversible",
+      "description": "Tableau Tissage Berbère Réversible",
+      "price": 1600000,
+      "category": "maison",
+      "image": "https://soukelkahina.tn/14601-home_default/tableau-tissage-berbère-réversible.webp",
+      "artisan": "Zahra de Tataouine",
+      "location": "Tunisie",
+      "rating": 4.927013848073399,
+      "reviews": 34,
+      "ecoScore": 82,
+      "stock": 35,
+      "tags": [
+        "maison"
+      ]
+    },
+    {
+      "id": 145,
+      "name": "Pack Shine Bright Éclaircissant",
+      "description": "Pack Shine Bright Éclaircissant",
+      "price": 160000,
+      "category": "cosmetiques",
+      "image": "https://soukelkahina.tn/14598-home_default/pack-shine-bright-éclaircissant1.webp",
+      "artisan": "Mohamed de Sfax",
+      "location": "Tunisie",
+      "rating": 4.921792803142763,
+      "reviews": 46,
+      "ecoScore": 97,
+      "stock": 16,
+      "tags": [
+        "cosmetiques"
+      ]
+    },
+    {
+      "id": 146,
+      "name": "Pack Vita-Lift Anti-âge",
+      "description": "Pack Vita-Lift Anti-âge",
+      "price": 142000,
+      "category": "cosmetiques",
+      "image": "https://soukelkahina.tn/14597-home_default/pack-vita-lift-anti-âge1.webp",
+      "artisan": "Samir de Tunis",
+      "location": "Tunisie",
+      "rating": 4.590714979815623,
+      "reviews": 14,
+      "ecoScore": 85,
+      "stock": 36,
+      "tags": [
+        "cosmetiques"
+      ]
+    },
+    {
+      "id": 147,
+      "name": "Hydrolat de menthe poivree 100ml spray",
+      "description": "Hydrolat de menthe poivree 100ml spray",
+      "price": 7000,
+      "category": "cosmetiques",
+      "image": "https://soukelkahina.tn/14465-home_default/hydrolat-de-menthe-poivree-100ml-spray.webp",
+      "artisan": "Fatma de Nabeul",
+      "location": "Tunisie",
+      "rating": 4.224656287067958,
+      "reviews": 28,
+      "ecoScore": 86,
+      "stock": 11,
+      "tags": [
+        "cosmetiques"
+      ]
+    },
+    {
+      "id": 148,
+      "name": "Hydrolat de menthe poivree 250ml",
+      "description": "Hydrolat de menthe poivree 250ml",
+      "price": 9000,
+      "category": "cosmetiques",
+      "image": "https://soukelkahina.tn/14463-home_default/hydrolat-de-menthe-poivree-250ml.webp",
+      "artisan": "Fatma de Nabeul",
+      "location": "Tunisie",
+      "rating": 4.113168602259308,
+      "reviews": 47,
+      "ecoScore": 94,
+      "stock": 35,
+      "tags": [
+        "cosmetiques"
+      ]
+    },
+    {
+      "id": 149,
+      "name": "Hydrolat de menthe pouliot 250ml",
+      "description": "Hydrolat de menthe pouliot 250ml",
+      "price": 9000,
+      "category": "cosmetiques",
+      "image": "https://soukelkahina.tn/14461-home_default/hydrolat-de-menthe-pouliot-250ml.webp",
+      "artisan": "Samir de Tunis",
+      "location": "Tunisie",
+      "rating": 4.139532737828172,
+      "reviews": 12,
+      "ecoScore": 92,
+      "stock": 40,
+      "tags": [
+        "cosmetiques"
+      ]
+    },
+    {
+      "id": 150,
+      "name": "Eau florale de bigaradier 250ml",
+      "description": "Eau florale de bigaradier 250ml",
+      "price": 8000,
+      "category": "cosmetiques",
+      "image": "https://soukelkahina.tn/14460-home_default/eau-florale-de-bigaradier-250ml.webp",
+      "artisan": "Samir de Tunis",
+      "location": "Tunisie",
+      "rating": 4.423287331083882,
+      "reviews": 33,
+      "ecoScore": 82,
+      "stock": 32,
+      "tags": [
+        "cosmetiques"
+      ]
+    },
+    {
+      "id": 151,
+      "name": "Eau florale de bigaradier 100ml spray",
+      "description": "Eau florale de bigaradier 100ml spray",
+      "price": 10000,
+      "category": "cosmetiques",
+      "image": "https://soukelkahina.tn/14459-home_default/eau-florale-de-bigaradier-100ml-spray.webp",
+      "artisan": "Mohamed de Sfax",
+      "location": "Tunisie",
+      "rating": 4.512270829059032,
+      "reviews": 10,
+      "ecoScore": 86,
+      "stock": 32,
+      "tags": [
+        "cosmetiques"
+      ]
+    },
+    {
+      "id": 152,
+      "name": "Eau florale de bigaradier Fechka 250ml",
+      "description": "Eau florale de bigaradier Fechka 250ml",
+      "price": 35000,
+      "category": "cosmetiques",
+      "image": "https://soukelkahina.tn/14458-home_default/eau-florale-de-bigaradier-fechka-250ml.webp",
+      "artisan": "Samir de Tunis",
+      "location": "Tunisie",
+      "rating": 4.776030733121241,
+      "reviews": 35,
+      "ecoScore": 92,
+      "stock": 37,
+      "tags": [
+        "cosmetiques"
+      ]
+    },
+    {
+      "id": 153,
+      "name": "Eau florale de bigaradier 250ml",
+      "description": "Eau florale de bigaradier 250ml",
+      "price": 12000,
+      "category": "cosmetiques",
+      "image": "https://soukelkahina.tn/14455-home_default/eau-florale-de-bigaradier-250ml.webp",
+      "artisan": "Fatma de Nabeul",
+      "location": "Tunisie",
+      "rating": 4.857366139442806,
+      "reviews": 10,
+      "ecoScore": 95,
+      "stock": 22,
+      "tags": [
+        "cosmetiques"
+      ]
+    },
+    {
+      "id": 154,
+      "name": "Hydrolat de cypres 100ml spray",
+      "description": "Hydrolat de cypres 100ml spray",
+      "price": 7000,
+      "category": "cosmetiques",
+      "image": "https://soukelkahina.tn/14454-home_default/hydrolat-de-cypres-100ml-spray.webp",
+      "artisan": "Fatma de Nabeul",
+      "location": "Tunisie",
+      "rating": 4.740842912884901,
+      "reviews": 40,
+      "ecoScore": 83,
+      "stock": 34,
+      "tags": [
+        "cosmetiques"
+      ]
+    },
+    {
+      "id": 155,
+      "name": "Hydrolat de cypres 250ml",
+      "description": "Hydrolat de cypres 250ml",
+      "price": 9000,
+      "category": "cosmetiques",
+      "image": "https://soukelkahina.tn/14452-home_default/hydrolat-de-cypres-250ml.webp",
+      "artisan": "Mohamed de Sfax",
+      "location": "Tunisie",
+      "rating": 4.810297618754545,
+      "reviews": 28,
+      "ecoScore": 93,
+      "stock": 24,
+      "tags": [
+        "cosmetiques"
+      ]
+    },
+    {
+      "id": 156,
+      "name": "Hydrolat de laurier noble 100ml spray",
+      "description": "Hydrolat de laurier noble 100ml spray",
+      "price": 7000,
+      "category": "cosmetiques",
+      "image": "https://soukelkahina.tn/14451-home_default/hydrolat-de-laurier-noble-100ml-spray.webp",
+      "artisan": "Fatma de Nabeul",
+      "location": "Tunisie",
+      "rating": 4.703161926918405,
+      "reviews": 30,
+      "ecoScore": 95,
+      "stock": 27,
+      "tags": [
+        "cosmetiques"
+      ]
+    },
+    {
+      "id": 157,
+      "name": "Hydrolat de laurier noble 250ml",
+      "description": "Hydrolat de laurier noble 250ml",
+      "price": 9000,
+      "category": "cosmetiques",
+      "image": "https://soukelkahina.tn/14449-home_default/hydrolat-de-laurier-noble-250ml.webp",
+      "artisan": "Fatma de Nabeul",
+      "location": "Tunisie",
+      "rating": 4.482834822215099,
+      "reviews": 3,
+      "ecoScore": 88,
+      "stock": 36,
+      "tags": [
+        "cosmetiques"
+      ]
+    },
+    {
+      "id": 158,
+      "name": "Hydrolat de geranium Fechka 250ml",
+      "description": "Hydrolat de geranium Fechka 250ml",
+      "price": 28000,
+      "category": "cosmetiques",
+      "image": "https://soukelkahina.tn/14448-home_default/hydrolat-de-geranium-fechka-250ml.webp",
+      "artisan": "Zahra de Tataouine",
+      "location": "Tunisie",
+      "rating": 4.983786201985536,
+      "reviews": 33,
+      "ecoScore": 94,
+      "stock": 29,
+      "tags": [
+        "cosmetiques"
+      ]
+    },
+    {
+      "id": 159,
+      "name": "Hydrolat de geranium 100ml spray",
+      "description": "Hydrolat de geranium 100ml spray",
+      "price": 8000,
+      "category": "cosmetiques",
+      "image": "https://soukelkahina.tn/14447-home_default/hydrolat-de-geranium-100ml-spray.webp",
+      "artisan": "Fatma de Nabeul",
+      "location": "Tunisie",
+      "rating": 4.660130017519134,
+      "reviews": 44,
+      "ecoScore": 83,
+      "stock": 10,
+      "tags": [
+        "cosmetiques"
+      ]
+    },
+    {
+      "id": 160,
+      "name": "Bague Filigrane Argent Femme",
+      "description": "Bague Filigrane Argent Femme",
+      "price": 65000,
+      "category": "artisanat",
+      "image": "https://soukelkahina.tn/14942-home_default/bague-filigrane-argent-femme.webp",
+      "artisan": "Fatma de Nabeul",
+      "location": "Tunisie",
+      "rating": 4.9519056075434,
+      "reviews": 42,
+      "ecoScore": 97,
+      "stock": 28,
+      "tags": [
+        "artisanat"
+      ]
+    },
+    {
+      "id": 161,
+      "name": "Boucles d'Oreilles \"خلال\" Filigrane Argent",
+      "description": "Boucles d'Oreilles \"خلال\" Filigrane Argent",
+      "price": 105000,
+      "category": "artisanat",
+      "image": "https://soukelkahina.tn/14940-home_default/boucles-d-oreilles-خلال-filigrane-argent1.webp",
+      "artisan": "Mohamed de Sfax",
+      "location": "Tunisie",
+      "rating": 4.909679888569885,
+      "reviews": 8,
+      "ecoScore": 83,
+      "stock": 11,
+      "tags": [
+        "artisanat"
+      ]
+    },
+    {
+      "id": 162,
+      "name": "Bracelet Argent 25 Ajustable Motif Hlel Fait Main",
+      "description": "Bracelet Argent 25 Ajustable Motif Hlel Fait Main",
+      "price": 220000,
+      "category": "artisanat",
+      "image": "https://soukelkahina.tn/14931-home_default/bracelet-argent-25-ajustable-motif-hlel-fait-main.webp",
+      "artisan": "Samir de Tunis",
+      "location": "Tunisie",
+      "rating": 4.868923431743756,
+      "reviews": 17,
+      "ecoScore": 89,
+      "stock": 30,
+      "tags": [
+        "artisanat"
+      ]
+    },
+    {
+      "id": 163,
+      "name": "Bracelet Amazigh Ajustable en Argent 925",
+      "description": "Bracelet Amazigh Ajustable en Argent 925",
+      "price": 650000,
+      "category": "artisanat",
+      "image": "https://soukelkahina.tn/14924-home_default/bracelet-amazigh-ajustable-en-argent-925.webp",
+      "artisan": "Mohamed de Sfax",
+      "location": "Tunisie",
+      "rating": 4.154831380968285,
+      "reviews": 46,
+      "ecoScore": 92,
+      "stock": 44,
+      "tags": [
+        "artisanat"
+      ]
+    },
+    {
+      "id": 164,
+      "name": "Bracelet Amazigh en Argent 925",
+      "description": "Bracelet Amazigh en Argent 925",
+      "price": 880000,
+      "category": "artisanat",
+      "image": "https://soukelkahina.tn/14918-home_default/bracelet-amazigh-en-argent-925.webp",
+      "artisan": "Aïcha de Kasserine",
+      "location": "Tunisie",
+      "rating": 4.7647189403385335,
+      "reviews": 38,
+      "ecoScore": 89,
+      "stock": 33,
+      "tags": [
+        "artisanat"
+      ]
+    },
+    {
+      "id": 165,
+      "name": "Bracelet Berbère Feuilles d'Arbre en Argent 925",
+      "description": "Bracelet Berbère Feuilles d'Arbre en Argent 925",
+      "price": 595000,
+      "category": "artisanat",
+      "image": "https://soukelkahina.tn/14900-home_default/bracelet-berbère-feuilles-d-arbre-en-argent-925.webp",
+      "artisan": "Aïcha de Kasserine",
+      "location": "Tunisie",
+      "rating": 4.9305855137595715,
+      "reviews": 39,
+      "ecoScore": 98,
+      "stock": 18,
+      "tags": [
+        "artisanat"
+      ]
+    },
+    {
+      "id": 166,
+      "name": "Bracelet Large Berbère en Argent 925 - Motif Mixte",
+      "description": "Bracelet Large Berbère en Argent 925 - Motif Mixte",
+      "price": 498000,
+      "category": "artisanat",
+      "image": "https://soukelkahina.tn/14897-home_default/bracelet-large-berbère-en-argent-925-motif-mixte.webp",
+      "artisan": "Samir de Tunis",
+      "location": "Tunisie",
+      "rating": 4.920025119245185,
+      "reviews": 47,
+      "ecoScore": 96,
+      "stock": 45,
+      "tags": [
+        "artisanat"
+      ]
+    },
+    {
+      "id": 167,
+      "name": "Bracelet Berbère Fibule Argent 925 Fait Main",
+      "description": "Bracelet Berbère Fibule Argent 925 Fait Main",
+      "price": 395000,
+      "category": "artisanat",
+      "image": "https://soukelkahina.tn/14934-home_default/bracelet-berbère-fibule-argent-925-fait-main.webp",
+      "artisan": "Samir de Tunis",
+      "location": "Tunisie",
+      "rating": 4.3145108683174245,
+      "reviews": 18,
+      "ecoScore": 93,
+      "stock": 14,
+      "tags": [
+        "artisanat"
+      ]
+    },
+    {
+      "id": 168,
+      "name": "Bracelet Poisson Berbère Argent 925 Fait Main",
+      "description": "Bracelet Poisson Berbère Argent 925 Fait Main",
+      "price": 395000,
+      "category": "artisanat",
+      "image": "https://soukelkahina.tn/14935-home_default/bracelet-poisson-berbère-argent-925-fait-main.webp",
+      "artisan": "Aïcha de Kasserine",
+      "location": "Tunisie",
+      "rating": 4.856584465268049,
+      "reviews": 4,
+      "ecoScore": 84,
+      "stock": 42,
+      "tags": [
+        "artisanat"
+      ]
+    },
+    {
+      "id": 169,
+      "name": "Bracelet Corail Rouge Naturel Premier Choix",
+      "description": "Bracelet Corail Rouge Naturel Premier Choix",
+      "price": 140000,
+      "category": "artisanat",
+      "image": "https://soukelkahina.tn/14886-home_default/bracelet-corail-rouge-naturel-premier-choix1.webp",
+      "artisan": "Zahra de Tataouine",
+      "location": "Tunisie",
+      "rating": 4.228194497596638,
+      "reviews": 3,
+      "ecoScore": 80,
+      "stock": 17,
+      "tags": [
+        "artisanat"
+      ]
+    },
+    {
+      "id": 170,
+      "name": "Collier Pendentif Poisson Argent 925 & Corail Rouge",
+      "description": "Collier Pendentif Poisson Argent 925 & Corail Rouge",
+      "price": 335000,
+      "category": "artisanat",
+      "image": "https://soukelkahina.tn/14882-home_default/collier-pendentif-poisson-argent-925-corail-rouge.webp",
+      "artisan": "Fatma de Nabeul",
+      "location": "Tunisie",
+      "rating": 4.629052125515877,
+      "reviews": 43,
+      "ecoScore": 84,
+      "stock": 28,
+      "tags": [
+        "artisanat"
+      ]
+    },
+    {
+      "id": 171,
+      "name": "Collier Corail Rouge & Boucles d'Oreilles Argent 925",
+      "description": "Collier Corail Rouge & Boucles d'Oreilles Argent 925",
+      "price": 390000,
+      "category": "artisanat",
+      "image": "https://soukelkahina.tn/14879-home_default/collier-corail-rouge-boucles-d-oreilles-argent-9251.webp",
+      "artisan": "Samir de Tunis",
+      "location": "Tunisie",
+      "rating": 4.073779775560204,
+      "reviews": 14,
+      "ecoScore": 88,
+      "stock": 28,
+      "tags": [
+        "artisanat"
+      ]
+    },
+    {
+      "id": 172,
+      "name": "Collier Racine de Rubis en Argent 925 - Fait Main",
+      "description": "Collier Racine de Rubis en Argent 925 - Fait Main",
+      "price": 200000,
+      "category": "artisanat",
+      "image": "https://soukelkahina.tn/14876-home_default/collier-racine-de-rubis-en-argent-925-fait-main.webp",
+      "artisan": "Mohamed de Sfax",
+      "location": "Tunisie",
+      "rating": 4.294488725761559,
+      "reviews": 48,
+      "ecoScore": 96,
+      "stock": 28,
+      "tags": [
+        "artisanat"
+      ]
+    },
+    {
+      "id": 173,
+      "name": "Collier Handala Argent 925 Fait Main",
+      "description": "Collier Handala Argent 925 Fait Main",
+      "price": 300000,
+      "category": "artisanat",
+      "image": "https://soukelkahina.tn/14871-home_default/collier-handala-argent-925-fait-main.webp",
+      "artisan": "Zahra de Tataouine",
+      "location": "Tunisie",
+      "rating": 4.590322888075883,
+      "reviews": 1,
+      "ecoScore": 89,
+      "stock": 41,
+      "tags": [
+        "artisanat"
+      ]
+    },
+    {
+      "id": 174,
+      "name": "Collier Tanit Lunja en Argent 925 Fait Main",
+      "description": "Collier Tanit Lunja en Argent 925 Fait Main",
+      "price": 280000,
+      "category": "artisanat",
+      "image": "https://soukelkahina.tn/14870-home_default/collier-tanit-lunja-en-argent-925-fait-main.webp",
+      "artisan": "Aïcha de Kasserine",
+      "location": "Tunisie",
+      "rating": 4.10032598092855,
+      "reviews": 25,
+      "ecoScore": 86,
+      "stock": 11,
+      "tags": [
+        "artisanat"
+      ]
+    }
+  ],
+  "MOCK_ARTISANS": [
+    {
+      "id": 1,
+      "name": "Fatma de Nabeul",
+      "location": "Nabeul",
+      "specialty": "Artisanat & Terroir",
+      "rating": 4.501567380291651,
+      "image": "https://images.unsplash.com/photo-1544967082-d9d25d867d66?auto=format&fit=crop&q=80",
+      "totalSales": 255,
+      "productCount": 37,
+      "description": "Une passion transmise de génération en génération."
+    },
+    {
+      "id": 2,
+      "name": "Mohamed de Sfax",
+      "location": "Sfax",
+      "specialty": "Artisanat & Terroir",
+      "rating": 4.673246970673306,
+      "image": "https://images.unsplash.com/photo-1544967082-d9d25d867d66?auto=format&fit=crop&q=80",
+      "totalSales": 286,
+      "productCount": 20,
+      "description": "Une passion transmise de génération en génération."
+    },
+    {
+      "id": 3,
+      "name": "Aïcha de Kasserine",
+      "location": "Kasserine",
+      "specialty": "Artisanat & Terroir",
+      "rating": 4.894722159826095,
+      "image": "https://images.unsplash.com/photo-1544967082-d9d25d867d66?auto=format&fit=crop&q=80",
+      "totalSales": 432,
+      "productCount": 22,
+      "description": "Une passion transmise de génération en génération."
+    },
+    {
+      "id": 4,
+      "name": "Zahra de Tataouine",
+      "location": "Tataouine",
+      "specialty": "Artisanat & Terroir",
+      "rating": 4.777308290181424,
+      "image": "https://images.unsplash.com/photo-1544967082-d9d25d867d66?auto=format&fit=crop&q=80",
+      "totalSales": 330,
+      "productCount": 11,
+      "description": "Une passion transmise de génération en génération."
+    },
+    {
+      "id": 5,
+      "name": "Samir de Tunis",
+      "location": "Tunis",
+      "specialty": "Artisanat & Terroir",
+      "rating": 4.797344209219653,
+      "image": "https://images.unsplash.com/photo-1544967082-d9d25d867d66?auto=format&fit=crop&q=80",
+      "totalSales": 226,
+      "productCount": 30,
+      "description": "Une passion transmise de génération en génération."
+    }
+  ]
+}
