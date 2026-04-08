@@ -53,7 +53,7 @@ export function Training() {
   return (
     <>
       {SEOComponent}
-      <div className="min-h-screen bg-gray-50 pt-4">
+      <div className="min-h-screen bg-gray-50 pt-20 lg:pt-24">
 
       {/* Hero */}
       <div className="relative overflow-hidden bg-[#faf9f8] border-b border-border/40 py-24 lg:py-32">

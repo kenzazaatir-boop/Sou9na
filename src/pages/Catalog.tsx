@@ -112,7 +112,7 @@ export function Catalog() {
   return (
     <>
       {SEOComponent}
-      <div className="min-h-screen bg-background relative overflow-hidden pt-4">
+      <div className="min-h-screen bg-background relative overflow-hidden pt-20 lg:pt-24">
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-terracotta/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">

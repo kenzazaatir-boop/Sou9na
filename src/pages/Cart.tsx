@@ -43,7 +43,7 @@ export function Cart() {
   return (
     <>
       {SEOComponent}
-      <div className="min-h-screen bg-background relative pt-4">
+      <div className="min-h-screen bg-background relative pt-20 lg:pt-24">
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-terracotta/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute top-[40%] left-[-200px] w-[400px] h-[400px] bg-warm-gold/5 rounded-full blur-[80px] pointer-events-none" />
  

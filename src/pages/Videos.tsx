@@ -542,7 +542,7 @@ export function Videos() {
   return (
     <>
       {SEOComponent}
-      <div className="min-h-screen bg-gray-50 pt-4">
+      <div className="min-h-screen bg-gray-50 pt-20 lg:pt-24">
 
       {/* Hero */}
       <div className="bg-white py-12">

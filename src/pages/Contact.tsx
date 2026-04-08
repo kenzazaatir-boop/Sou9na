@@ -27,7 +27,7 @@ export function Contact() {
   return (
     <>
       {SEOComponent}
-      <div className="min-h-screen bg-gray-50 pt-4">
+      <div className="min-h-screen bg-gray-50 pt-20 lg:pt-24">
 
       {/* Hero */}
       <div className="bg-gradient-to-br from-deep-blue/10 to-terracotta/10 py-16">

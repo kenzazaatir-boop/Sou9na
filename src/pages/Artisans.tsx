@@ -35,7 +35,7 @@ export function Artisans() {
   return (
     <>
       {SEOComponent}
-      <div className="min-h-screen bg-background relative pt-4">
+      <div className="min-h-screen bg-background relative pt-20 lg:pt-24">
         <div className="absolute top-0 right-[-10%] w-[600px] h-[600px] bg-terracotta/5 rounded-full blur-[120px] pointer-events-none" />
 
         {/* Hero */}
