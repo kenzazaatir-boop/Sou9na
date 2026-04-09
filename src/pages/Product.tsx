@@ -29,6 +29,36 @@ export function Product() {
   const [relatedProducts, setRelatedProducts] = useState<ProductType[]>([]);
   const { addToCart } = useCart();
 
+  // Safety fallbacks for SEO (Must be outside any condition for Hooks)
+  const dispName = product ? ((language === 'ar' && product.nameAr) ? product.nameAr : product.name) : 'Produit';
+  const dispDesc = product ? ((language === 'ar' && product.descriptionAr) ? product.descriptionAr : (product.description || '')) : '';
+
+  const productSeo = getProductSEO({
+    id: product?.id.toString() || '0',
+    name: dispName,
+    description: dispDesc,
+    image: product?.image || '',
+    artisan: product?.artisan || '',
+    price: product?.price || 0,
+  });
+
+  const productSchema = getProductSchema({
+    id: product?.id.toString() || '0',
+    name: dispName,
+    description: dispDesc,
+    image: product?.image || '',
+    price: product?.price || 0,
+    rating: product?.rating || 0,
+    reviews: product?.reviews || 0,
+    artisan: product?.artisan || '',
+    inStock: true,
+  });
+
+  const { SEOComponent } = useSEO({
+    customMeta: productSeo,
+    schemas: [productSchema],
+  });
+
   // Diagnostic Logs
   console.log('DEBUG: Product ID from params:', id);
   console.log('DEBUG: isLoading state:', isLoading);
@@ -40,22 +70,15 @@ export function Product() {
       setIsLoading(true);
       try {
         const allProducts = await getProducts();
-        console.log('DEBUG: allProducts fetched. Count:', allProducts.length);
-        
         const productIdNum = Number(id);
         const found = allProducts.find(p => p.id === productIdNum);
-        console.log('DEBUG: Found product:', found ? found.name : 'NOT FOUND');
 
         if (found) {
           setProduct(found);
-          // Fetch artisan info
           if (found.artisanId) {
-            console.log('DEBUG: Fetching artisan for ID:', found.artisanId);
             const artisanData = await getArtisanById(found.artisanId);
-            console.log('DEBUG: Artisan data fetched for:', artisanData?.name);
             setArtisan(artisanData);
           }
-          // Fetch related products
           const related = allProducts
             .filter(p => p.category === found.category && p.id !== found.id)
             .slice(0, 4);
@@ -113,36 +136,6 @@ export function Product() {
       </div>
     );
   }
-
-  // Safety fallbacks for SEO
-  const dispName = (language === 'ar' && product.nameAr) ? product.nameAr : product.name;
-  const dispDesc = (language === 'ar' && product.descriptionAr) ? product.descriptionAr : (product.description || '');
-
-  const productSeo = getProductSEO({
-    id: product.id.toString(),
-    name: dispName,
-    description: dispDesc,
-    image: product.image,
-    artisan: product.artisan,
-    price: product.price,
-  });
-
-  const productSchema = getProductSchema({
-    id: product.id.toString(),
-    name: dispName,
-    description: dispDesc,
-    image: product.image,
-    price: product.price,
-    rating: product.rating,
-    reviews: product.reviews,
-    artisan: product.artisan,
-    inStock: true,
-  });
-
-  const { SEOComponent } = useSEO({
-    customMeta: productSeo,
-    schemas: [productSchema],
-  });
 
   return (
     <>
