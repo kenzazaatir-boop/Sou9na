@@ -178,6 +178,12 @@ const MOCK_PRODUCTS: Product[] = [
     ecoScore: 94,
     stock: 12,
     tags: ['alimentaire'],
+    specifications: {
+      'Poids': '250g',
+      'Origine': 'Tunisie',
+      'Matériau': 'Verre recyclable',
+      'Durée de conservation': '12 mois'
+    }
   },
   {
     id: 101,
@@ -214,6 +220,12 @@ const MOCK_PRODUCTS: Product[] = [
     ecoScore: 81,
     stock: 26,
     tags: ['alimentaire'],
+    specifications: {
+      'Format': 'Coffret 3 saveurs',
+      'Origine': 'Nabeul',
+      'Ingrédients': 'Noisette, Amande, Pistache',
+      'Artisanal': 'Oui'
+    }
   },
   {
     id: 103,
@@ -1512,4 +1524,9 @@ export async function getProductById(id: string | number): Promise<Product | nul
     stock: data.stock,
     tags: data.tags || [],
   };
+}
+
+export async function getArtisanById(id: number): Promise<Artisan | null> {
+  const allArtisans = await getArtisans();
+  return allArtisans.find(a => a.id === id) || null;
 }

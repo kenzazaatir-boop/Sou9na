@@ -24,6 +24,8 @@ export interface Product {
   ecoScore: number;
   tags: string[];
   stock: number;
+  specifications?: Record<string, string>;
+  careInstructions?: string;
   createdAt?: string;
   updatedAt?: string;
 }
