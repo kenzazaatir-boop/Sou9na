@@ -59,14 +59,8 @@ export function Product() {
     schemas: [productSchema],
   });
 
-  // Diagnostic Logs
-  console.log('DEBUG: Product ID from params:', id);
-  console.log('DEBUG: isLoading state:', isLoading);
-  console.log('DEBUG: product state:', product ? 'Found: ' + product.name : 'null');
-
   useEffect(() => {
     const fetchProduct = async () => {
-      console.log('DEBUG: Starting fetchProduct for ID:', id);
       setIsLoading(true);
       try {
         const allProducts = await getProducts();
@@ -83,11 +77,9 @@ export function Product() {
             .filter(p => p.category === found.category && p.id !== found.id)
             .slice(0, 4);
           setRelatedProducts(related);
-        } else {
-          console.warn('DEBUG: Product NOT FOUND in mock data for ID:', id);
         }
       } catch (error) {
-        console.error('DEBUG: Critical error in fetchProduct:', error);
+        console.error('Critical error in fetchProduct:', error);
       } finally {
         setIsLoading(false);
       }

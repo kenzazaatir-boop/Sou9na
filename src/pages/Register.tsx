@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useLanguage } from '@/store/LanguageContext';
 
 export function Register() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -16,12 +16,29 @@ export function Register() {
     password: '',
     confirmPassword: '',
     accountType: 'client',
+    endaCode: '',
   });
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [isEndaVerified, setIsEndaVerified] = useState(false);
+
+  const handleVerifyEnda = () => {
+    if (!formData.endaCode) return;
+    setIsVerifying(true);
+    // Simulate API call to Enda Tamweel
+    setTimeout(() => {
+      setIsVerifying(false);
+      setIsEndaVerified(true);
+    }, 1500);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       alert(t('auth.passwordMismatch'));
+      return;
+    }
+    if (formData.accountType === 'artisan' && !isEndaVerified) {
+      alert(language === 'ar' ? 'يرجى التحقق من كود إندا تمويل للمتابعة' : 'Veuillez vérifier votre code Enda Tamweel pour continuer');
       return;
     }
     // Handle registration
@@ -67,6 +84,55 @@ export function Register() {
               {t('auth.iAmArtisan')}
             </button>
           </div>
+
+          {/* Enda Tamweel Verification (Artisan Only) */}
+          {formData.accountType === 'artisan' && (
+            <div className="mb-6 p-4 rounded-2xl bg-gradient-to-br from-green-50 to-emerald-50 border border-green-100">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center shadow-sm">
+                  <span className="text-green-600 font-bold text-xs leading-none text-center">ENDA<br/>TMW</span>
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm font-bold text-gray-900">
+                    {language === 'ar' ? 'تحقق إندا تمويل' : 'Vérification Enda Tamweel'}
+                  </p>
+                  <p className="text-[10px] text-gray-500 uppercase tracking-wider">Partenaire Officiel</p>
+                </div>
+              </div>
+
+              <div className="relative">
+                <Input
+                  type="text"
+                  placeholder={language === 'ar' ? 'أدخل كود العميل (8 أرقام)' : 'Code Client (8 chiffres)'}
+                  className="bg-white border-green-200 focus:border-green-500 focus:ring-green-500 pr-24"
+                  value={formData.endaCode}
+                  onChange={(e) => setFormData({ ...formData, endaCode: e.target.value })}
+                  disabled={isEndaVerified}
+                />
+                {!isEndaVerified ? (
+                  <button
+                    type="button"
+                    onClick={handleVerifyEnda}
+                    disabled={isVerifying || !formData.endaCode}
+                    className="absolute right-1 top-1 bottom-1 px-4 bg-green-600 text-white rounded-lg text-xs font-bold hover:bg-green-700 disabled:opacity-50 transition-colors"
+                  >
+                    {isVerifying ? '...' : (language === 'ar' ? 'تحقق' : 'Vérifier')}
+                  </button>
+                ) : (
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1 text-green-600 text-xs font-bold">
+                    <span className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center">✓</span>
+                    {language === 'ar' ? 'تم التحقق' : 'Vérifié'}
+                  </div>
+                )}
+              </div>
+              
+              {!isEndaVerified && (
+                <p className="text-[11px] text-gray-500 mt-2 italic">
+                  {language === 'ar' ? '* إلزامي لجميع الحرفيين' : '* Obligatoire pour tous les artisans Sou9na'}
+                </p>
+              )}
+            </div>
+          )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
