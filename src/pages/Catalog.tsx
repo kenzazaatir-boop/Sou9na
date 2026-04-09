@@ -248,9 +248,11 @@ export function Catalog() {
                             </div>
                           </Link>
                             <div className="p-5 flex-1 flex flex-col">
+                            <Link to={`/product/${product.id}`}>
                               <h3 className="font-bold text-lg mb-1 line-clamp-1 group-hover:text-terracotta transition-colors">
                                 {language === 'ar' && product.nameAr ? product.nameAr : product.name}
                               </h3>
+                            </Link>
                             <p className="text-sm text-muted-foreground mb-4 flex items-center gap-1">
                               <MapPin className="w-3.5 h-3.5" />
                               {product.artisan}

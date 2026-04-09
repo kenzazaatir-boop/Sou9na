@@ -51,43 +51,32 @@ function AnimatedRoutes() {
         <Route 
           path="/login" 
           element={
-            <motion.div initial="initial" animate="animate" exit="exit" variants={pageVariants} transition={{ duration: 0.3 }}>
+            <div className="min-h-screen">
               <Login />
-            </motion.div>
+            </div>
           } 
         />
         <Route 
           path="/register" 
           element={
-            <motion.div initial="initial" animate="animate" exit="exit" variants={pageVariants} transition={{ duration: 0.3 }}>
+            <div className="min-h-screen">
               <Register />
-            </motion.div>
+            </div>
           } 
         />
         
-        {/* Routes with navbar and footer */}
-        <Route
-          path="/*"
-          element={
-            <MainLayout>
-              <AnimatePresence mode="wait">
-                <Routes location={location} key={location.pathname}>
-                  <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
-                  <Route path="/catalog" element={<PageWrapper><Catalog /></PageWrapper>} />
-                  <Route path="/artisans" element={<PageWrapper><Artisans /></PageWrapper>} />
-                  <Route path="/circular-economy" element={<PageWrapper><CircularEconomy /></PageWrapper>} />
-                  <Route path="/impact" element={<PageWrapper><Impact /></PageWrapper>} />
-                  <Route path="/training" element={<PageWrapper><Training /></PageWrapper>} />
-                  <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
-                  <Route path="/videos" element={<PageWrapper><Videos /></PageWrapper>} />
-                  <Route path="/cart" element={<PageWrapper><Cart /></PageWrapper>} />
-                  <Route path="/product/:id" element={<PageWrapper><Product /></PageWrapper>} />
-                  <Route path="*" element={<PageWrapper><Home /></PageWrapper>} />
-                </Routes>
-              </AnimatePresence>
-            </MainLayout>
-          }
-        />
+        {/* All other routes wrapped in MainLayout */}
+        <Route path="/" element={<MainLayout><PageWrapper><Home /></PageWrapper></MainLayout>} />
+        <Route path="/catalog" element={<MainLayout><PageWrapper><Catalog /></PageWrapper></MainLayout>} />
+        <Route path="/artisans" element={<MainLayout><PageWrapper><Artisans /></PageWrapper></MainLayout>} />
+        <Route path="/circular-economy" element={<MainLayout><PageWrapper><CircularEconomy /></PageWrapper></MainLayout>} />
+        <Route path="/impact" element={<MainLayout><PageWrapper><Impact /></PageWrapper></MainLayout>} />
+        <Route path="/training" element={<MainLayout><PageWrapper><Training /></PageWrapper></MainLayout>} />
+        <Route path="/contact" element={<MainLayout><PageWrapper><Contact /></PageWrapper></MainLayout>} />
+        <Route path="/videos" element={<MainLayout><PageWrapper><Videos /></PageWrapper></MainLayout>} />
+        <Route path="/cart" element={<MainLayout><PageWrapper><Cart /></PageWrapper></MainLayout>} />
+        <Route path="/product/:id" element={<MainLayout><PageWrapper><Product /></PageWrapper></MainLayout>} />
+        <Route path="*" element={<MainLayout><PageWrapper><Home /></PageWrapper></MainLayout>} />
       </Routes>
     </AnimatePresence>
   );
