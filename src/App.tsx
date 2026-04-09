@@ -71,13 +71,13 @@ function AnimatedRoutes() {
   );
 }
 
-function PageWrapper({ children }: { children: React.ReactNode }) {
+const PageWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="animate-in fade-in duration-500">
+    <div>
       {children}
     </div>
   );
-}
+};
 
 function App() {
   return (
