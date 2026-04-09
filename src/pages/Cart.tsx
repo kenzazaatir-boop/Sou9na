@@ -10,7 +10,7 @@ import { toast } from 'sonner';
 import { useLanguage } from '@/store/LanguageContext';
 
 export function Cart() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const { SEOComponent } = useSEO();
   const { cart, removeFromCart, updateQuantity, clearCart } = useCart();
   const { items, subtotal, shipping, total } = cart;
@@ -80,7 +80,9 @@ export function Cart() {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-start justify-between mb-4">
                         <div>
-                          <h3 className="font-bold text-lg text-foreground mb-1">{item.name}</h3>
+                          <h3 className="font-bold text-lg text-foreground mb-1">
+                            {language === 'ar' && item.nameAr ? item.nameAr : item.name}
+                          </h3>
                           <p className="text-sm text-muted-foreground">{item.artisan}</p>
                         </div>
                         <button

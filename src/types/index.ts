@@ -69,6 +69,7 @@ export interface CartItem {
   id: number;
   productId: number;
   name: string;
+  nameAr?: string;
   artisan: string;
   price: number;
   quantity: number;

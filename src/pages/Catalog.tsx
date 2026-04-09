@@ -26,7 +26,7 @@ import { useLanguage } from '@/store/LanguageContext';
 import { getProducts } from '@/lib/data';
 
 export function Catalog() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const { SEOComponent } = useSEO({ includeBreadcrumb: true });
 
   const [products, setProducts] = useState<Product[]>([]);
@@ -97,13 +97,14 @@ export function Catalog() {
       id: product.id,
       productId: product.id,
       name: product.name,
+      nameAr: product.nameAr,
       artisan: product.artisan,
       price: product.price,
       quantity: 1,
       image: product.image,
       ecoScore: product.ecoScore,
     });
-    toast.success(`${product.name} ${t('catalog.addedToCart')}`);
+    toast.success(`${language === 'ar' && product.nameAr ? product.nameAr : product.name} ${t('catalog.addedToCart')}`);
   };
 
   const resetFilters = () => {
@@ -246,10 +247,10 @@ export function Catalog() {
                               <span className="text-xs font-bold">{product.ecoScore}%</span>
                             </div>
                           </Link>
-                          <div className="p-5 flex-1 flex flex-col">
-                            <h3 className="font-bold text-lg mb-1 line-clamp-1 group-hover:text-terracotta transition-colors">
-                              {t('language') === 'ar' && product.nameAr ? product.nameAr : product.name}
-                            </h3>
+                            <div className="p-5 flex-1 flex flex-col">
+                              <h3 className="font-bold text-lg mb-1 line-clamp-1 group-hover:text-terracotta transition-colors">
+                                {language === 'ar' && product.nameAr ? product.nameAr : product.name}
+                              </h3>
                             <p className="text-sm text-muted-foreground mb-4 flex items-center gap-1">
                               <MapPin className="w-3.5 h-3.5" />
                               {product.artisan}

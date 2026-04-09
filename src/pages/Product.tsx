@@ -4,16 +4,35 @@ import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
 import { useSEO } from '@/hooks';
 import { useLanguage } from '@/store/LanguageContext';
+import { useCart } from '@/store';
 import { getProductSEO, getProductSchema } from '@/lib/seo';
 import { getProducts } from '@/lib/data';
 import type { Product as ProductType } from '@/types';
+import { toast } from 'sonner';
 
 export function Product() {
   const { id } = useParams<{ id: string }>();
   const { language, t } = useLanguage();
+  const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [product, setProduct] = useState<ProductType | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  const handleAddToCart = () => {
+    if (!product) return;
+    addToCart({
+      id: product.id,
+      productId: product.id,
+      name: product.name,
+      nameAr: product.nameAr,
+      artisan: product.artisan,
+      price: product.price,
+      quantity,
+      image: product.image,
+      ecoScore: product.ecoScore,
+    });
+    toast.success(`${language === 'ar' && product.nameAr ? product.nameAr : product.name} ${t('catalog.addedToCart')}`);
+  };
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -165,7 +184,11 @@ export function Product() {
 
               {/* Actions */}
               <div className="flex flex-wrap gap-4">
-                <Button size="lg" className="gradient-terracotta text-white flex-1">
+                <Button 
+                  size="lg" 
+                  className="gradient-terracotta text-white flex-1"
+                  onClick={handleAddToCart}
+                >
                   <ShoppingCart className="w-5 h-5 mr-2 rtl:mr-0 rtl:ml-2" />
                   {t('product.addToCart')}
                 </Button>
