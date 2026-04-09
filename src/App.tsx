@@ -17,6 +17,7 @@ import { Product } from '@/pages/Product';
 import { LanguageProvider } from '@/store/LanguageContext';
 import { ScrollToTop } from '@/components/ScrollToTop';
 import { BabaElHedi } from '@/components/BabaElHedi';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 import './App.css';
 
 // Layout component for pages with navbar
@@ -32,45 +33,6 @@ function MainLayout({ children }: { children: React.ReactNode }) {
   );
 }
 
-function AnimatedRoutes() {
-  const location = useLocation();
-  
-  return (
-    <Routes location={location} key={location.pathname}>
-      {/* Routes without navbar (login/register) */}
-      <Route 
-        path="/login" 
-        element={
-          <div className="min-h-screen">
-            <Login />
-          </div>
-        } 
-      />
-      <Route 
-        path="/register" 
-        element={
-          <div className="min-h-screen">
-            <Register />
-          </div>
-        } 
-      />
-      
-      {/* All other routes wrapped in MainLayout */}
-      <Route path="/" element={<MainLayout><PageWrapper><Home /></PageWrapper></MainLayout>} />
-      <Route path="/catalog" element={<MainLayout><PageWrapper><Catalog /></PageWrapper></MainLayout>} />
-      <Route path="/artisans" element={<MainLayout><PageWrapper><Artisans /></PageWrapper></MainLayout>} />
-      <Route path="/circular-economy" element={<MainLayout><PageWrapper><CircularEconomy /></PageWrapper></MainLayout>} />
-      <Route path="/impact" element={<MainLayout><PageWrapper><Impact /></PageWrapper></MainLayout>} />
-      <Route path="/training" element={<MainLayout><PageWrapper><Training /></PageWrapper></MainLayout>} />
-      <Route path="/contact" element={<MainLayout><PageWrapper><Contact /></PageWrapper></MainLayout>} />
-      <Route path="/videos" element={<MainLayout><PageWrapper><Videos /></PageWrapper></MainLayout>} />
-      <Route path="/cart" element={<MainLayout><PageWrapper><Cart /></PageWrapper></MainLayout>} />
-      <Route path="/product/:id" element={<MainLayout><PageWrapper><Product /></PageWrapper></MainLayout>} />
-      <Route path="*" element={<MainLayout><PageWrapper><Home /></PageWrapper></MainLayout>} />
-    </Routes>
-  );
-}
-
 const PageWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
@@ -78,6 +40,47 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => {
     </div>
   );
 };
+
+function AnimatedRoutes() {
+  const location = useLocation();
+  
+  return (
+    <ErrorBoundary>
+      <Routes location={location} key={location.pathname}>
+        {/* Routes without navbar (login/register) */}
+        <Route 
+          path="/login" 
+          element={
+            <div className="min-h-screen">
+              <Login />
+            </div>
+          } 
+        />
+        <Route 
+          path="/register" 
+          element={
+            <div className="min-h-screen">
+              <Register />
+            </div>
+          } 
+        />
+        
+        {/* All other routes wrapped in MainLayout */}
+        <Route path="/" element={<MainLayout><PageWrapper><Home /></PageWrapper></MainLayout>} />
+        <Route path="/catalog" element={<MainLayout><PageWrapper><Catalog /></PageWrapper></MainLayout>} />
+        <Route path="/artisans" element={<MainLayout><PageWrapper><Artisans /></PageWrapper></MainLayout>} />
+        <Route path="/circular-economy" element={<MainLayout><PageWrapper><CircularEconomy /></PageWrapper></MainLayout>} />
+        <Route path="/impact" element={<MainLayout><PageWrapper><Impact /></PageWrapper></MainLayout>} />
+        <Route path="/training" element={<MainLayout><PageWrapper><Training /></PageWrapper></MainLayout>} />
+        <Route path="/contact" element={<MainLayout><PageWrapper><Contact /></PageWrapper></MainLayout>} />
+        <Route path="/videos" element={<MainLayout><PageWrapper><Videos /></PageWrapper></MainLayout>} />
+        <Route path="/cart" element={<MainLayout><PageWrapper><Cart /></PageWrapper></MainLayout>} />
+        <Route path="/product/:id" element={<MainLayout><PageWrapper><Product /></PageWrapper></MainLayout>} />
+        <Route path="*" element={<MainLayout><PageWrapper><Home /></PageWrapper></MainLayout>} />
+      </Routes>
+    </ErrorBoundary>
+  );
+}
 
 function App() {
   return (

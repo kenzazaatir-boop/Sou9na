@@ -279,7 +279,7 @@ export function Product() {
           <div className="mt-16 lg:mt-24 grid lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2 space-y-12">
               {/* Technical Specifications */}
-              {product.specifications && Object.keys(product.specifications).length > 0 && (
+              {product && product.specifications && typeof product.specifications === 'object' && Object.keys(product.specifications).length > 0 && (
                 <section>
                   <h2 className="text-2xl font-black text-gray-900 mb-8 flex items-center gap-3">
                     <div className="w-1.5 h-8 bg-terracotta rounded-full"></div>
@@ -299,7 +299,7 @@ export function Product() {
               )}
 
               {/* Care Instructions */}
-              {product.careInstructions && (
+              {product && product.careInstructions && (
                 <section>
                   <h2 className="text-2xl font-black text-gray-900 mb-6 flex items-center gap-3">
                     <div className="w-1.5 h-8 bg-terracotta rounded-full"></div>
