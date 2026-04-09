@@ -1,6 +1,4 @@
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
-import { AnimatePresence, motion } from 'framer-motion';
 import { StoreProvider } from '@/store';
 import { Navbar } from '@/sections/Navbar';
 import { Footer } from '@/sections/Footer';
@@ -21,13 +19,6 @@ import { ScrollToTop } from '@/components/ScrollToTop';
 import { BabaElHedi } from '@/components/BabaElHedi';
 import './App.css';
 
-// Page Transition Variants
-const pageVariants = {
-  initial: { opacity: 0, y: 10 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -10 },
-};
-
 // Layout component for pages with navbar
 function MainLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -45,72 +36,62 @@ function AnimatedRoutes() {
   const location = useLocation();
   
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        {/* Routes without navbar (login/register) */}
-        <Route 
-          path="/login" 
-          element={
-            <div className="min-h-screen">
-              <Login />
-            </div>
-          } 
-        />
-        <Route 
-          path="/register" 
-          element={
-            <div className="min-h-screen">
-              <Register />
-            </div>
-          } 
-        />
-        
-        {/* All other routes wrapped in MainLayout */}
-        <Route path="/" element={<MainLayout><PageWrapper><Home /></PageWrapper></MainLayout>} />
-        <Route path="/catalog" element={<MainLayout><PageWrapper><Catalog /></PageWrapper></MainLayout>} />
-        <Route path="/artisans" element={<MainLayout><PageWrapper><Artisans /></PageWrapper></MainLayout>} />
-        <Route path="/circular-economy" element={<MainLayout><PageWrapper><CircularEconomy /></PageWrapper></MainLayout>} />
-        <Route path="/impact" element={<MainLayout><PageWrapper><Impact /></PageWrapper></MainLayout>} />
-        <Route path="/training" element={<MainLayout><PageWrapper><Training /></PageWrapper></MainLayout>} />
-        <Route path="/contact" element={<MainLayout><PageWrapper><Contact /></PageWrapper></MainLayout>} />
-        <Route path="/videos" element={<MainLayout><PageWrapper><Videos /></PageWrapper></MainLayout>} />
-        <Route path="/cart" element={<MainLayout><PageWrapper><Cart /></PageWrapper></MainLayout>} />
-        <Route path="/product/:id" element={<MainLayout><PageWrapper><Product /></PageWrapper></MainLayout>} />
-        <Route path="*" element={<MainLayout><PageWrapper><Home /></PageWrapper></MainLayout>} />
-      </Routes>
-    </AnimatePresence>
+    <Routes location={location} key={location.pathname}>
+      {/* Routes without navbar (login/register) */}
+      <Route 
+        path="/login" 
+        element={
+          <div className="min-h-screen">
+            <Login />
+          </div>
+        } 
+      />
+      <Route 
+        path="/register" 
+        element={
+          <div className="min-h-screen">
+            <Register />
+          </div>
+        } 
+      />
+      
+      {/* All other routes wrapped in MainLayout */}
+      <Route path="/" element={<MainLayout><PageWrapper><Home /></PageWrapper></MainLayout>} />
+      <Route path="/catalog" element={<MainLayout><PageWrapper><Catalog /></PageWrapper></MainLayout>} />
+      <Route path="/artisans" element={<MainLayout><PageWrapper><Artisans /></PageWrapper></MainLayout>} />
+      <Route path="/circular-economy" element={<MainLayout><PageWrapper><CircularEconomy /></PageWrapper></MainLayout>} />
+      <Route path="/impact" element={<MainLayout><PageWrapper><Impact /></PageWrapper></MainLayout>} />
+      <Route path="/training" element={<MainLayout><PageWrapper><Training /></PageWrapper></MainLayout>} />
+      <Route path="/contact" element={<MainLayout><PageWrapper><Contact /></PageWrapper></MainLayout>} />
+      <Route path="/videos" element={<MainLayout><PageWrapper><Videos /></PageWrapper></MainLayout>} />
+      <Route path="/cart" element={<MainLayout><PageWrapper><Cart /></PageWrapper></MainLayout>} />
+      <Route path="/product/:id" element={<MainLayout><PageWrapper><Product /></PageWrapper></MainLayout>} />
+      <Route path="*" element={<MainLayout><PageWrapper><Home /></PageWrapper></MainLayout>} />
+    </Routes>
   );
 }
 
 function PageWrapper({ children }: { children: React.ReactNode }) {
   return (
-    <motion.div
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      variants={pageVariants}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-    >
+    <div className="animate-in fade-in duration-500">
       {children}
-    </motion.div>
+    </div>
   );
 }
 
 function App() {
   return (
-    <HelmetProvider>
-      <StoreProvider>
-        <LanguageProvider>
-          <Router>
-            <ScrollToTop />
-            <div className="min-h-screen bg-background">
-              <AnimatedRoutes />
-            </div>
-            <BabaElHedi />
-          </Router>
-        </LanguageProvider>
-      </StoreProvider>
-    </HelmetProvider>
+    <StoreProvider>
+      <LanguageProvider>
+        <Router>
+          <ScrollToTop />
+          <div className="min-h-screen bg-background text-foreground">
+            <AnimatedRoutes />
+          </div>
+          <BabaElHedi />
+        </Router>
+      </LanguageProvider>
+    </StoreProvider>
   );
 }
 
