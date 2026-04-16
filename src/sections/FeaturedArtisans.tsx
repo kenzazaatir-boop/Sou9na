@@ -6,14 +6,19 @@ import type { Artisan } from '@/types';
 import { useLanguage } from '@/store/LanguageContext';
 import { useReveal } from '@/hooks/useReveal';
 import { useState, useEffect } from 'react';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export function FeaturedArtisans() {
   const { language, t } = useLanguage();
   const { ref, revealClass } = useReveal<HTMLDivElement>(0.1);
   const [featured, setFeatured] = useState<Artisan[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getArtisans().then(data => setFeatured(data.slice(0, 3)));
+    getArtisans().then(data => {
+      setFeatured(data.slice(0, 3));
+      setIsLoading(false);
+    });
   }, []);
 
   return (
@@ -43,7 +48,17 @@ export function FeaturedArtisans() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {featured.map((artisan, i) => (
+          {isLoading
+            ? [...Array(3)].map((_, i) => (
+                <div key={i} className={`stagger-${i + 1}`}>
+                  <Skeleton className="w-full aspect-[4/5] rounded-3xl" />
+                  <div className="mt-4 space-y-2">
+                    <Skeleton className="h-6 w-2/3" />
+                    <Skeleton className="h-4 w-1/2" />
+                  </div>
+                </div>
+              ))
+            : featured.map((artisan, i) => (
             <Link 
               key={artisan.id} 
               to={`/artisan/${artisan.id}`}
