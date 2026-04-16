@@ -1,4 +1,5 @@
 import { Star, MapPin, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useSEO } from '@/hooks';
 import { useLanguage } from '@/store/LanguageContext';
@@ -86,27 +87,29 @@ export function Artisans() {
                     delay={index * 0.1}
                     className="group bg-white rounded-[2.5rem] overflow-hidden shadow-soft hover:shadow-card border border-gray-50 hover:border-terracotta/20 transition-all duration-700 hover-lift"
                   >
-                    <div className="relative h-72 overflow-hidden bg-gray-100">
-                      <img
-                        src={artisan.image.startsWith('http') ? artisan.image : `${import.meta.env.BASE_URL}${artisan.image}`}
-                        alt={artisan.name}
-                        className="w-full h-full object-cover transition-transform duration-1000 cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-80 group-hover:opacity-70 transition-opacity duration-300" />
-                      
-                      <div className="absolute top-5 right-5 bg-white/10 backdrop-blur-xl rounded-full px-4 py-2 flex items-center gap-2 border border-white/20 shadow-lg">
-                        <Star className="w-4 h-4 text-warm-gold fill-warm-gold" />
-                        <span className="text-white text-sm font-black">{artisan.rating}</span>
-                      </div>
-  
-                      <div className="absolute bottom-6 left-6 right-6">
-                        <div className="flex items-center gap-2 text-white/80 text-xs font-bold uppercase tracking-widest mb-2">
-                          <MapPin className="w-4 h-4 text-terracotta" />
-                          {artisan.location}
+                    <Link to={`/artisan/${artisan.id}`}>
+                      <div className="relative h-72 overflow-hidden bg-gray-100">
+                        <img
+                          src={artisan.image.startsWith('http') ? artisan.image : `${import.meta.env.BASE_URL}${artisan.image}`}
+                          alt={artisan.name}
+                          className="w-full h-full object-cover transition-transform duration-1000 cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-80 group-hover:opacity-70 transition-opacity duration-300" />
+                        
+                        <div className="absolute top-5 right-5 bg-white/10 backdrop-blur-xl rounded-full px-4 py-2 flex items-center gap-2 border border-white/20 shadow-lg">
+                          <Star className="w-4 h-4 text-warm-gold fill-warm-gold" />
+                          <span className="text-white text-sm font-black">{artisan.rating}</span>
                         </div>
-                        <h3 className="text-white font-black text-3xl tracking-tight leading-none">{artisan.name}</h3>
+    
+                        <div className="absolute bottom-6 left-6 right-6">
+                          <div className="flex items-center gap-2 text-white/80 text-xs font-bold uppercase tracking-widest mb-2">
+                            <MapPin className="w-4 h-4 text-terracotta" />
+                            {artisan.location}
+                          </div>
+                          <h3 className="text-white font-black text-3xl tracking-tight leading-none">{artisan.name}</h3>
+                        </div>
                       </div>
-                    </div>
+                    </Link>
   
                     <div className="p-8">
                       <span className="inline-block px-3 py-1 rounded-lg bg-terracotta/10 text-terracotta text-sm font-bold mb-5 tracking-wide uppercase">
@@ -114,7 +117,7 @@ export function Artisans() {
                       </span>
   
                       <p className="text-gray-600 leading-relaxed font-medium mb-6 line-clamp-3">
-                        {artisan.description}
+                        {artisan.bio}
                       </p>
   
                       <div className="flex items-center justify-between pt-6 border-t border-gray-100">
@@ -122,12 +125,14 @@ export function Artisans() {
                           <span className="text-xs text-gray-500 font-medium uppercase tracking-wider">{t('artisans.creations')}</span>
                           <span className="text-lg font-bold text-gray-900">{artisan.productsCount}</span>
                         </div>
-                        <Button variant="ghost" className="group/btn text-gray-900 hover:text-terracotta hover:bg-terracotta/5 font-semibold rounded-full px-5 transition-colors">
-                          {t('artisans.discover')}
-                          <span className="bg-gray-100 group-hover/btn:bg-terracotta/10 rounded-full w-8 h-8 flex items-center justify-center ml-3 rtl:mr-3 rtl:ml-0 transition-colors">
-                            <ArrowRight className="w-4 h-4 rtl:rotate-180 transition-transform duration-300 group-hover/btn:translate-x-0.5" />
-                          </span>
-                        </Button>
+                        <Link to={`/artisan/${artisan.id}`}>
+                          <Button variant="ghost" className="group/btn text-gray-900 hover:text-terracotta hover:bg-terracotta/5 font-semibold rounded-full px-5 transition-colors">
+                            {t('artisans.discover')}
+                            <span className="bg-gray-100 group-hover/btn:bg-terracotta/10 rounded-full w-8 h-8 flex items-center justify-center ml-3 rtl:mr-3 rtl:ml-0 transition-colors">
+                              <ArrowRight className="w-4 h-4 rtl:rotate-180 transition-transform duration-300 group-hover/btn:translate-x-0.5" />
+                            </span>
+                          </Button>
+                        </Link>
                       </div>
                     </div>
                   </SlideIn>

@@ -247,7 +247,7 @@ export function Catalog() {
                               <span className="text-xs font-bold">{product.ecoScore}%</span>
                             </div>
                           </Link>
-                            <div className="p-5 flex-1 flex flex-col">
+                          <div className="p-6 sm:p-8 flex-1 flex flex-col">
                             <Link to={`/product/${product.id}`}>
                               <h3 className="font-bold text-lg mb-1 line-clamp-1 group-hover:text-terracotta transition-colors">
                                 {language === 'ar' && product.nameAr ? product.nameAr : product.name}

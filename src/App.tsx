@@ -12,12 +12,13 @@ import { Contact } from '@/pages/Contact';
 import { Videos } from '@/pages/Videos';
 import { Login } from '@/pages/Login';
 import { Register } from '@/pages/Register';
-import { Cart } from '@/pages/Cart';
 import { Product } from '@/pages/Product';
+import { ArtisanDetail } from '@/pages/ArtisanDetail';
 import { LanguageProvider } from '@/store/LanguageContext';
 import { ScrollToTop } from '@/components/ScrollToTop';
 import { BabaElHedi } from '@/components/BabaElHedi';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { Toaster } from '@/components/ui/sonner';
 import './App.css';
 
 // Layout component for pages with navbar
@@ -74,8 +75,8 @@ function AnimatedRoutes() {
         <Route path="/training" element={<MainLayout><PageWrapper><Training /></PageWrapper></MainLayout>} />
         <Route path="/contact" element={<MainLayout><PageWrapper><Contact /></PageWrapper></MainLayout>} />
         <Route path="/videos" element={<MainLayout><PageWrapper><Videos /></PageWrapper></MainLayout>} />
-        <Route path="/cart" element={<MainLayout><PageWrapper><Cart /></PageWrapper></MainLayout>} />
         <Route path="/product/:id" element={<MainLayout><PageWrapper><Product /></PageWrapper></MainLayout>} />
+        <Route path="/artisan/:id" element={<MainLayout><PageWrapper><ArtisanDetail /></PageWrapper></MainLayout>} />
         <Route path="*" element={<MainLayout><PageWrapper><Home /></PageWrapper></MainLayout>} />
       </Routes>
     </ErrorBoundary>
@@ -91,6 +92,7 @@ function App() {
           <div className="min-h-screen bg-background text-foreground">
             <AnimatedRoutes />
           </div>
+          <Toaster position="bottom-right" richColors />
           <BabaElHedi />
         </Router>
       </LanguageProvider>

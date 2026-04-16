@@ -5,6 +5,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '@/store';
 import { useLanguage } from '@/store/LanguageContext';
 import { motion } from 'framer-motion';
+import { CartDrawer } from '@/components/CartDrawer';
+import { CommandMenu } from '@/components/CommandMenu';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -78,6 +80,7 @@ export function Navbar() {
 
           {/* Right Section - Desktop */}
           <div className="hidden lg:flex items-center gap-3">
+            <CommandMenu />
             {/* Language Toggle */}
             <Button
               variant="ghost"
@@ -89,12 +92,12 @@ export function Navbar() {
             </Button>
 
             {/* Cart */}
-            <Link to="/cart">
-              <motion.div className="relative">
+            <CartDrawer>
+              <div className="relative cursor-pointer">
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="rounded-full text-foreground/60 hover:text-foreground relative group"
+                  className="rounded-full text-foreground/60 hover:text-foreground relative group pointer-events-none"
                 >
                   <ShoppingCart className="w-5 h-5" />
                 </Button>
@@ -108,8 +111,8 @@ export function Navbar() {
                     {cart.totalItems}
                   </motion.span>
                 )}
-              </motion.div>
-            </Link>
+              </div>
+            </CartDrawer>
 
             {/* Login/Register */}
             <div className="flex items-center gap-2 ml-2 pl-2 border-l border-white/30">
@@ -127,15 +130,30 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="lg:hidden text-foreground bg-white/50 rounded-full backdrop-blur-sm border border-white/50"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </Button>
+          {/* Mobile Actions */}
+          <div className="flex lg:hidden items-center gap-2">
+            <CommandMenu />
+            <CartDrawer>
+              <div className="relative cursor-pointer">
+                <Button variant="ghost" size="icon" className="text-foreground bg-white/50 rounded-full border border-white/50 pointer-events-none">
+                  <ShoppingCart className="w-5 h-5" />
+                </Button>
+                {cart.totalItems > 0 && (
+                  <span className="absolute -top-1 -right-1 w-4 h-4 bg-terracotta text-white text-[10px] font-bold rounded-full flex items-center justify-center">
+                    {cart.totalItems}
+                  </span>
+                )}
+              </div>
+            </CartDrawer>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-foreground bg-white/50 rounded-full backdrop-blur-sm border border-white/50"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Menu Overlay */}

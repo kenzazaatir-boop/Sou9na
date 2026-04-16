@@ -7,7 +7,8 @@ import {
   Share2, 
   Truck, 
   Shield, 
-  Leaf 
+  Leaf,
+  CheckCircle
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
@@ -18,6 +19,7 @@ import { getProductSEO, getProductSchema } from '@/lib/seo';
 import { getProducts, getArtisanById } from '@/lib/data';
 import type { Product as ProductType, Artisan } from '@/types';
 import { toast } from 'sonner';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export function Product() {
   const { id } = useParams<{ id: string }>();
@@ -106,10 +108,21 @@ export function Product() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 pt-24 flex items-center justify-center">
-        <div className="flex flex-col items-center gap-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-terracotta"></div>
-          <p className="text-gray-500 text-sm italic">Saha! Chargement du produit {id}...</p>
+      <div className="min-h-screen bg-gray-50 pt-20 lg:pt-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+          <Skeleton className="h-4 w-48 mb-8" />
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            <Skeleton className="aspect-square rounded-3xl" />
+            <div className="space-y-6">
+              <Skeleton className="h-10 w-3/4" />
+              <Skeleton className="h-6 w-1/4" />
+              <Skeleton className="h-24 w-full" />
+              <div className="grid grid-cols-2 gap-4 pt-8">
+                 <Skeleton className="h-16 w-full rounded-2xl" />
+                 <Skeleton className="h-16 w-full rounded-2xl" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -220,10 +233,10 @@ export function Product() {
                   </div>
                   <Button 
                     onClick={handleAddToCart}
-                    className="flex-1 h-12 rounded-2xl gradient-terracotta text-white font-bold text-lg shadow-lg hover:shadow-xl transition-all"
+                    className="flex-1 h-14 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-lg shadow-[0_8px_30px_rgb(5,150,105,0.3)] hover:shadow-[0_8px_30px_rgb(5,150,105,0.5)] transition-all transform hover:-translate-y-1"
                   >
-                    <ShoppingCart className="w-5 h-5 mr-2" />
-                    {t('product.addToCart')}
+                    <ShoppingCart className="w-6 h-6 mr-3 border-2 border-transparent" />
+                    {language === 'ar' ? 'أضف للسلة و إدعم الحرفي' : 'Ajouter et soutenir l\'artisan'}
                   </Button>
                 </div>
 
@@ -240,21 +253,19 @@ export function Product() {
                 </div>
               </div>
 
-              {/* Service Features */}
-              <div className="grid grid-cols-2 gap-4 pt-8">
-                <div className="flex items-center gap-3 p-4 bg-white rounded-2xl border border-gray-100">
-                  <Truck className="w-5 h-5 text-terracotta" />
-                  <div>
-                    <div className="text-xs font-bold text-gray-900 uppercase">Livraison</div>
-                    <div className="text-xs text-gray-500">Rapide & Sécurisée</div>
-                  </div>
+              {/* Réassurance - Confiance */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 border-t">
+                <div className="flex flex-col items-center justify-center text-center gap-2 p-4 bg-emerald-50/50 rounded-2xl border border-emerald-100">
+                  <Shield className="w-6 h-6 text-emerald-600" />
+                  <div className="text-[11px] font-black tracking-wide text-gray-900 uppercase">Paiement sécurisé</div>
                 </div>
-                <div className="flex items-center gap-3 p-4 bg-white rounded-2xl border border-gray-100">
-                  <Shield className="w-5 h-5 text-terracotta" />
-                  <div>
-                    <div className="text-xs font-bold text-gray-900 uppercase">Garantie</div>
-                    <div className="text-xs text-gray-500">Qualité Artisanale</div>
-                  </div>
+                <div className="flex flex-col items-center justify-center text-center gap-2 p-4 bg-orange-50/50 rounded-2xl border border-orange-100">
+                  <Heart className="w-6 h-6 text-terracotta" />
+                  <div className="text-[11px] font-black tracking-wide text-gray-900 uppercase">Soutien direct aux artisans</div>
+                </div>
+                <div className="flex flex-col items-center justify-center text-center gap-2 p-4 bg-warm-gold/10 rounded-2xl border border-warm-gold/20">
+                  <CheckCircle className="w-6 h-6 text-warm-gold" />
+                  <div className="text-[11px] font-black tracking-wide text-gray-900 uppercase">Fait main en Tunisie</div>
                 </div>
               </div>
             </div>
