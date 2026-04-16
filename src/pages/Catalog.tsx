@@ -7,7 +7,8 @@ import {
   Star,
   Leaf,
   MapPin,
-  X
+  X,
+  ChevronRight
 } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { toast } from 'sonner';
@@ -130,6 +131,29 @@ export function Catalog() {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-terracotta/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
+        {/* Breadcrumb — Accueil > Catalogue [> Catégorie / Région active] */}
+        <nav aria-label="Fil d'Ariane" className="flex items-center flex-wrap gap-1 text-sm text-gray-400 mb-6">
+          <Link to="/" className="hover:text-terracotta transition-colors font-medium">Accueil</Link>
+          <ChevronRight className="w-3.5 h-3.5 text-gray-300" />
+          <span className="text-gray-900 font-semibold">Catalogue</span>
+          {selectedCategories.length === 1 && (
+            <>
+              <ChevronRight className="w-3.5 h-3.5 text-gray-300" />
+              <span className="text-terracotta font-semibold capitalize">
+                {t(`catalog.categories.${selectedCategories[0]}`)}
+              </span>
+            </>
+          )}
+          {selectedRegions.length === 1 && (
+            <>
+              <ChevronRight className="w-3.5 h-3.5 text-gray-300" />
+              <span className="text-terracotta font-semibold capitalize">
+                {t(`home.map.regions.${selectedRegions[0]}`)}
+              </span>
+            </>
+          )}
+        </nav>
+
         <SlideIn direction="down" className="mb-12">
           <div className="flex items-center justify-between">
             <div>

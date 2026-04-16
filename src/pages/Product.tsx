@@ -7,7 +7,8 @@ import {
   Share2, 
   Shield, 
   Leaf,
-  CheckCircle
+  CheckCircle,
+  ChevronRight
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
@@ -146,15 +147,24 @@ export function Product() {
       {SEOComponent}
       <div className="min-h-screen bg-gray-50 pt-20 lg:pt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-8">
-            <Link to="/" className="hover:text-terracotta transition-colors">Accueil</Link>
-            <span>/</span>
-            <Link to="/catalog" className="hover:text-terracotta transition-colors">Boutique</Link>
-            <span>/</span>
-            <span className="text-gray-900 font-medium truncate max-w-[200px]">
-              {dispName}
-            </span>
+          {/* Breadcrumb — Accueil > Catalogue > Catégorie > Produit */}
+          <nav aria-label="Fil d'Ariane" className="flex items-center flex-wrap gap-1 text-sm text-gray-400 mb-8">
+            <Link to="/" className="hover:text-terracotta transition-colors font-medium">Accueil</Link>
+            <ChevronRight className="w-3.5 h-3.5 text-gray-300" />
+            <Link to="/catalog" className="hover:text-terracotta transition-colors font-medium">Catalogue</Link>
+            {product.category && (
+              <>
+                <ChevronRight className="w-3.5 h-3.5 text-gray-300" />
+                <Link
+                  to={`/catalog?category=${product.category}`}
+                  className="hover:text-terracotta transition-colors capitalize font-medium"
+                >
+                  {t(`catalog.categories.${product.category}`) || product.category}
+                </Link>
+              </>
+            )}
+            <ChevronRight className="w-3.5 h-3.5 text-gray-300" />
+            <span className="text-gray-900 font-semibold truncate max-w-[200px]">{dispName}</span>
           </nav>
 
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
