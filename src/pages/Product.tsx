@@ -5,7 +5,6 @@ import {
   ShoppingCart, 
   Heart, 
   Share2, 
-  Truck, 
   Shield, 
   Leaf,
   CheckCircle
