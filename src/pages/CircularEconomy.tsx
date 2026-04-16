@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Recycle, Leaf, TreePine, Package, HandCoins, ArrowRight, Check } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/store/LanguageContext';
 
@@ -99,6 +100,23 @@ export function CircularEconomy() {
                     </li>
                   ))}
                 </ul>
+
+                {/* Animated Progression Gauge */}
+                <div className="mt-8 pt-6 border-t border-gray-100">
+                   <div className="flex justify-between text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">
+                     <span>Cycle</span>
+                     <span>Etape {index + 1}/6</span>
+                   </div>
+                   <div className="h-2.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                     <motion.div 
+                       className={`h-full ${step.bgColor.replace('/10', '')} opacity-70`}
+                       initial={{ width: '0%' }}
+                       whileInView={{ width: `${(index + 1) * 16.66}%` }} 
+                       transition={{ duration: 1.5, delay: 0.3 + (index * 0.1), ease: "easeOut" }}
+                       viewport={{ once: true }}
+                     />
+                   </div>
+                </div>
               </div>
             ))}
           </div>

@@ -92,6 +92,7 @@ export function Artisans() {
                         <img
                           src={artisan.image.startsWith('http') ? artisan.image : `${import.meta.env.BASE_URL}${artisan.image}`}
                           alt={artisan.name}
+                          loading="lazy"
                           className="w-full h-full object-cover transition-transform duration-1000 cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-110"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-80 group-hover:opacity-70 transition-opacity duration-300" />

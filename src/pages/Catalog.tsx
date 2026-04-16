@@ -241,7 +241,7 @@ export function Catalog() {
                       <HoverScale key={product.id}>
                         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="group bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-card border border-gray-100 h-full flex flex-col">
                           <Link to={`/product/${product.id}`} className="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                            <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                            <img src={product.image} alt={product.name} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                             <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 shadow-sm">
                               <Leaf className="w-4 h-4 text-olive" />
                               <span className="text-xs font-bold">{product.ecoScore}%</span>

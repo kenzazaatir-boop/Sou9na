@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, User, Phone, ChevronRight, ChevronLeft, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { toast } from 'sonner';
 import { useState } from 'react';
 import { useLanguage } from '@/store/LanguageContext';
 
@@ -55,10 +56,12 @@ export function Register() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
-      alert(t('auth.passwordMismatch') || "Mots de passe non identiques");
+      toast.error(t('auth.passwordMismatch') || "Mots de passe non identiques", {
+        icon: <div className="p-1 bg-red-100 rounded-full mr-2"><svg className="w-4 h-4 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+      });
       return;
     }
-    alert(t('auth.registerSuccess') || "Inscription réussie !");
+    toast.success(t('auth.registerSuccess') || "Inscription réussie !");
   };
 
   return (

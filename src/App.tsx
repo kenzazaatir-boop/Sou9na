@@ -26,7 +26,7 @@ function MainLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Navbar />
-      <main className="pt-0 min-h-[calc(100vh-200px)]">
+      <main className="pt-0 min-h-[calc(100vh-200px)] pb-20 lg:pb-0">
         {children}
       </main>
       <Footer />

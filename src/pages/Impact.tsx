@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Users, Leaf, TrendingUp, Heart, ArrowRight, Check } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { useSEO } from '@/hooks';
 import { useLanguage } from '@/store/LanguageContext';
@@ -112,9 +113,27 @@ export function Impact() {
                     </li>
                   ))}
                 </ul>
-                <div className="flex items-center gap-5 pt-8 border-t border-gray-100">
-                  <div className={`text-5xl font-black tracking-tighter ${impact.color}`}>{impact.stat}</div>
-                  <div className="text-sm font-bold text-gray-400 uppercase tracking-widest">{impact.statLabel}</div>
+                <div className="flex flex-col items-center gap-4 pt-8 border-t border-gray-100">
+                  <div className="relative w-36 h-36 flex items-center justify-center">
+                    <svg className="absolute inset-0 w-full h-full -rotate-90 drop-shadow-sm" viewBox="0 0 100 100">
+                      <circle cx="50" cy="50" r="42" className="stroke-gray-100" strokeWidth="10" fill="none" />
+                      <motion.circle 
+                        cx="50" cy="50" r="42" 
+                        className={`stroke-current ${impact.color}`} 
+                        strokeWidth="10" 
+                        fill="none"
+                        strokeLinecap="round"
+                        initial={{ strokeDasharray: 264, strokeDashoffset: 264 }}
+                        whileInView={{ strokeDashoffset: 264 - (264 * (70 + (index * 8))) / 100 }}
+                        transition={{ duration: 2, ease: "easeOut", delay: 0.2 }}
+                        viewport={{ once: true }}
+                      />
+                    </svg>
+                    <div className={`absolute text-3xl font-black tracking-tighter ${impact.color} text-center`}>
+                      {impact.stat}
+                    </div>
+                  </div>
+                  <div className="text-sm font-bold text-gray-500 uppercase tracking-widest text-center mt-2">{impact.statLabel}</div>
                 </div>
               </div>
             ))}

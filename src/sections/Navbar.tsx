@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ShoppingCart, User, Globe } from 'lucide-react';
+import { Menu, X, ShoppingCart, User, Globe, Home, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '@/store';
@@ -34,6 +34,7 @@ export function Navbar() {
   }, []);
 
   return (
+    <>
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
         isScrolled
@@ -198,5 +199,69 @@ export function Navbar() {
         )}
       </div>
     </header>
+
+    {/* ── Bottom Navigation Bar (Mobile Only) ── */}
+    <nav
+      aria-label="Navigation mobile"
+      className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-t border-gray-100 shadow-[0_-4px_30px_rgba(0,0,0,0.06)]"
+      style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
+    >
+      <div className="flex items-center justify-around h-16">
+        {/* Home */}
+        <Link
+          to="/"
+          aria-label="Accueil"
+          className={`flex flex-col items-center justify-center gap-0.5 w-16 h-full transition-colors ${
+            location.pathname === '/' ? 'text-terracotta' : 'text-gray-400 hover:text-terracotta'
+          }`}
+        >
+          <Home className="w-6 h-6" strokeWidth={location.pathname === '/' ? 2.5 : 1.8} />
+          <span className="text-[10px] font-bold tracking-wide">Accueil</span>
+        </Link>
+
+        {/* Search */}
+        <Link
+          to="/catalog"
+          aria-label="Recherche"
+          className={`flex flex-col items-center justify-center gap-0.5 w-16 h-full transition-colors ${
+            location.pathname === '/catalog' ? 'text-terracotta' : 'text-gray-400 hover:text-terracotta'
+          }`}
+        >
+          <Search className="w-6 h-6" strokeWidth={location.pathname === '/catalog' ? 2.5 : 1.8} />
+          <span className="text-[10px] font-bold tracking-wide">Catalogue</span>
+        </Link>
+
+        {/* Cart — centred pill */}
+        <CartDrawer>
+          <button
+            aria-label={`Panier (${cart.totalItems} articles)`}
+            className="relative flex flex-col items-center justify-center gap-0.5 w-16 h-full text-gray-400 hover:text-terracotta transition-colors cursor-pointer"
+          >
+            <div className="relative w-9 h-9 bg-terracotta rounded-2xl flex items-center justify-center shadow-md -mt-5">
+              <ShoppingCart className="w-5 h-5 text-white" strokeWidth={2} />
+              {cart.totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 w-5 h-5 bg-emerald-500 text-white text-[10px] font-black rounded-full flex items-center justify-center shadow">
+                  {cart.totalItems}
+                </span>
+              )}
+            </div>
+            <span className="text-[10px] font-bold tracking-wide">Panier</span>
+          </button>
+        </CartDrawer>
+
+        {/* Profile */}
+        <Link
+          to="/login"
+          aria-label="Profil"
+          className={`flex flex-col items-center justify-center gap-0.5 w-16 h-full transition-colors ${
+            location.pathname === '/login' || location.pathname === '/register' ? 'text-terracotta' : 'text-gray-400 hover:text-terracotta'
+          }`}
+        >
+          <User className="w-6 h-6" strokeWidth={1.8} />
+          <span className="text-[10px] font-bold tracking-wide">Profil</span>
+        </Link>
+      </div>
+    </nav>
+    </>
   );
 }
