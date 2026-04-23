@@ -1,16 +1,13 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const SUPABASE_URL = 'https://dhgfbzhndsavbdneycnv.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRoZ2ZiZHhuZHNhdmJkbmV5Y252Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5NjU2MTcsImV4cCI6MjA5MjU0MTYxN30.NUfILP9HBSeXn51kOWOWPacsDb5JyrJLjF5nrZNin38';
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || SUPABASE_ANON_KEY;
 
 // Export a flag to let other services know if we are in mock mode
-export const isMockMode = !supabaseUrl || !supabaseAnonKey || supabaseUrl === 'your_supabase_url_here';
+export const isMockMode = false;
 
-if (isMockMode) {
-  console.warn('Supabase credentials missing or invalid. Running in Mock Mode.');
-}
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-export const supabase = createClient(
-  !isMockMode ? supabaseUrl! : 'https://placeholder.supabase.co',
-  !isMockMode ? supabaseAnonKey! : 'placeholder'
-);
