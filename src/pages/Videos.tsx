@@ -528,6 +528,21 @@ function VideoPlayer({ video, isOpen, onClose }: { video: Video; isOpen: boolean
   );
 }
 
+const standardVideos = [
+  {
+    id: 'doc-1',
+    title: 'قصة سوقنا: إبداع يتجدد 🌟',
+    description: 'نظرة شاملة على كواليس الإبداع في سوقنا، حيث يلتقي التراث بالابتكار.',
+    videoSrc: '/videos/storytelling-1.mp4'
+  },
+  {
+    id: 'doc-2',
+    title: 'سوقنا: تراث مستدام 🌱',
+    description: 'وثائقي مميز يروي قصة التزام منصة سوقنا بالمحافظة على التراث التونسي العريق.',
+    videoSrc: '/videos/storytelling-2.mp4'
+  }
+];
+
 export function Videos() {
   const { SEOComponent } = useSEO();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -612,6 +627,36 @@ export function Videos() {
                       {video.music}
                     </span>
                   </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Documentaires Complets Section */}
+      <div className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Documentaires Complets</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+              Plongez au cœur de notre histoire avec ces documentaires complets.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {standardVideos.map((video) => (
+              <div key={video.id} className="bg-gray-50 rounded-2xl overflow-hidden shadow-card">
+                <div className="relative aspect-video bg-black">
+                  <video 
+                    src={video.videoSrc} 
+                    className="w-full h-full object-contain" 
+                    controls 
+                    preload="metadata"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2" dir="rtl">{video.title}</h3>
+                  <p className="text-gray-600 text-sm" dir="rtl">{video.description}</p>
                 </div>
               </div>
             ))}
