@@ -533,13 +533,13 @@ const standardVideos = [
     id: 'doc-1',
     title: 'قصة سوقنا: إبداع يتجدد 🌟',
     description: 'نظرة شاملة على كواليس الإبداع في سوقنا، حيث يلتقي التراث بالابتكار.',
-    videoSrc: '/videos/storytelling-1.mp4'
+    videoSrc: 'videos/storytelling-1.mp4'
   },
   {
     id: 'doc-2',
     title: 'سوقنا: تراث مستدام 🌱',
     description: 'وثائقي مميز يروي قصة التزام منصة سوقنا بالمحافظة على التراث التونسي العريق.',
-    videoSrc: '/videos/storytelling-2.mp4'
+    videoSrc: 'videos/storytelling-2.mp4'
   }
 ];
 
