@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '@/store';
 import { useLanguage } from '@/store/LanguageContext';
+import { useAuth } from '@/store/AuthContext';
 import { motion } from 'framer-motion';
 import { CartDrawer } from '@/components/CartDrawer';
 import { CommandMenu } from '@/components/CommandMenu';
@@ -14,6 +15,7 @@ export function Navbar() {
   const location = useLocation();
   const { cart } = useCart();
   const { language, toggleLanguage, t } = useLanguage();
+  const { state: { user, isLoggedIn }, logout } = useAuth();
 
   const navLinks = [
     { href: '/', label: t('nav.home') },
@@ -116,19 +118,32 @@ export function Navbar() {
               </div>
             </CartDrawer>
 
-            {/* Login/Register */}
+            {/* Login/Register or Profile */}
             <div className="flex items-center gap-2 ml-2 pl-2 border-l border-white/30">
-              <Link to="/login">
-                <Button variant="ghost" className="rounded-full text-foreground/70 hover:text-foreground font-medium">
-                  <User className="w-4 h-4 mr-2" />
-                  {t('nav.login')}
-                </Button>
-              </Link>
-              <Link to="/register">
-                <Button className="gradient-terracotta text-white rounded-full font-medium px-6">
-                  {t('nav.register')}
-                </Button>
-              </Link>
+              {isLoggedIn ? (
+                <>
+                  <span className="text-sm font-bold text-gray-700 mr-2">
+                    {user?.firstname}
+                  </span>
+                  <Button variant="ghost" onClick={logout} className="rounded-full text-foreground/70 hover:text-red-500 font-medium">
+                    Déconnexion
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Link to="/login">
+                    <Button variant="ghost" className="rounded-full text-foreground/70 hover:text-foreground font-medium">
+                      <User className="w-4 h-4 mr-2" />
+                      {t('nav.login')}
+                    </Button>
+                  </Link>
+                  <Link to="/register">
+                    <Button className="gradient-terracotta text-white rounded-full font-medium px-6">
+                      {t('nav.register')}
+                    </Button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
 
@@ -182,18 +197,31 @@ export function Navbar() {
                 })}
               </nav>
               <div className="p-4 bg-gray-50/50 border-t border-gray-100/50 flex flex-col gap-3">
-                <Link to="/login">
-                  <Button variant="outline" className="w-full h-12 rounded-xl font-semibold border-border/50 bg-white">
-                    <User className="w-5 h-5 mr-2 text-muted-foreground" />
-                    {t('nav.login')}
-                  </Button>
-                </Link>
-                <Link to="/register">
-                  <Button variant="outline" className="w-full h-12 rounded-xl font-semibold border-border/50 bg-white">
-                    <User className="w-5 h-5 mr-2 text-muted-foreground" />
-                    {t('nav.register')}
-                  </Button>
-                </Link>
+                {isLoggedIn ? (
+                  <>
+                    <span className="text-sm font-bold text-center text-gray-700 mb-2">
+                      Bonjour, {user?.firstname}
+                    </span>
+                    <Button variant="outline" onClick={() => { logout(); setIsMobileMenuOpen(false); }} className="w-full h-12 rounded-xl font-semibold border-border/50 bg-white text-red-500">
+                      Déconnexion
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>
+                      <Button variant="outline" className="w-full h-12 rounded-xl font-semibold border-border/50 bg-white">
+                        <User className="w-5 h-5 mr-2 text-muted-foreground" />
+                        {t('nav.login')}
+                      </Button>
+                    </Link>
+                    <Link to="/register" onClick={() => setIsMobileMenuOpen(false)}>
+                      <Button variant="outline" className="w-full h-12 rounded-xl font-semibold border-border/50 bg-white">
+                        <User className="w-5 h-5 mr-2 text-muted-foreground" />
+                        {t('nav.register')}
+                      </Button>
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           </div>

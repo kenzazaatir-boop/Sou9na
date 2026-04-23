@@ -1,19 +1,71 @@
-import { Link } from 'react-router-dom';
-import { Trash2, Plus, Minus, ShoppingBag, Truck, Lock } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Trash2, Plus, Minus, ShoppingBag, Truck, Lock, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { useCart } from '@/store';
 import { useSEO } from '@/hooks';
 import { SlideIn } from '@/components/animations';
 import { toast } from 'sonner';
-
+import { useState } from 'react';
 import { useLanguage } from '@/store/LanguageContext';
+import { useAuth } from '@/store/AuthContext';
+import { supabase, isMockMode } from '@/lib/supabase';
 
 export function Cart() {
   const { language, t } = useLanguage();
   const { SEOComponent } = useSEO();
   const { cart, removeFromCart, updateQuantity, clearCart } = useCart();
   const { items, subtotal, shipping, total } = cart;
+  const { state: { isLoggedIn, user } } = useAuth();
+  const navigate = useNavigate();
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
+
+  const handleCheckout = async () => {
+    if (!isLoggedIn) {
+      toast.error("Veuillez vous connecter pour commander.");
+      navigate('/login');
+      return;
+    }
+
+    setIsCheckingOut(true);
+    try {
+      const orderPayload = {
+        user_id: user?.id,
+        status: 'pending',
+        total_amount: total,
+        shipping_address: { country: 'Tunisie' },
+        items: items.map(item => ({
+          product_id: item.productId,
+          name: item.name,
+          quantity: item.quantity,
+          price: item.price,
+          artisan: item.artisan,
+        })),
+      };
+
+      if (!isMockMode) {
+        const { error } = await supabase.from('orders').insert(orderPayload);
+        if (error) throw error;
+      }
+
+      clearCart();
+      toast.success(
+        <div className="flex items-center gap-3">
+          <CheckCircle2 className="w-5 h-5 text-green-500" />
+          <div>
+            <p className="font-bold">Commande confirmée !</p>
+            <p className="text-sm text-gray-500">Merci pour votre achat. Vous recevrez un email de confirmation.</p>
+          </div>
+        </div>,
+        { duration: 5000 }
+      );
+      navigate('/catalog');
+    } catch (err: any) {
+      toast.error(err.message || 'Une erreur est survenue. Veuillez réessayer.');
+    } finally {
+      setIsCheckingOut(false);
+    }
+  };
 
   if (items.length === 0) {
     return (
@@ -162,9 +214,13 @@ export function Cart() {
                   </p>
                 )}
 
-                <Button className="w-full gradient-terracotta text-white rounded-full h-12 font-bold text-lg mb-3">
+                <Button 
+                  onClick={handleCheckout}
+                  disabled={isCheckingOut}
+                  className="w-full gradient-terracotta text-white rounded-full h-12 font-bold text-lg mb-3"
+                >
                   <Lock className="w-5 h-5 mr-2 rtl:mr-0 rtl:ml-2" />
-                  {t('cart.checkout')}
+                  {isCheckingOut ? 'Traitement...' : t('cart.checkout')}
                 </Button>
 
                 <Button variant="outline" className="w-full rounded-full h-12" asChild>

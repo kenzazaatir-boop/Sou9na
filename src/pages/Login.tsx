@@ -4,19 +4,27 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useState } from 'react';
 import { useLanguage } from '@/store/LanguageContext';
+import { useAuth } from '@/store/AuthContext';
+import { toast } from 'sonner';
 
 export function Login() {
   const { t } = useLanguage();
+  const { login, state: { isLoading } } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle login
-    alert(t('auth.loginSuccess'));
+    try {
+      await login(formData.email, formData.password);
+      toast.success(t('auth.loginSuccess'));
+      // redirect or handle success
+    } catch (err: any) {
+      toast.error(err.message || 'Login failed');
+    }
   };
 
   return (
@@ -85,8 +93,8 @@ export function Login() {
               </Link>
             </div>
 
-            <Button type="submit" className="w-full gradient-terracotta text-white">
-              {t('auth.loginButton')}
+            <Button type="submit" disabled={isLoading} className="w-full gradient-terracotta text-white">
+              {isLoading ? '...' : t('auth.loginButton')}
             </Button>
           </form>
 

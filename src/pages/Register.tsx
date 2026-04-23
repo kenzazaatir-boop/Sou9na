@@ -5,9 +5,11 @@ import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
 import { useState } from 'react';
 import { useLanguage } from '@/store/LanguageContext';
+import { useAuth } from '@/store/AuthContext';
 
 export function Register() {
   const { language, t } = useLanguage();
+  const { register, state: { isLoading } } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -53,7 +55,7 @@ export function Register() {
     }, 1500);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       toast.error(t('auth.passwordMismatch') || "Mots de passe non identiques", {
@@ -61,7 +63,20 @@ export function Register() {
       });
       return;
     }
-    toast.success(t('auth.registerSuccess') || "Inscription réussie !");
+
+    try {
+      await register({
+        email: formData.email,
+        firstname: formData.firstName,
+        lastname: formData.lastName,
+        type: (formData.accountType === 'artisan' ? 'artisan' : 'client') as 'client' | 'artisan',
+      }, formData.password);
+      
+      toast.success(t('auth.registerSuccess') || "Inscription réussie !");
+      // redirect or handle success
+    } catch (err: any) {
+      toast.error(err.message || 'Registration failed');
+    }
   };
 
   return (
@@ -356,10 +371,11 @@ export function Register() {
               ) : (
                 <Button 
                   type="submit" 
+                  disabled={isLoading}
                   className="rounded-full px-8 h-12 font-black gradient-terracotta text-white shadow-[0_8px_20px_rgb(255,107,53,0.3)] hover:shadow-[0_8px_25px_rgb(255,107,53,0.4)] transition-all transform hover:-translate-y-0.5"
                 >
                   <CheckCircle2 className="w-5 h-5 mr-2 rtl:ml-2 rtl:mr-0" />
-                  {t('auth.registerButton')}
+                  {isLoading ? '...' : t('auth.registerButton')}
                 </Button>
               )}
             </div>

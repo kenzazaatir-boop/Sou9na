@@ -1425,8 +1425,8 @@ export async function getArtisans(): Promise<Artisan[]> {
     .select('*')
     .order('name');
 
-  if (error || !data) {
-    console.error('Error fetching artisans from Supabase:', error);
+  if (error || !data || data.length === 0) {
+    if (error) console.error('Error fetching artisans from Supabase:', error);
     return MOCK_ARTISANS;
   }
 
@@ -1471,8 +1471,8 @@ export async function getProducts(options?: {
 
   const { data, error } = await query;
 
-  if (error || !data) {
-    console.error('Error fetching products from Supabase:', error);
+  if (error || !data || data.length === 0) {
+    if (error) console.error('Error fetching products from Supabase:', error);
     return MOCK_PRODUCTS;
   }
 
