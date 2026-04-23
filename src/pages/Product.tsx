@@ -20,6 +20,8 @@ import { getProducts, getArtisanById } from '@/lib/data';
 import type { Product as ProductType, Artisan } from '@/types';
 import { toast } from 'sonner';
 import { Skeleton } from '@/components/ui/skeleton';
+import { b2bMatches } from '@/lib/b2bData';
+import { Recycle } from 'lucide-react';
 
 export function Product() {
   const { id } = useParams<{ id: string }>();
@@ -30,6 +32,8 @@ export function Product() {
   const [quantity, setQuantity] = useState(1);
   const [relatedProducts, setRelatedProducts] = useState<ProductType[]>([]);
   const { addToCart } = useCart();
+
+  const productMatches = artisan ? b2bMatches.filter(m => m.consumerId === artisan.id) : [];
 
   // Safety fallbacks for SEO (Must be outside any condition for Hooks)
   const dispName = product ? ((language === 'ar' && product.nameAr) ? product.nameAr : product.name) : 'Produit';
@@ -277,6 +281,21 @@ export function Product() {
                   <div className="text-[11px] font-black tracking-wide text-gray-900 uppercase">Fait main en Tunisie</div>
                 </div>
               </div>
+
+              {/* Circular Economy Impact */}
+              {productMatches.length > 0 && (
+                <div className="mt-6 p-6 bg-olive/10 border border-olive/20 rounded-3xl flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-olive flex items-center justify-center shrink-0 shadow-md">
+                    <Recycle className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-black text-gray-900 mb-1">Impact Circulaire (Soukna Loops)</h3>
+                    <p className="text-sm text-gray-600">
+                      Ce produit a été fabriqué en valorisant des matières premières de seconde vie : <strong>{productMatches[0].material}</strong>, provenant de notre réseau d'artisans solidaires (Artisan #{productMatches[0].supplierId}).
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 

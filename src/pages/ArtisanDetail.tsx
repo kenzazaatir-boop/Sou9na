@@ -12,6 +12,8 @@ import { getArtisanById, getProducts } from '@/lib/data';
 import type { Artisan, Product } from '@/types';
 import { Skeleton } from '@/components/ui/skeleton';
 import { SlideIn, FadeIn } from '@/components/animations';
+import { b2bMatches } from '@/lib/b2bData';
+import { Recycle } from 'lucide-react';
 
 export function ArtisanDetail() {
   const { id } = useParams<{ id: string }>();
@@ -19,6 +21,9 @@ export function ArtisanDetail() {
   const [artisan, setArtisan] = useState<Artisan | null>(null);
   const [artisanProducts, setArtisanProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const artisanMatches = artisan ? b2bMatches.filter(m => m.supplierId === artisan.id || m.consumerId === artisan.id) : [];
+  const hasEcoBadge = artisanMatches.length > 0;
 
   const { SEOComponent } = useSEO({
     customMeta: {
@@ -155,6 +160,13 @@ export function ArtisanDetail() {
                   <MapPin className="w-5 h-5 text-terracotta" />
                   {language === 'ar' ? artisan.locationAr : artisan.location}
                 </div>
+
+                {hasEcoBadge && (
+                  <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-olive/20 to-terracotta/20 border border-olive/30 rounded-2xl">
+                    <Recycle className="w-5 h-5 text-olive" />
+                    <span className="font-bold text-gray-900">Badge Éco-Boucle ♻️</span>
+                  </div>
+                )}
               </div>
 
               {/* Stats Grid */}
@@ -207,6 +219,36 @@ export function ArtisanDetail() {
                         {cert}
                       </span>
                     ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Circular Connections */}
+              {hasEcoBadge && (
+                <div className="space-y-4">
+                  <h2 className="text-xl font-black text-gray-900 tracking-tight uppercase tracking-wider">
+                    {language === 'ar' ? 'روابط الاقتصاد الدائري' : 'Connexions Circulaires (B2B)'}
+                  </h2>
+                  <div className="space-y-3">
+                    {artisanMatches.map(match => {
+                      const isSupplier = match.supplierId === artisan.id;
+                      return (
+                        <div key={match.id} className="p-4 rounded-xl bg-gray-50 border border-gray-100 flex items-start gap-4">
+                          <div className="w-10 h-10 rounded-full bg-olive/10 flex items-center justify-center shrink-0">
+                            <Recycle className="w-5 h-5 text-olive" />
+                          </div>
+                          <div>
+                            <p className="text-sm font-bold text-gray-900">
+                              {isSupplier ? 'Fournit des déchets à ' : 'Utilise les déchets de '}
+                              <Link to={`/artisan/${isSupplier ? match.consumerId : match.supplierId}`} className="text-terracotta hover:underline">
+                                Artisan #{isSupplier ? match.consumerId : match.supplierId}
+                              </Link>
+                            </p>
+                            <p className="text-xs text-gray-500 mt-1">{match.material}</p>
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}

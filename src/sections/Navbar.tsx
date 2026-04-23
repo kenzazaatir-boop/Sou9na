@@ -20,6 +20,7 @@ export function Navbar() {
     { href: '/catalog', label: t('nav.catalog') },
     { href: '/artisans', label: t('nav.artisans') },
     { href: '/circular-economy', label: t('nav.eco') },
+    { href: '/b2b', label: 'Soukna B2B' },
     { href: '/impact', label: t('nav.impact') },
     { href: '/training', label: t('nav.training') },
     { href: '/contact', label: t('nav.contact') },

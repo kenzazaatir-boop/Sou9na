@@ -12,6 +12,7 @@ import { Contact } from '@/pages/Contact';
 import { Videos } from '@/pages/Videos';
 import { Login } from '@/pages/Login';
 import { Register } from '@/pages/Register';
+import { B2BMarket } from '@/pages/B2BMarket';
 import { Product } from '@/pages/Product';
 import { ArtisanDetail } from '@/pages/ArtisanDetail';
 import { LanguageProvider } from '@/store/LanguageContext';
@@ -75,6 +76,7 @@ function AnimatedRoutes() {
         <Route path="/training" element={<MainLayout><PageWrapper><Training /></PageWrapper></MainLayout>} />
         <Route path="/contact" element={<MainLayout><PageWrapper><Contact /></PageWrapper></MainLayout>} />
         <Route path="/videos" element={<MainLayout><PageWrapper><Videos /></PageWrapper></MainLayout>} />
+        <Route path="/b2b" element={<MainLayout><PageWrapper><B2BMarket /></PageWrapper></MainLayout>} />
         <Route path="/product/:id" element={<MainLayout><PageWrapper><Product /></PageWrapper></MainLayout>} />
         <Route path="/artisan/:id" element={<MainLayout><PageWrapper><ArtisanDetail /></PageWrapper></MainLayout>} />
         <Route path="*" element={<MainLayout><PageWrapper><Home /></PageWrapper></MainLayout>} />
