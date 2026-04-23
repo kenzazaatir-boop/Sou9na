@@ -134,38 +134,6 @@ const videos: Video[] = [
       { time: '90–120 s', visual: 'الفخار معروض في شوارع نابل العتيقة، ترتيب فني يجذب السياح والمارة، أضواء الشمس تلمع فوق الزجاج', voixOff: 'في قلب سوق نابل، الفخار يضوي المكان. تحف فنية معروضة بكل فخر، تحكي قصة صمود حرفة توارثوها الأجيال وما زالت تزيّن شوارعنا.', videoSrc: 'videos/nabeul-pottery.mp4', thumbnail: 'videos/nabeul-pottery.jpg' },
       { time: '120–150 s', visual: 'سائحة تختار فاز (Vase) كبير، الحرفي يغلفه بكل عناية، تبادل ابتسامات وشكر، لقطة ختامية دافئة', voixOff: 'القطعة هذي مش مجرد فخار، هي شقفة من قلب تونس. فرحة الزبون وهو يهز معاه صنعتنا هي الوقود اللي يخلينا نواصلو ونطوروا في سوقنا.', videoSrc: 'videos/nabeul-pottery.mp4', thumbnail: 'videos/nabeul-pottery.jpg' }
     ]
-  },
-  {
-    id: 'storytelling-1',
-    title: 'قصة سوقنا: إبداع يتجدد 🌟',
-    duration: '0:00',
-    thumbnail: 'videos/economie-circulaire-1.jpg',
-    items: [
-      'اكتشاف جمال الحرف اليدوية',
-      'دعم الاقتصاد الدائري',
-      'إبداع من وحي التراث'
-    ],
-    music: 'موسيقى هادئة وملهمة',
-    slogan: 'سوقنا، قصة نجاح تونسية.',
-    scenes: [
-      { time: '0–...', visual: 'فيديو تشويقي يعرض أبرز اللحظات والمقتطفات (Promo/Behind the scenes)', voixOff: 'هذا الفيديو هو بمثابة إطلالة سريعة على كواليس الإبداع في سوقنا، حيث يلتقي التراث بالابتكار.', videoSrc: 'videos/storytelling-1.mp4', thumbnail: 'videos/economie-circulaire-1.jpg' }
-    ]
-  },
-  {
-    id: 'storytelling-2',
-    title: 'سوقنا: تراث مستدام 🌱',
-    duration: '0:00',
-    thumbnail: 'videos/nabeul-pottery.jpg',
-    items: [
-      'التراث التونسي الأصيل',
-      'ممارسات مستدامة',
-      'حماية البيئة من خلال الحرف'
-    ],
-    music: 'موسيقى أصيلة وهادئة',
-    slogan: 'تراثنا، استدامتنا.',
-    scenes: [
-      { time: '0–...', visual: 'مشاهد وثائقية عن التراث المستدام لسوقنا (النسخة العربية الفصحى)', voixOff: 'وثائقي مميز باللغة العربية الفصحى يروي قصة التزام منصة سوقنا بالمحافظة على التراث التونسي العريق بأسلوب مستدام.', videoSrc: 'videos/storytelling-2.mp4', thumbnail: 'videos/nabeul-pottery.jpg' }
-    ]
   }
 ];
 
