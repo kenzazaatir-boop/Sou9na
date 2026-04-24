@@ -100,6 +100,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         password: password,
         options: {
           data: {
+            full_name: `${user.firstname} ${user.lastname}`,
             firstname: user.firstname,
             lastname: user.lastname,
             type: user.type,
