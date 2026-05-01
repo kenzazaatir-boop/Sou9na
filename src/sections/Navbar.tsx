@@ -125,13 +125,11 @@ export function Navbar() {
                   <span className="text-sm font-bold text-gray-700 mr-2">
                     {user?.firstname}
                   </span>
-                  {user?.type === 'artisan' && (
-                    <Link to="/dashboard">
-                      <Button variant="outline" className="rounded-full font-medium mr-2 border-terracotta text-terracotta hover:bg-terracotta hover:text-white transition-colors">
-                        Tableau de bord
-                      </Button>
-                    </Link>
-                  )}
+                  <Link to="/dashboard">
+                    <Button variant="outline" className="rounded-full font-medium mr-2 border-terracotta text-terracotta hover:bg-terracotta hover:text-white transition-colors">
+                      Tableau de bord
+                    </Button>
+                  </Link>
                   <Button variant="ghost" onClick={logout} className="rounded-full text-foreground/70 hover:text-red-500 font-medium">
                     Déconnexion
                   </Button>
@@ -209,13 +207,11 @@ export function Navbar() {
                     <span className="text-sm font-bold text-center text-gray-700 mb-2">
                       Bonjour, {user?.firstname}
                     </span>
-                    {user?.type === 'artisan' && (
-                      <Link to="/dashboard" onClick={() => setIsMobileMenuOpen(false)}>
-                        <Button variant="outline" className="w-full h-12 rounded-xl font-semibold border-terracotta text-terracotta bg-white hover:bg-terracotta hover:text-white mb-2">
-                          Tableau de bord
-                        </Button>
-                      </Link>
-                    )}
+                    <Link to="/dashboard" onClick={() => setIsMobileMenuOpen(false)}>
+                      <Button variant="outline" className="w-full h-12 rounded-xl font-semibold border-terracotta text-terracotta bg-white hover:bg-terracotta hover:text-white mb-2">
+                        Tableau de bord
+                      </Button>
+                    </Link>
                     <Button variant="outline" onClick={() => { logout(); setIsMobileMenuOpen(false); }} className="w-full h-12 rounded-xl font-semibold border-border/50 bg-white text-red-500">
                       Déconnexion
                     </Button>
@@ -294,29 +290,16 @@ export function Navbar() {
 
         {/* Profile */}
         {isLoggedIn ? (
-          user?.type === 'artisan' ? (
-            <Link
-              to="/dashboard"
-              aria-label="Tableau de bord"
-              className="flex flex-col items-center justify-center gap-0.5 w-16 h-full text-terracotta transition-colors"
-            >
-              <div className="w-6 h-6 rounded-full bg-terracotta flex items-center justify-center">
-                <span className="text-white text-xs font-bold">{user?.firstname?.[0]?.toUpperCase()}</span>
-              </div>
-              <span className="text-[10px] font-bold tracking-wide text-terracotta">Tableau</span>
-            </Link>
-          ) : (
-            <button
-              aria-label="Déconnexion"
-              onClick={() => logout()}
-              className="flex flex-col items-center justify-center gap-0.5 w-16 h-full text-terracotta transition-colors"
-            >
-              <div className="w-6 h-6 rounded-full bg-terracotta flex items-center justify-center">
-                <span className="text-white text-xs font-bold">{user?.firstname?.[0]?.toUpperCase()}</span>
-              </div>
-              <span className="text-[10px] font-bold tracking-wide text-terracotta">{user?.firstname?.split(' ')[0]}</span>
-            </button>
-          )
+          <Link
+            to="/dashboard"
+            aria-label="Tableau de bord"
+            className="flex flex-col items-center justify-center gap-0.5 w-16 h-full text-terracotta transition-colors"
+          >
+            <div className="w-6 h-6 rounded-full bg-terracotta flex items-center justify-center">
+              <span className="text-white text-xs font-bold">{user?.firstname?.[0]?.toUpperCase()}</span>
+            </div>
+            <span className="text-[10px] font-bold tracking-wide text-terracotta">Tableau</span>
+          </Link>
         ) : (
           <Link
             to="/login"
