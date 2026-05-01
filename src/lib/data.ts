@@ -146,7 +146,7 @@ const MOCK_ARTISANS: Artisan[] = [
     specialty: 'Vannerie & Halfa',
     specialtyAr: 'حياكة وحلفاء',
     rating: 4.92,
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=80',
+    image: 'images/artisans/amira.jpg',
     totalSales: 187,
     productCount: 12,
     productsCount: 12,
