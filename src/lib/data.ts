@@ -108,7 +108,7 @@ const MOCK_ARTISANS: Artisan[] = [
     specialty: 'Bijoux & Accessoires',
     specialtyAr: 'مجوهرات وإكسسوارات',
     rating: 4.9,
-    image: 'https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=400&q=80',
+    image: 'images/artisans/leila.jpg',
     totalSales: 623,
     productCount: 35,
     productsCount: 35,
