@@ -118,6 +118,13 @@ export function Navbar() {
               </div>
             </CartDrawer>
 
+            {/* Dashboard (Visible to everyone for testing) */}
+            <Link to="/dashboard">
+              <Button variant="outline" className="rounded-full font-medium mr-2 border-terracotta text-terracotta hover:bg-terracotta hover:text-white transition-colors">
+                Tableau de bord
+              </Button>
+            </Link>
+
             {/* Login/Register or Profile */}
             <div className="flex items-center gap-2 ml-2 pl-2 border-l border-white/30">
               {isLoggedIn ? (
@@ -125,11 +132,6 @@ export function Navbar() {
                   <span className="text-sm font-bold text-gray-700 mr-2">
                     {user?.firstname}
                   </span>
-                  <Link to="/dashboard">
-                    <Button variant="outline" className="rounded-full font-medium mr-2 border-terracotta text-terracotta hover:bg-terracotta hover:text-white transition-colors">
-                      Tableau de bord
-                    </Button>
-                  </Link>
                   <Button variant="ghost" onClick={logout} className="rounded-full text-foreground/70 hover:text-red-500 font-medium">
                     Déconnexion
                   </Button>
@@ -202,16 +204,16 @@ export function Navbar() {
                 })}
               </nav>
               <div className="p-4 bg-gray-50/50 border-t border-gray-100/50 flex flex-col gap-3">
+                <Link to="/dashboard" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button variant="outline" className="w-full h-12 rounded-xl font-semibold border-terracotta text-terracotta bg-white hover:bg-terracotta hover:text-white mb-2">
+                    Tableau de bord
+                  </Button>
+                </Link>
                 {isLoggedIn ? (
                   <>
                     <span className="text-sm font-bold text-center text-gray-700 mb-2">
                       Bonjour, {user?.firstname}
                     </span>
-                    <Link to="/dashboard" onClick={() => setIsMobileMenuOpen(false)}>
-                      <Button variant="outline" className="w-full h-12 rounded-xl font-semibold border-terracotta text-terracotta bg-white hover:bg-terracotta hover:text-white mb-2">
-                        Tableau de bord
-                      </Button>
-                    </Link>
                     <Button variant="outline" onClick={() => { logout(); setIsMobileMenuOpen(false); }} className="w-full h-12 rounded-xl font-semibold border-border/50 bg-white text-red-500">
                       Déconnexion
                     </Button>
@@ -288,30 +290,21 @@ export function Navbar() {
           </button>
         </CartDrawer>
 
-        {/* Profile */}
-        {isLoggedIn ? (
-          <Link
-            to="/dashboard"
-            aria-label="Tableau de bord"
-            className="flex flex-col items-center justify-center gap-0.5 w-16 h-full text-terracotta transition-colors"
-          >
-            <div className="w-6 h-6 rounded-full bg-terracotta flex items-center justify-center">
-              <span className="text-white text-xs font-bold">{user?.firstname?.[0]?.toUpperCase()}</span>
-            </div>
-            <span className="text-[10px] font-bold tracking-wide text-terracotta">Tableau</span>
-          </Link>
-        ) : (
-          <Link
-            to="/login"
-            aria-label="Profil"
-            className={`flex flex-col items-center justify-center gap-0.5 w-16 h-full transition-colors ${
-              location.pathname === '/login' || location.pathname === '/register' ? 'text-terracotta' : 'text-gray-400 hover:text-terracotta'
-            }`}
-          >
-            <User className="w-6 h-6" strokeWidth={1.8} />
-            <span className="text-[10px] font-bold tracking-wide">Profil</span>
-          </Link>
-        )}
+        {/* Tableau de bord - Always visible */}
+        <Link
+          to="/dashboard"
+          aria-label="Tableau de bord"
+          className={`flex flex-col items-center justify-center gap-0.5 w-16 h-full transition-colors ${
+            location.pathname.startsWith('/dashboard') ? 'text-terracotta' : 'text-gray-400 hover:text-terracotta'
+          }`}
+        >
+          <div className="w-6 h-6 rounded-full bg-terracotta flex items-center justify-center">
+            <span className="text-white text-xs font-bold">
+              {isLoggedIn ? user?.firstname?.[0]?.toUpperCase() : 'س'}
+            </span>
+          </div>
+          <span className="text-[10px] font-bold tracking-wide text-terracotta">Tableau</span>
+        </Link>
       </div>
     </nav>
     </>
