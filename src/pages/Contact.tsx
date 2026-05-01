@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useState } from 'react';
 import { useSEO } from '@/hooks';
-
+import { toast } from 'sonner';
 import { useLanguage } from '@/store/LanguageContext';
 
 export function Contact() {
@@ -19,8 +19,7 @@ export function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    alert(t('contact.successMessage'));
+    toast.success(t('contact.successMessage') || 'Message envoyé ! Nous vous répondrons sous 24h.');
     setFormData({ name: '', email: '', subject: '', message: '' });
   };
 

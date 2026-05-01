@@ -279,16 +279,29 @@ export function Navbar() {
         </CartDrawer>
 
         {/* Profile */}
-        <Link
-          to="/login"
-          aria-label="Profil"
-          className={`flex flex-col items-center justify-center gap-0.5 w-16 h-full transition-colors ${
-            location.pathname === '/login' || location.pathname === '/register' ? 'text-terracotta' : 'text-gray-400 hover:text-terracotta'
-          }`}
-        >
-          <User className="w-6 h-6" strokeWidth={1.8} />
-          <span className="text-[10px] font-bold tracking-wide">Profil</span>
-        </Link>
+        {isLoggedIn ? (
+          <button
+            aria-label="Déconnexion"
+            onClick={() => logout()}
+            className="flex flex-col items-center justify-center gap-0.5 w-16 h-full text-terracotta transition-colors"
+          >
+            <div className="w-6 h-6 rounded-full bg-terracotta flex items-center justify-center">
+              <span className="text-white text-xs font-bold">{user?.firstname?.[0]?.toUpperCase()}</span>
+            </div>
+            <span className="text-[10px] font-bold tracking-wide text-terracotta">{user?.firstname?.split(' ')[0]}</span>
+          </button>
+        ) : (
+          <Link
+            to="/login"
+            aria-label="Profil"
+            className={`flex flex-col items-center justify-center gap-0.5 w-16 h-full transition-colors ${
+              location.pathname === '/login' || location.pathname === '/register' ? 'text-terracotta' : 'text-gray-400 hover:text-terracotta'
+            }`}
+          >
+            <User className="w-6 h-6" strokeWidth={1.8} />
+            <span className="text-[10px] font-bold tracking-wide">Profil</span>
+          </Link>
+        )}
       </div>
     </nav>
     </>
