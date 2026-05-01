@@ -8,7 +8,8 @@ import {
   LogOut, 
   Menu, 
   X,
-  Bell
+  Bell,
+  Wallet as WalletIcon
 } from 'lucide-react';
 import { useAuth } from '@/store/AuthContext';
 import { Button } from '@/components/ui/button';
@@ -20,6 +21,7 @@ export function DashboardLayout() {
 
   const navItems = [
     { href: '/dashboard', label: 'Vue d\'ensemble', icon: LayoutDashboard },
+    { href: '/dashboard/wallet', label: 'Portefeuille', icon: WalletIcon },
     { href: '/dashboard/products', label: 'Mes Produits', icon: Package },
     { href: '/dashboard/orders', label: 'Commandes', icon: ShoppingCart },
     { href: '/dashboard/settings', label: 'Paramètres', icon: Settings },

@@ -19,6 +19,7 @@ import { DashboardLayout } from '@/layouts/DashboardLayout';
 import { Overview } from '@/pages/Dashboard/Overview';
 import { Products } from '@/pages/Dashboard/Products';
 import { Orders } from '@/pages/Dashboard/Orders';
+import { Wallet } from '@/pages/Dashboard/Wallet';
 import { LanguageProvider } from '@/store/LanguageContext';
 import { ScrollToTop } from '@/components/ScrollToTop';
 import { BabaElHedi } from '@/components/BabaElHedi';
@@ -87,6 +88,7 @@ function AnimatedRoutes() {
         {/* Dashboard Routes (Artisans only) */}
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<Overview />} />
+          <Route path="wallet" element={<Wallet />} />
           <Route path="products" element={<Products />} />
           <Route path="orders" element={<Orders />} />
           <Route path="settings" element={<div className="p-6 text-center text-gray-500">Paramètres (En construction)</div>} />
