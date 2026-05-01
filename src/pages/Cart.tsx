@@ -9,7 +9,6 @@ import { toast } from 'sonner';
 import { useState } from 'react';
 import { useLanguage } from '@/store/LanguageContext';
 import { useAuth } from '@/store/AuthContext';
-import { supabase, isMockMode } from '@/lib/supabase';
 
 export function Cart() {
   const { language, t } = useLanguage();
@@ -29,24 +28,24 @@ export function Cart() {
 
     setIsCheckingOut(true);
     try {
-      const orderPayload = {
+      // Save order to localStorage
+      const order = {
+        id: `order_${Date.now()}`,
         user_id: user?.id,
         status: 'pending',
         total_amount: total,
-        shipping_address: { country: 'Tunisie' },
         items: items.map(item => ({
           product_id: item.productId,
           name: item.name,
           quantity: item.quantity,
           price: item.price,
-          artisan: item.artisan,
         })),
+        created_at: new Date().toISOString(),
       };
+      const existing = JSON.parse(localStorage.getItem('soukna_orders') || '[]');
+      localStorage.setItem('soukna_orders', JSON.stringify([...existing, order]));
 
-      if (!isMockMode) {
-        const { error } = await supabase.from('orders').insert(orderPayload);
-        if (error) throw error;
-      }
+      await new Promise(r => setTimeout(r, 800)); // Simulate processing
 
       clearCart();
       toast.success(
@@ -54,14 +53,14 @@ export function Cart() {
           <CheckCircle2 className="w-5 h-5 text-green-500" />
           <div>
             <p className="font-bold">Commande confirmée !</p>
-            <p className="text-sm text-gray-500">Merci pour votre achat. Vous recevrez un email de confirmation.</p>
+            <p className="text-sm text-gray-500">Merci pour votre achat. Référence : #{order.id.slice(-6).toUpperCase()}</p>
           </div>
         </div>,
         { duration: 5000 }
       );
       navigate('/catalog');
     } catch (err: any) {
-      toast.error(err.message || 'Une erreur est survenue. Veuillez réessayer.');
+      toast.error(err.message || 'Une erreur est survenue.');
     } finally {
       setIsCheckingOut(false);
     }

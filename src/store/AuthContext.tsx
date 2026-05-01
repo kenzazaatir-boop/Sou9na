@@ -13,6 +13,38 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+const STORAGE_KEY = 'soukna_users';
+const SESSION_KEY = 'soukna_session';
+
+function getUsers(): Record<string, { user: User; password: string }> {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  } catch {
+    return {};
+  }
+}
+
+function saveUsers(users: Record<string, { user: User; password: string }>) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
+}
+
+function getSession(): User | null {
+  try {
+    const raw = localStorage.getItem(SESSION_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+
+function saveSession(user: User | null) {
+  if (user) {
+    localStorage.setItem(SESSION_KEY, JSON.stringify(user));
+  } else {
+    localStorage.removeItem(SESSION_KEY);
+  }
+}
+
 // ===== AUTH CONTEXT PROVIDER =====
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [state, setState] = useState<AuthState>({
@@ -22,72 +54,35 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     error: null,
   });
 
-  // Handle Supabase Auth State Changes
+  // Restore session on mount
   useEffect(() => {
-    import('@/lib/supabase').then(({ isMockMode }) => {
-      if (isMockMode) {
-        setState({ user: null, isLoggedIn: false, isLoading: false, error: null });
-        return;
-      }
-
-      // Initial Session Check
-      supabase.auth.getSession().then(({ data: { session } }) => {
-        if (session?.user) {
-          const userData: User = {
-            id: session.user.id,
-            email: session.user.email || '',
-            firstname: session.user.user_metadata.firstname || 'User',
-            lastname: session.user.user_metadata.lastname || '',
-            type: session.user.user_metadata.type || 'client',
-            createdAt: session.user.created_at,
-          };
-          setState({ user: userData, isLoggedIn: true, isLoading: false, error: null });
-        } else {
-          setState({ user: null, isLoggedIn: false, isLoading: false, error: null });
-        }
-      });
-
-      // Listen for changes
-      const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-        if (session?.user) {
-          const userData: User = {
-            id: session.user.id,
-            email: session.user.email || '',
-            firstname: session.user.user_metadata.firstname || 'User',
-            lastname: session.user.user_metadata.lastname || '',
-            type: session.user.user_metadata.type || 'client',
-            createdAt: session.user.created_at,
-          };
-          setState({ user: userData, isLoggedIn: true, isLoading: false, error: null });
-        } else {
-          setState({ user: null, isLoggedIn: false, isLoading: false, error: null });
-        }
-      });
-
-      return () => {
-        subscription?.unsubscribe();
-      };
-    });
+    const sessionUser = getSession();
+    if (sessionUser) {
+      setState({ user: sessionUser, isLoggedIn: true, isLoading: false, error: null });
+    } else {
+      setState({ user: null, isLoggedIn: false, isLoading: false, error: null });
+    }
   }, []);
 
   const login = useCallback(async (email: string, password: string) => {
     setState(prev => ({ ...prev, isLoading: true, error: null }));
 
-    try {
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
-      if (error) throw error;
-    } catch (error) {
-      setState(prev => ({
-        ...prev,
-        isLoading: false,
-        error: error instanceof Error ? error.message : 'Login failed',
-      }));
-      throw error;
+    await new Promise(r => setTimeout(r, 800)); // Simulate network delay
+
+    const users = getUsers();
+    const entry = users[email.toLowerCase()];
+
+    if (!entry || entry.password !== password) {
+      setState(prev => ({ ...prev, isLoading: false, error: 'Email ou mot de passe incorrect.' }));
+      throw new Error('Email ou mot de passe incorrect.');
     }
+
+    saveSession(entry.user);
+    setState({ user: entry.user, isLoggedIn: true, isLoading: false, error: null });
   }, []);
 
-  const logout = useCallback(async () => {
-    await supabase.auth.signOut();
+  const logout = useCallback(() => {
+    saveSession(null);
     setState({ user: null, isLoggedIn: false, isLoading: false, error: null });
   }, []);
 
@@ -108,6 +103,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
       });
       if (error) throw error;
+      setState(prev => ({ ...prev, isLoading: false, error: null }));
     } catch (error) {
       setState(prev => ({
         ...prev,
@@ -119,41 +115,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const updateProfile = useCallback(async (updates: Partial<User>) => {
-    setState(prev => ({ ...prev, isLoading: true, error: null }));
-
-    try {
-      const { error } = await supabase.auth.updateUser({
-        data: {
-          firstname: updates.firstname,
-          lastname: updates.lastname,
-          type: updates.type,
-        }
-      });
-      
-      if (error) throw error;
-    } catch (error) {
-      setState(prev => ({
-        ...prev,
-        isLoading: false,
-        error: error instanceof Error ? error.message : 'Profile update failed',
-      }));
-      throw error;
-    }
+    setState(prev => {
+      if (!prev.user) return prev;
+      const updated = { ...prev.user, ...updates };
+      saveSession(updated);
+      // Also update in users store
+      const users = getUsers();
+      if (users[updated.email.toLowerCase()]) {
+        users[updated.email.toLowerCase()].user = updated;
+        saveUsers(users);
+      }
+      return { ...prev, user: updated };
+    });
   }, []);
 
   const isLoggedIn = useCallback(() => state.isLoggedIn, [state.isLoggedIn]);
 
   return (
-    <AuthContext.Provider
-      value={{
-        state,
-        login,
-        logout,
-        register,
-        updateProfile,
-        isLoggedIn,
-      }}
-    >
+    <AuthContext.Provider value={{ state, login, logout, register, updateProfile, isLoggedIn }}>
       {children}
     </AuthContext.Provider>
   );
