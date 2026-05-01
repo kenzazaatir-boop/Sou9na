@@ -15,6 +15,10 @@ import { Register } from '@/pages/Register';
 import { B2BMarket } from '@/pages/B2BMarket';
 import { Product } from '@/pages/Product';
 import { ArtisanDetail } from '@/pages/ArtisanDetail';
+import { DashboardLayout } from '@/layouts/DashboardLayout';
+import { Overview } from '@/pages/Dashboard/Overview';
+import { Products } from '@/pages/Dashboard/Products';
+import { Orders } from '@/pages/Dashboard/Orders';
 import { LanguageProvider } from '@/store/LanguageContext';
 import { ScrollToTop } from '@/components/ScrollToTop';
 import { BabaElHedi } from '@/components/BabaElHedi';
@@ -79,6 +83,15 @@ function AnimatedRoutes() {
         <Route path="/b2b" element={<MainLayout><PageWrapper><B2BMarket /></PageWrapper></MainLayout>} />
         <Route path="/product/:id" element={<MainLayout><PageWrapper><Product /></PageWrapper></MainLayout>} />
         <Route path="/artisan/:id" element={<MainLayout><PageWrapper><ArtisanDetail /></PageWrapper></MainLayout>} />
+
+        {/* Dashboard Routes (Artisans only) */}
+        <Route path="/dashboard" element={<DashboardLayout />}>
+          <Route index element={<Overview />} />
+          <Route path="products" element={<Products />} />
+          <Route path="orders" element={<Orders />} />
+          <Route path="settings" element={<div className="p-6 text-center text-gray-500">Paramètres (En construction)</div>} />
+        </Route>
+
         <Route path="*" element={<MainLayout><PageWrapper><Home /></PageWrapper></MainLayout>} />
       </Routes>
     </ErrorBoundary>
