@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, User, Phone, ChevronRight, ChevronLeft, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -10,6 +10,7 @@ import { useAuth } from '@/store/AuthContext';
 export function Register() {
   const { language, t } = useLanguage();
   const { register, state: { isLoading } } = useAuth();
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -73,7 +74,7 @@ export function Register() {
       }, formData.password);
       
       toast.success(t('auth.registerSuccess') || "Inscription réussie !");
-      // redirect or handle success
+      navigate('/');
     } catch (err: any) {
       toast.error(err.message || 'Registration failed');
     }

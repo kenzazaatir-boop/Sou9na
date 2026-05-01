@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -10,6 +10,7 @@ import { toast } from 'sonner';
 export function Login() {
   const { t } = useLanguage();
   const { login, state: { isLoading } } = useAuth();
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
@@ -20,8 +21,8 @@ export function Login() {
     e.preventDefault();
     try {
       await login(formData.email, formData.password);
-      toast.success(t('auth.loginSuccess'));
-      // redirect or handle success
+      toast.success(t('auth.loginSuccess') || 'Connexion réussie !');
+      navigate('/');
     } catch (err: any) {
       toast.error(err.message || 'Login failed');
     }
