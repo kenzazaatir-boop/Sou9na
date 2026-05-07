@@ -7,6 +7,7 @@ import { VideoSection } from '@/sections/VideoSection';
 import { useSEO } from '@/hooks/useSEO';
 
 export function Home() {
+  // Le schema Organization est automatiquement inclus par useSEO
   const { SEOComponent } = useSEO({ includeBreadcrumb: false });
 
   return (

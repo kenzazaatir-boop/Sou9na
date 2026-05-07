@@ -11,6 +11,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -127,6 +128,12 @@ export function Catalog() {
   return (
     <>
       {SEOComponent}
+      {/* Noindex pour les pages filtrées afin d'éviter le contenu dupliqué */}
+      {hasActiveFilters && (
+        <Helmet>
+          <meta name="robots" content="noindex, follow" />
+        </Helmet>
+      )}
       <div className="min-h-screen bg-background relative overflow-hidden pt-20 lg:pt-24">
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-terracotta/5 rounded-full blur-[100px] pointer-events-none" />
 
@@ -265,7 +272,7 @@ export function Catalog() {
                       <HoverScale key={product.id}>
                         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="group bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-card border border-gray-100 h-full flex flex-col">
                           <Link to={`/product/${product.id}`} className="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                            <img src={product.image} alt={product.name} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                            <img src={product.image} alt={`${language === 'ar' && product.nameAr ? product.nameAr : product.name} - ${product.artisan}, ${product.location}`} loading="lazy" width={400} height={300} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                             <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 shadow-sm">
                               <Leaf className="w-4 h-4 text-olive" />
                               <span className="text-xs font-bold">{product.ecoScore}%</span>

@@ -177,8 +177,11 @@ export function Product() {
               <div className="aspect-square rounded-3xl overflow-hidden bg-white shadow-soft border border-gray-100 group">
                 <img
                   src={product.image}
-                  alt={product.name}
+                  alt={`${dispName} - Artisanat tunisien par ${product.artisan}, ${product.location}`}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  fetchPriority="high"
+                  width={600}
+                  height={600}
                 />
               </div>
             </div>
@@ -369,7 +372,7 @@ export function Product() {
                     <p className="text-gray-600 text-sm mb-8 line-clamp-4 leading-relaxed">
                       {language === 'ar' && artisan.bioAr ? artisan.bioAr : artisan.bio}
                     </p>
-                    <Link to={`/artisans/${artisan.id}`}>
+                    <Link to={`/artisan/${artisan.id}`}>
                       <Button variant="outline" className="w-full h-11 rounded-xl border-2 border-terracotta text-terracotta font-bold hover:bg-terracotta hover:text-white transition-all">
                         {language === 'ar' ? 'عرض الملف الشخصي' : 'Portrait Artisan'}
                       </Button>

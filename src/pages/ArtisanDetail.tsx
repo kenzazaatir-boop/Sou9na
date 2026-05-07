@@ -15,6 +15,8 @@ import { SlideIn, FadeIn } from '@/components/animations';
 import { b2bMatches } from '@/lib/b2bData';
 import { Recycle } from 'lucide-react';
 
+const BASE_URL = import.meta.env.VITE_SITE_URL || 'https://soukna.com';
+
 export function ArtisanDetail() {
   const { id } = useParams<{ id: string }>();
   const { language, t } = useLanguage();
@@ -25,11 +27,54 @@ export function ArtisanDetail() {
   const artisanMatches = artisan ? b2bMatches.filter(m => m.supplierId === artisan.id || m.consumerId === artisan.id) : [];
   const hasEcoBadge = artisanMatches.length > 0;
 
+  const artisanSchema = artisan ? {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: artisan.name,
+    jobTitle: artisan.specialty,
+    description: artisan.bio,
+    image: artisan.image.startsWith('http') ? artisan.image : `${BASE_URL}/${artisan.image}`,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: artisan.location,
+      addressCountry: "TN"
+    },
+    worksFor: {
+      "@type": "Organization",
+      name: "Soukna",
+      url: BASE_URL
+    },
+    sameAs: [
+      artisan.socialLinks?.instagram ? `https://instagram.com/${artisan.socialLinks.instagram.replace('@', '')}` : null,
+      artisan.socialLinks?.facebook ? `https://facebook.com/${artisan.socialLinks.facebook}` : null,
+    ].filter(Boolean),
+    hasCredential: artisan.certifications?.map(cert => ({
+      "@type": "EducationalOccupationalCredential",
+      name: cert
+    })) || []
+  } : null;
+
+  const artisanDescription = artisan
+    ? `${artisan.name}, artisan${artisan.specialty ? ` spécialisé en ${artisan.specialty}` : ''} de ${artisan.location}, Tunisie. ${artisan.yearsExperience} ans d'expérience. ${artisan.productsCount} créations disponibles sur Soukna.`
+    : 'Découvrez les artisans tunisiens sur Soukna, marketplace d\'artisanat authentique.';
+
   const { SEOComponent } = useSEO({
     customMeta: {
-      title: artisan ? `${artisan.name} - ${artisan.specialty}` : 'Artisan',
-      description: artisan?.bio || '',
-    }
+      title: artisan ? `${artisan.name} - ${artisan.specialty} | Artisan Tunisien Soukna` : 'Artisan Tunisien | Soukna',
+      description: artisanDescription,
+      canonicalUrl: artisan ? `${BASE_URL}/artisan/${artisan.id}` : undefined,
+      ogImage: artisan ? (artisan.image.startsWith('http') ? artisan.image : `${BASE_URL}/${artisan.image}`) : undefined,
+      ogType: 'profile',
+      keywords: artisan ? [
+        artisan.name,
+        artisan.specialty,
+        artisan.location,
+        'artisan tunisien',
+        'artisanat tunisie',
+        'Soukna'
+      ] : [],
+    },
+    schemas: artisanSchema ? [artisanSchema] : [],
   });
 
   useEffect(() => {

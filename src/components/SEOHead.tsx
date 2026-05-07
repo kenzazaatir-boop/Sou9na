@@ -40,6 +40,11 @@ export const SEOHead: React.FC<SEOHeadProps> = ({ seo, schemas = [] }) => {
       {seo.ogImage && <meta property="og:image:height" content="630" />}
       {seo.canonicalUrl && <meta property="og:url" content={seo.canonicalUrl} />}
 
+      {/* OG Locale */}
+      <meta property="og:locale" content="fr_TN" />
+      <meta property="og:locale:alternate" content="ar_TN" />
+      <meta property="og:site_name" content="Soukna" />
+
       {/* Twitter */}
       <meta name="twitter:card" content={seo.twitterCard || "summary_large_image"} />
       <meta name="twitter:title" content={seo.ogTitle || seo.title} />
@@ -56,8 +61,19 @@ export const SEOHead: React.FC<SEOHeadProps> = ({ seo, schemas = [] }) => {
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="theme-color" content="#92623b" />
       <meta name="color-scheme" content="light dark" />
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      <meta name="author" content="Soukna - Artisanat Tunisien" />
 
-      {/* Language Alternates */}
+      {/* Hreflang FR/AR par défaut (remplacé par seo.alternateLanguages si fourni) */}
+      {(!seo.alternateLanguages || seo.alternateLanguages.length === 0) && seo.canonicalUrl && (
+        <>
+          <link rel="alternate" hrefLang="fr" href={seo.canonicalUrl} />
+          <link rel="alternate" hrefLang="ar" href={seo.canonicalUrl} />
+          <link rel="alternate" hrefLang="x-default" href={seo.canonicalUrl} />
+        </>
+      )}
+
+      {/* Language Alternates personnalisés */}
       {seo.alternateLanguages && seo.alternateLanguages.length > 0 && (
         <>
           {seo.alternateLanguages.map((alt) => (
