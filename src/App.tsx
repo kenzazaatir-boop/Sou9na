@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { StoreProvider } from '@/store';
 import { Navbar } from '@/sections/Navbar';
 import { Footer } from '@/sections/Footer';
