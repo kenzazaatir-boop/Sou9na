@@ -1,155 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Homepage -->
+  <!--
+    Note: Ce site utilise HashRouter (URLs avec #).
+    Le protocole sitemap interdit les # dans les URLs.
+    Google découvre les pages internes (#/catalog, #/artisans, etc.)
+    en suivant les liens depuis la homepage lors du crawl JavaScript.
+  -->
+
+  <!-- Homepage - seule URL réelle accessible sur GitHub Pages -->
   <url>
     <loc>https://kenzazaatir-boop.github.io/Sou9na/</loc>
-    <lastmod>2026-05-07</lastmod>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>
-
-  <!-- Catalog -->
-  <url>
-    <loc>https://kenzazaatir-boop.github.io/Sou9na/#/catalog</loc>
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Artisans Directory -->
-  <url>
-    <loc>https://kenzazaatir-boop.github.io/Sou9na/#/artisans</loc>
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Fiches Artisans individuelles -->
-  <url>
-    <loc>https://kenzazaatir-boop.github.io/Sou9na/#/artisan/1</loc>
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://kenzazaatir-boop.github.io/Sou9na/images/artisans/fatma.png</image:loc>
-      <image:title>Fatma Ben Ali - Artisane Agro-alimentaire Nabeul</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://kenzazaatir-boop.github.io/Sou9na/#/artisan/2</loc>
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://kenzazaatir-boop.github.io/Sou9na/images/artisans/mohamed.png</image:loc>
-      <image:title>Mohamed Trabelsi - Huiles et Épices Sfax</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://kenzazaatir-boop.github.io/Sou9na/#/artisan/3</loc>
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://kenzazaatir-boop.github.io/Sou9na/images/artisans/aicha.png</image:loc>
-      <image:title>Aïcha Mansouri - Tapis et Tissage Berbère Kasserine</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://kenzazaatir-boop.github.io/Sou9na/#/artisan/4</loc>
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://kenzazaatir-boop.github.io/Sou9na/images/artisans/zahra.png</image:loc>
-      <image:title>Zahra Belhaj - Poterie et Céramique Tataouine</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://kenzazaatir-boop.github.io/Sou9na/#/artisan/5</loc>
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://kenzazaatir-boop.github.io/Sou9na/images/artisans/samir.png</image:loc>
-      <image:title>Samir Cherni - Décoration et Luminaires Tunis</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://kenzazaatir-boop.github.io/Sou9na/#/artisan/6</loc>
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://kenzazaatir-boop.github.io/Sou9na/images/artisans/leila.jpg</image:loc>
-      <image:title>Leila Chaabane - Bijoux et Accessoires Sidi Bou Said</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://kenzazaatir-boop.github.io/Sou9na/#/artisan/7</loc>
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://kenzazaatir-boop.github.io/Sou9na/#/artisan/8</loc>
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://kenzazaatir-boop.github.io/Sou9na/images/artisans/amira.jpg</image:loc>
-      <image:title>Amira Guettat - Vannerie et Halfa Gafsa</image:title>
-    </image:image>
-  </url>
-
-  <!-- Training & Learning -->
-  <url>
-    <loc>https://kenzazaatir-boop.github.io/Sou9na/#/training</loc>
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Impact & Sustainability -->
-  <url>
-    <loc>https://kenzazaatir-boop.github.io/Sou9na/#/impact</loc>
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Économie Circulaire -->
-  <url>
-    <loc>https://kenzazaatir-boop.github.io/Sou9na/#/circular-economy</loc>
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- B2B Market -->
-  <url>
-    <loc>https://kenzazaatir-boop.github.io/Sou9na/#/b2b</loc>
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Videos -->
-  <url>
-    <loc>https://kenzazaatir-boop.github.io/Sou9na/#/videos</loc>
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Contact -->
-  <url>
-    <loc>https://kenzazaatir-boop.github.io/Sou9na/#/contact</loc>
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
 
 </urlset>
