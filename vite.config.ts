@@ -5,7 +5,8 @@ import { inspectAttr } from 'kimi-plugin-inspect-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/Sou9na/',
+  // GitHub Pages nécessite /Sou9na/, Netlify utilise /
+  base: process.env.VITE_BASE_PATH || '/Sou9na/',
   plugins: [inspectAttr(), react()],
   resolve: {
     alias: {

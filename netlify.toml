@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+  VITE_SITE_URL = "https://soukna.netlify.app"
+  VITE_BASE_PATH = "/"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
