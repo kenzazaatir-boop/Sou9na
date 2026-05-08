@@ -47,7 +47,7 @@ User-agent: SemrushBot
 Disallow: /
 
 # Sitemap location
-Sitemap: https://soukna.netlify.app/sitemap.xml
+Sitemap: https://tangerine-profiterole-393e96.netlify.app/sitemap.xml
 
 # Crawl delay (in seconds) for general crawlers
 Crawl-delay: 1
